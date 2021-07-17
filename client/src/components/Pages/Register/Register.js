@@ -13,7 +13,7 @@ const Register = () => {
                     <p className={classes.subtitle}>Sign Up to Get Started</p>
                     <RegisterForm />
                     <p className={classes.subtitle}>
-                        Already a member?{' '}
+                        Already a member?{'  '}
                         <span className={classes.link}>Login Here</span>
                     </p>
                 </div>
