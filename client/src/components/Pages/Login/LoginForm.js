@@ -7,9 +7,9 @@ const LoginForm = () => {
     return (
         <form className={classes.form}>
             <Input placeholder={'Email Address'} />
-            <Input placeholder={'Password'} />
+            <Input type={'password'} placeholder={'Password'} />
             <Button text="Login" />
-            <p>Forget Password</p>
+            <p className={classes.forgetPassword}>Forget Password</p>
         </form>
     )
 }

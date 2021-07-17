@@ -5,6 +5,10 @@
     flex-direction: row;
 }
 
+.content {
+    width: 30rem;
+}
+
 .split {
     flex-basis: 40%;
 
@@ -28,5 +32,12 @@
     margin: 3rem auto;
 }
 
-.formInput {
+.forgetPassword {
+    margin: 0rem auto;
+    margin-top: 1.5rem;
+}
+
+.link {
+    font-weight: bolder;
+    text-decoration: underline;
 }

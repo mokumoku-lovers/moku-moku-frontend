@@ -1,6 +1,6 @@
 .introSection {
     width: 100%;
-    background-image: linear-gradient(to bottom, #52b69a, #99d98c, #b5e48c);
+    background-image: linear-gradient(to bottom, #52b69a, #99d98c 80%, #b5e48c);
     flex-basis: 60%;
 
     display: flex;
