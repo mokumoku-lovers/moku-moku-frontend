@@ -13,7 +13,7 @@ const Login = () => {
                     <p className={classes.subtitle}>Welcome Back</p>
                     <LoginForm />
                     <p className={classes.subtitle}>
-                        Not a member?{' '}
+                        Not a member?{'  '}
                         <span className={classes.link}>Sign Up Here</span>
                     </p>
                 </div>
