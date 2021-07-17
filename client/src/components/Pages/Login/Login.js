@@ -12,6 +12,9 @@ const Login = () => {
                     <p className={classes.title}>Hello Again!</p>
                     <p className={classes.subtitle}>Welcome Back</p>
                     <LoginForm />
+                    <p className={classes.subtitle}>
+                        Not a member? Sign Up Here
+                    </p>
                 </div>
             </section>
         </div>

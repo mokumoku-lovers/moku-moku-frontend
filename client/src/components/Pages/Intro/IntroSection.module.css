@@ -1,7 +1,7 @@
 .introSection {
     width: 100%;
-    background-image: linear-gradient(to bottom, #52B69A, #99D98C,#B5E48C);
-    flex-basis: 50%;
+    background-image: linear-gradient(to bottom, #52b69a, #99d98c, #b5e48c);
+    flex-basis: 60%;
 
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@
 .button {
     border-radius: 100px;
     border: 0;
-    background-color: #2D393A;
+    background-color: #2d393a;
     color: whitesmoke;
     padding: 1rem 2rem;
 }
