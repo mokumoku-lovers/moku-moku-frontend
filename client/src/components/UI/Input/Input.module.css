@@ -1,0 +1,25 @@
+.container {
+    position: relative;
+}
+
+.formInput {
+    padding: 1.5rem 2rem;
+    padding-left: 3.5rem;
+    border-radius: 100px;
+    border: 1px solid #52b69a;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.formInput:focus {
+    outline: 0;
+}
+
+.icon {
+    position: absolute;
+    top: 1.8rem;
+    left: 1.5rem;
+    color: gray;
+    font-size: 1.2rem;
+}

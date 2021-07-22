@@ -1,6 +1,6 @@
 // create a form button
 import React from 'react'
-import classes from './Button.module.css'
+import classes from './FormButton.module.css'
 
 const FormButton = (props) => {
     return (
