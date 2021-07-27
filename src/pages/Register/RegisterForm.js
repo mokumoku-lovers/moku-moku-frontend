@@ -16,6 +16,11 @@ const RegisterForm = () => {
                 placeholder={'Password'}
                 fontclassname="fas fa-unlock-alt"
             />
+            <Input
+                type={'password'}
+                placeholder={'Confirm Password'}
+                fontclassname="fas fa-unlock-alt"
+            />
             <Button text="Sign Up" />
         </form>
     )
