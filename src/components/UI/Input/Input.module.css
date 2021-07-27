@@ -4,11 +4,11 @@
 
 .formInput {
     padding: 1.5rem 2rem;
-    padding-left: 3.5rem;
-    border-radius: 100px;
+    padding-left: 4rem;
+    border-radius: 5px;
     border: 1px solid #52b69a;
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     width: 100%;
 }
 
@@ -21,5 +21,5 @@
     top: 1.8rem;
     left: 1.5rem;
     color: gray;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
