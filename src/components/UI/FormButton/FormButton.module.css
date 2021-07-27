@@ -2,8 +2,8 @@
     background-image: linear-gradient(to left, #56b89a, #a4de8c);
     padding: 1.5rem 2rem;
     border: 0;
-    border-radius: 100px;
-    font-size: 1.2rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
 }
 
 .forgetPassword {
