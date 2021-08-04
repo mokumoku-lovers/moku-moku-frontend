@@ -1,0 +1,44 @@
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    width: 30rem;
+}
+
+.split {
+    flex-basis: 40%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 3rem auto;
+}
+
+.forgetPassword {
+    margin: 0rem auto;
+    margin-top: 1.5rem;
+    font-size: 1.35rem;
+}
+
+.link {
+    font-weight: bolder;
+    text-decoration: underline;
+}
