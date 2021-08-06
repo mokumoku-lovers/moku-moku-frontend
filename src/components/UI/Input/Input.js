@@ -9,9 +9,6 @@ const Input = (props) => {
                 {...props}
                 onChange={props.onChange}
                 className={classes.formInput}
-                type={props.type}
-                placeholder={props.placeholder}
-                defaultValue={props.defaultValue}
             />
             <i className={`${classes.icon} ${props.fontclassname}`}></i>
         </div>
