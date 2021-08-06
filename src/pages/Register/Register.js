@@ -2,6 +2,7 @@ import React from 'react'
 import classes from './Register.module.css'
 import IntroSection from '../../components/IntroSection/IntroSection'
 import RegisterForm from './RegisterForm'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
     return (
@@ -14,7 +15,9 @@ const Register = () => {
                     <RegisterForm />
                     <p className={classes.subtitle}>
                         Already a member?{'  '}
-                        <span className={classes.link}>Login Here</span>
+                        <Link to="/login">
+                            <span className={classes.link}>Login Here</span>
+                        </Link>
                     </p>
                 </div>
             </section>
