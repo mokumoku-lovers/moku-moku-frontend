@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import IntroSection from '../../components/IntroSection/IntroSection'
 import classes from './Login.module.css'
 import LoginForm from './LoginForm'
@@ -14,7 +15,9 @@ const Login = () => {
                     <LoginForm />
                     <p className={classes.subtitle}>
                         Not a member?{' '}
-                        <span className={classes.link}>Sign Up Here</span>
+                        <Link to="/register">
+                            <span className={classes.link}>Sign Up Here</span>
+                        </Link>
                     </p>
                 </div>
             </section>
