@@ -9,7 +9,7 @@ const Input = (props) => {
                 {...props}
                 onChange={props.onChange}
                 className={`${classes.formInput} ${
-                    props.isInvalid && classes.invalid
+                    props.isinvalid && classes.invalid
                 }`}
             />
             <i className={`${classes.icon} ${props.fontclassname}`}></i>
