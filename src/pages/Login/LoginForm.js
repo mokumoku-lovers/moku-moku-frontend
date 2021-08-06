@@ -56,7 +56,7 @@ const LoginForm = () => {
                 placeholder={'Email Address'}
                 fontclassname="fas fa-envelope"
                 onChange={onEmailChangeHandler}
-                isInvalid={emailIsTouchAndInvalid}
+                isinvalid={emailIsTouchAndInvalid ? 1 : 0}
                 required
             />
             <Input
@@ -67,7 +67,7 @@ const LoginForm = () => {
                 value={password}
                 fontclassname="fas fa-unlock-alt"
                 onChange={onPasswordChangeHandler}
-                isInvalid={passwordIsTouchAndInvalid}
+                isinvalid={passwordIsTouchAndInvalid ? 1 : 0}
                 required
             />
             <Button text="Login" valid={overallFormIsValid} />
