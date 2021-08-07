@@ -27,3 +27,12 @@
 .invalid {
     border: red 1px solid;
 }
+
+.showPassword {
+    position: absolute;
+    right: -3rem;
+    top: 1.8rem;
+    font-size: 1.5rem;
+    color: gray;
+    cursor: pointer;
+}
