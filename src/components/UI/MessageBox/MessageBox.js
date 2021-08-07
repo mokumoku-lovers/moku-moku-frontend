@@ -5,7 +5,9 @@ const MessageBox = (props) => {
     return (
         <div className={classes.container}>
             <p>{props.children}</p>
-            <button className={classes.btn}>Dismiss</button>
+            <button className={classes.btn} onClick={props.onClickDismiss}>
+                Dismiss
+            </button>
         </div>
     )
 }

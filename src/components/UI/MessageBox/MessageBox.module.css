@@ -27,4 +27,5 @@
     padding: 1rem;
     border: 0;
     background: linear-gradient(180deg, #67c198 0%, #a3db95 100%), #7ccb92;
+    cursor: pointer;
 }
