@@ -68,6 +68,7 @@ const LoginForm = () => {
                 fontclassname="fas fa-unlock-alt"
                 onChange={onPasswordChangeHandler}
                 isinvalid={passwordIsTouchAndInvalid ? 1 : 0}
+                autoComplete="off"
                 required
             />
             <Button text="Login" valid={overallFormIsValid} />
