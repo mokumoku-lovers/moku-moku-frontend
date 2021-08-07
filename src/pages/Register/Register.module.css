@@ -42,3 +42,13 @@
     text-decoration: underline;
     color: black;
 }
+
+.strongPasswordText {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.passwordContainer {
+    position: relative;
+}

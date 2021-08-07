@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../../components/UI/FormButton/FormButton'
 import Input from '../../components/UI/Input/Input'
+import MessageBox from '../../components/UI/MessageBox/MessageBox'
 import classes from './Register.module.css'
 
 /*
@@ -92,6 +93,7 @@ const RegisterForm = () => {
                 fontclassname="fas fa-envelope"
                 isinvalid={emailIsTouchAndInvalid ? 1 : 0}
             />
+
             <Input
                 id="password"
                 name="password"
@@ -102,6 +104,24 @@ const RegisterForm = () => {
                 fontclassname="fas fa-unlock-alt"
                 isinvalid={passwordIsTouchAndInvalid ? 1 : 0}
             />
+
+            <div className={classes.passwordContainer}>
+                <p className={classes.strongPasswordText}>
+                    <span className={classes.strongPasswordDescription}>
+                        <i
+                            className="far fa-question-circle"
+                            style={{ cursor: 'pointer', color: 'blue' }}></i>
+                    </span>
+                    {'  '}
+                    Password need to be strong.
+                </p>
+                <MessageBox>
+                    Must be at least 8 characters contain one lowercase
+                    character, one uppercase character, one special character,
+                    one number and no space.
+                </MessageBox>
+            </div>
+
             <Input
                 id="passwordConfirm"
                 name="passwordConfirm"
