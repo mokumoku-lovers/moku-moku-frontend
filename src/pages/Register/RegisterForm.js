@@ -21,6 +21,7 @@ const RegisterForm = () => {
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const [email, setEmail] = useState('')
+    const [showPasswordMessageBox, setShowPasswordMessageBox] = useState(false)
 
     const [usernameIsTouch, setUsernameIsTouch] = useState(false)
     const [passwordIsTouch, setPasswordIsTouch] = useState(false)
@@ -102,6 +103,7 @@ const RegisterForm = () => {
                 type={'password'}
                 placeholder={'Password'}
                 fontclassname="fas fa-unlock-alt"
+                autoComplete="off"
                 isinvalid={passwordIsTouchAndInvalid ? 1 : 0}
             />
 
@@ -109,17 +111,21 @@ const RegisterForm = () => {
                 <p className={classes.strongPasswordText}>
                     <span className={classes.strongPasswordDescription}>
                         <i
-                            className="far fa-question-circle"
+                            onClick={() => setShowPasswordMessageBox(true)}
+                            className={`far fa-question-circle ${classes.questionIcon}`}
                             style={{ cursor: 'pointer', color: 'blue' }}></i>
                     </span>
                     {'  '}
                     Password need to be strong.
                 </p>
-                <MessageBox>
-                    Must be at least 8 characters contain one lowercase
-                    character, one uppercase character, one special character,
-                    one number and no space.
-                </MessageBox>
+                {showPasswordMessageBox && (
+                    <MessageBox
+                        onClickDismiss={() => setShowPasswordMessageBox(false)}>
+                        Must be at least 8 characters contain one lowercase
+                        character, one uppercase character, one special
+                        character, one number and no space.
+                    </MessageBox>
+                )}
             </div>
 
             <Input
@@ -131,6 +137,7 @@ const RegisterForm = () => {
                 placeholder={'Confirm Password'}
                 fontclassname="fas fa-unlock-alt"
                 isinvalid={passwordConfirmIsTouchAndInvalid ? 1 : 0}
+                autoComplete="off"
             />
             <Button text="Sign Up" valid={overallFormIsValid} />
         </form>

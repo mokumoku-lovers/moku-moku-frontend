@@ -52,3 +52,7 @@
 .passwordContainer {
     position: relative;
 }
+
+.questionIcon {
+    font-size: 1.5rem;
+}
