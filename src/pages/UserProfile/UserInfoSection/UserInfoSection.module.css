@@ -5,4 +5,22 @@
     flex-grow: 1;
     justify-self: stretch;
     align-self: stretch;
+    border-radius: 3.6rem 3.6rem 0 0;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.user_point{
+    display: flex;
+    width: 25rem;
+    justify-content: space-between;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 8px 30px;
+    background: linear-gradient(180.34deg, #5FBD98 0.3%, rgba(162, 221, 141, 0.921875) 99.7%);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;;
 }
