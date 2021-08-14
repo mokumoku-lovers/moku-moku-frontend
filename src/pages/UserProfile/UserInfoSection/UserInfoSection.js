@@ -5,7 +5,7 @@ import classes from './UserInfoSection.module.css'
 const UserInfoSection = () => {
     return (
         <div className={classes.container}>
-            <image className={classes.avatar} src="" />
+            <img className={classes.avatar} alt="User Profile" src="" />
             <div className={classes.user_info__container }>
                 <h1 className={classes.user__info__name}>User#8321</h1>
                 <p>Seize the day</p>
