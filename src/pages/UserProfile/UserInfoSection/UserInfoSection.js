@@ -9,7 +9,7 @@ const UserInfoSection = () => {
                 <h1>User#8321</h1>
                 <p>Seize the day</p>
                 <div className={classes.user_point}>
-                    <span>POINT</span>
+                    <span>POINT <i className={`fas fa-trophy ${classes.trophy_icon}`}></i></span>
                     <span>7000 PT</span>
                 </div>
             </div>

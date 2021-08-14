@@ -10,18 +10,37 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    position: relative;
 }
+
+.avatar {
+    position: absolute;
+    top: -8rem;
+    
+    width: 12rem;
+    height: 12rem;
+    background: rgb(101, 252, 202);
+    border-radius: 50%;
+}
+
+.user_info__container{
+    margin-top: 5rem;
+    font-size: 1.7rem;
+}
+
 
 .user_point{
     display: flex;
     width: 25rem;
     justify-content: space-between;
     color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 8px 30px;
+    font-size: 1.7rem;
+    padding: 8px 20px;
     background: linear-gradient(180.34deg, #5FBD98 0.3%, rgba(162, 221, 141, 0.921875) 99.7%);
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;;
 }
 
+.trophy_icon {
+    color: rgb(255, 255, 88);
+}
