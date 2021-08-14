@@ -10,7 +10,7 @@
 .avatar {
     position: absolute;
     top: -8rem;
-    
+    border: 0;
     width: 12rem;
     height: 12rem;
     background: rgb(101, 252, 202);
