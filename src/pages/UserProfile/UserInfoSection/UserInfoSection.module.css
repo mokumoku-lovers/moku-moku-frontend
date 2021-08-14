@@ -1,5 +1,5 @@
 .container {
-    width: 100%;
+    width: 70rem;
     margin: 0 auto;
     background-color: white;
     flex-grow: 1;
@@ -24,3 +24,4 @@
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;;
 }
+
