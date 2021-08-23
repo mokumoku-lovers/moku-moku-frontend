@@ -1,0 +1,13 @@
+.searchbar {
+    font-size: 30px;
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;  
+    border-radius: 10px;
+    font-family: 'FontAwesome'
+}
+.searchbar:not(:placeholder-shown) ~ span {
+    display:none;
+  }
