@@ -1,0 +1,31 @@
+.container {
+    position: absolute;
+    top: -3rem;
+    left: -28rem;
+    background-color: whitesmoke;
+    z-index: 10;
+    width: 26rem;
+    padding: 3rem;
+    padding-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    right: -1.5rem;
+    top: 3rem;
+    border-top: 1.5rem solid transparent;
+    border-right: none;
+    border-left: 1.5rem solid whitesmoke;
+    border-bottom: 1.5rem solid transparent;
+}
+
+.btn {
+    color: white;
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 0;
+    background: linear-gradient(180deg, #67c198 0%, #a3db95 100%), #7ccb92;
+    cursor: pointer;
+}
