@@ -6,13 +6,22 @@ const initialState = {
     isLoading: false,
 }
 
+export const createUser = createAsyncThunk(
+    'user/createUser',
+    async (formData) => {
+        console.log(formData)
+    }
+)
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {},
-    extraReducers: {
-
+    extraReducers: (builder) => {
+        builder.addCase(createUser.pending, (state, action) =>
+        {
+            state.isLoading = false
+        })
     }
 })
 
