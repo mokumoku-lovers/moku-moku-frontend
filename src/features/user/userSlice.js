@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from '../../axios/axiosInstance';
 
 const initialState = {
     user: null,
@@ -10,6 +11,13 @@ export const createUser = createAsyncThunk(
     'user/createUser',
     async (formData) => {
         console.log(formData)
+        try
+        {
+            const response = await axios.post('/user', formData)
+            console.log(response)
+        } catch(err) {
+            console.log('There is a error' , err)
+        }
     }
 )
 
