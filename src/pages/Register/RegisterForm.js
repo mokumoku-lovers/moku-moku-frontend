@@ -3,7 +3,6 @@ import Button from '../../components/UI/FormButton/FormButton'
 import Input from '../../components/UI/Input/Input'
 import MessageBox from '../../components/UI/MessageBox/MessageBox'
 import classes from './Register.module.css'
-
 /*
  *	At least one upper case English Letter
  *	At least one lower case English letter
@@ -72,8 +71,22 @@ const RegisterForm = () => {
         setEmailIsTouch(true)
     }
 
+    const onSubmitHandler = (e) =>
+    {
+        e.preventDefault()
+
+        if (overallFormIsValid)
+        {
+            console.log('sign up')
+        }
+        else
+        {
+            console.log('Form is not valid.')
+        }
+    }
+
     return (
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={onSubmitHandler}>
             <Input
                 id="username"
                 name="username"
