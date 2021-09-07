@@ -3,6 +3,8 @@ import Button from '../../components/UI/FormButton/FormButton'
 import Input from '../../components/UI/Input/Input'
 import MessageBox from '../../components/UI/MessageBox/MessageBox'
 import classes from './Register.module.css'
+import { createUser } from '../../features/user/userSlice'
+import { useDispatch } from 'react-redux'
 /*
  *	At least one upper case English Letter
  *	At least one lower case English letter
@@ -71,13 +73,20 @@ const RegisterForm = () => {
         setEmailIsTouch(true)
     }
 
-    const onSubmitHandler = (e) =>
+    const dispatch = useDispatch()
+
+    const onSubmitHandler = async (e) =>
     {
         e.preventDefault()
 
         if (overallFormIsValid)
         {
-            console.log('sign up')
+            await dispatch(createUser({
+                email,
+                username,
+                password,
+                password_r: passwordConfirm
+            }))
         }
         else
         {
