@@ -13,7 +13,7 @@ export const createUser = createAsyncThunk(
         console.log(formData)
         try
         {
-            const response = await axios.post('/user', formData)
+            const response = await axios.post('/users', formData)
             console.log(response)
         } catch(err) {
             console.log('There is a error' , err)
