@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./SearchBar.css";
 import logo from "../../src/logo.svg"
-import icon from "../../src/icon.svg"
+import icon from "'../../logo.svg'"
 
 function SearchBar() {
   const [click, setClick] = useState(false);

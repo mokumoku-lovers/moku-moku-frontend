@@ -20,9 +20,8 @@ function NavBar() {
                 exact
                 to="/login"
                 activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
+                className="nav-links"              
+                >
                 Sign In
               </NavLink>
             </button>
@@ -32,7 +31,6 @@ function NavBar() {
                 to="/register"
                 activeClassName="active"
                 className="nav-links"
-                onClick={handleClick}
               >
                 Sign Up
               </NavLink>
