@@ -7,6 +7,10 @@
     font-family: 'FontAwesome'
 }
 
+.searchbar:focus{
+    outline: none;
+}
+
 .input-control {
     float: right;
     position: relative;
