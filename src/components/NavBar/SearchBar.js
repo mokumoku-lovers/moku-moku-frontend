@@ -17,7 +17,10 @@ function SearchBar() {
           </NavLink>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <input type="text" className="searchbar"/>
+            <div className="input-control">
+              <input type="text" className="searchbar" />
+              <i className="fas fa-search search-icon"></i>
+            </div>
             <img src={icon} alt="Icon" />
           </ul>
           <div className="nav-icon" onClick={handleClick}>
