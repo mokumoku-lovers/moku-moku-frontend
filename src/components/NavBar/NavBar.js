@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 import logo from "../../logo.svg"
+import SearchBar from "./SearchBar";
+
+// Mock islogin data 
+// later will be replaced by data from server
+let isLoggedIn = true;
+
 function NavBar() {
   const [click, setClick] = useState(false);
 
@@ -14,8 +20,9 @@ function NavBar() {
             <img src={logo} alt="MokuMoku" />
           </NavLink>
 
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <button className="nav-item">
+          {isLoggedIn ? <SearchBar click={click} /> :
+            <ul className={click ? "nav-menu active" : "nav-menu"}>
+              <button className="nav-item">
               <NavLink
                 exact
                 to="/login"
@@ -35,7 +42,8 @@ function NavBar() {
                 Sign Up
               </NavLink>
             </button>
-          </ul>
+          </ul>}
+          
           <div className="nav-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
           </div>
