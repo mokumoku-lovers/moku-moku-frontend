@@ -3,11 +3,9 @@ import classes from './RankingPage.module.css'
 
 const RankingPage = () => {
     return (
-        <div>
+        <div className={classes.container}>
             <h1>Leaderboard</h1>
-            <section>
-
-            </section>
+            <section></section>
         </div>
     )
 }
