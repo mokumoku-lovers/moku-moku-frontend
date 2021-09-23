@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0px 20px;
+    padding: 0px 25px;
     background: linear-gradient(
         180.34deg,
         #5fbd98 0.3%,
@@ -11,13 +11,45 @@
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     width: 80%;
-    height: 10rem;
+    height: 9rem;
     border-radius: 1rem;
+    margin: 3rem auto;
 }
 
+.rank_number {
+    font-weight: 600;
+    font-size: 4rem;
+    line-height: 90px;
+    color: #ffffff;
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    margin: 0px 1.5rem;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 3.3rem;
+    line-height: 54px;
+
+    color: #ffffff;
+
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    margin: 0px 1.5rem;
+    margin-right: auto;
+}
+
+.point {
+    font-weight: 600;
+    font-size: 3.3rem;
+    line-height: 54px;
+
+    color: #ffffff;
+
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+}
 .avatar {
-    width: 8rem;
-    height: 8rem;
+    width: 7.5rem;
+    height: 7.5rem;
     border-radius: 50%;
     object-fit: cover;
+    margin: 0px 1.5rem;
 }
