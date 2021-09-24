@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage/Homepage'
 import Login from './pages/Login/Login'
 import RankingPage from './pages/RankingPage/RankingPage'
 import Register from './pages/Register/Register'
+import UserProfile from './pages/UserProfile/UserProfile'
 
 function App() {
     return (
@@ -18,6 +19,9 @@ function App() {
                 </Route>
                 <Route path="/ranking">
                     <RankingPage />
+                </Route>
+                <Route path="/profile">
+                    <UserProfile />
                 </Route>
                 <Route path="/">
                     <Homepage />
