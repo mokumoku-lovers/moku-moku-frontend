@@ -4,7 +4,7 @@ import classes from './Button.module.css'
 const Button = (props) => {
     return (
         <button {...props} className={classes.button}>
-            {props.children}
+            <div className={classes.text_shadow}>{props.children}</div>
         </button>
     )
 }
