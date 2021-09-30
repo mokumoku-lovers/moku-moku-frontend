@@ -18,7 +18,7 @@
 .container section {
     flex-grow: 1;
     width: 70%;
-    max-width: 100rem;
+    max-width: 110rem;
     border-radius: 4rem;
     background-color: white;
     margin-top: 4rem;
