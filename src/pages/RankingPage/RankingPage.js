@@ -1,7 +1,11 @@
 import React from 'react'
 import RankingListItem from './RankingListItem'
 import classes from './RankingPage.module.css'
-
+import { Avatar } from '../../components/UI/Avatar/Avatar'
+import Badge from '../../components/UI/Badge/Badge'
+import Button from '../../components/UI/Button/Button'
+import ButtonSecondary from '../../components/UI/Button/ButtonSecondary'
+import Point from '../../components/UI/Point/Point'
 const mockData = [
     {
         name: 'User1',
@@ -31,6 +35,11 @@ const RankingPage = () => {
         <div className={classes.container}>
             <h1>Leaderboard</h1>
             <section>
+                <Avatar />
+                <Badge />
+                <Point point={7000} />
+                <ButtonSecondary>Friends</ButtonSecondary>
+                <Button>Global</Button>
                 {mockData.map((item) => (
                     <RankingListItem
                         key={item.name}
