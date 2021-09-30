@@ -1,9 +1,9 @@
 import React from 'react'
 import classes from './Badge.module.css'
 
-const Badge = () => {
+const Badge = (props) => {
     return (
-        <div className={classes.container}>
+        <div className={`${props.className} ${classes.container}`}>
             <div className={classes.badge}>
                 <p>Rank 1st 🏆</p>
             </div>
