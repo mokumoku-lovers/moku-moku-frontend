@@ -18,7 +18,7 @@ const Register = () => {
         if (user.isLogin || user.error) {
             setShowAlert(true)
         }
-    }, [user.isLogin, user.error])
+    }, [user])
 
     return (
         <div className={classes.container}>
