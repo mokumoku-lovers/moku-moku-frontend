@@ -1,7 +1,7 @@
 .alert {
     min-width: 35rem;
     height: 5rem;
-    background: #e9c4c4;
+
     padding: 1.5rem;
     display: flex;
     align-items: center;
@@ -9,7 +9,16 @@
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     font-size: 1.5rem;
+}
+
+.danger {
+    background: #e9c4c4;
     color: red;
+}
+
+.info {
+    background: #c4d0e9;
+    color: blue;
 }
 
 .alert__text {
