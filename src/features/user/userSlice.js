@@ -43,8 +43,6 @@ const userSlice = createSlice({
             .addCase(createUser.rejected, (state, action) => {
                 state.isLoading = false
                 state.error = action.payload
-                state.user = null
-                state.isLogin = false
             })
     },
 })
