@@ -8,7 +8,7 @@ const Alert = (props) => {
                 classes[`${props.alert_type}`]
             }`}>
             <div className={classes.alert__text}>{props.children}</div>
-            <div className={classes.alert__icon}>
+            <div onClick={props.onDimiss} className={classes.alert__icon}>
                 <i className={`fas fa-${props.icon}`}></i>
             </div>
         </div>
