@@ -37,7 +37,8 @@ const RankingPage = () => {
             <section>
                 <Avatar className={classes.avatar} />
                 <Badge className={classes.badge} />
-                <Point point={7000} />
+                <Point className={classes.point} point={7000} />
+
                 <ButtonSecondary>Friends</ButtonSecondary>
                 <Button>Global</Button>
                 {mockData.map((item) => (
