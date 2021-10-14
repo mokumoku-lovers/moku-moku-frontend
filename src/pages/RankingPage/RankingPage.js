@@ -35,7 +35,7 @@ const RankingPage = () => {
         <div className={classes.container}>
             <h1>Leaderboard</h1>
             <section>
-                <Avatar />
+                <Avatar className={classes.avatar} />
                 <Badge />
                 <Point point={7000} />
                 <ButtonSecondary>Friends</ButtonSecondary>

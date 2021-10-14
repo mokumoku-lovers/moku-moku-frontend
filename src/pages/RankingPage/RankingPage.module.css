@@ -21,5 +21,13 @@
     max-width: 110rem;
     border-radius: 4rem;
     background-color: white;
-    margin-top: 4rem;
+    margin-top: 8rem;
+    position: relative;
+}
+
+.avatar {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
