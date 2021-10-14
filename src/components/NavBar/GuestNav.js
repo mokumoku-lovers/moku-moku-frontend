@@ -9,7 +9,7 @@ const GuestNav = () => {
                 exact
                 to="/login"
                 activeClassName="active"
-                className={classes['nav-links']}>
+                className={`${classes['nav-links']} ${classes['no-border']}`}>
                 Sign In
             </NavLink>
 

@@ -78,6 +78,10 @@
     border-radius: 50%;
 }
 
+.no-border {
+    border: none;
+}
+
 @media screen and (max-width: 960px) {
     .nav-menu {
         display: flex;
