@@ -1,12 +1,10 @@
 import React from 'react'
 import classes from './Point.module.css'
 
-const Point = ({ point }) => {
+const Point = ({ point, className }) => {
     return (
-        <div className={classes.user_point}>
-            <span>
-                POINT <i className={`fas fa-trophy ${classes.trophy_icon}`}></i>
-            </span>
+        <div className={`${className} ${classes.user_point}`}>
+            <span>POINT🏆</span>
             <span>{point} PT</span>
         </div>
     )
