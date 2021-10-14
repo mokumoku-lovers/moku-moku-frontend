@@ -42,3 +42,10 @@
     margin: 0rem auto;
     margin-top: 10rem;
 }
+
+.buttons {
+    margin: 0rem auto;
+    width: 80rem;
+    display: flex;
+    justify-content: space-between;
+}
