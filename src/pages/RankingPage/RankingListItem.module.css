@@ -10,15 +10,15 @@
     );
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    width: 80%;
-    height: 11rem;
+    width: 80rem;
+    height: 8rem;
     border-radius: 1rem;
     margin: 3rem auto;
 }
 
 .rank_number {
     font-weight: 600;
-    font-size: 4rem;
+    font-size: 2.5rem;
     line-height: 90px;
     color: #ffffff;
     text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
@@ -27,7 +27,7 @@
 
 .name {
     font-weight: 600;
-    font-size: 3.3rem;
+    font-size: 3rem;
     line-height: 54px;
 
     color: #ffffff;
@@ -39,7 +39,7 @@
 
 .point {
     font-weight: 600;
-    font-size: 3.3rem;
+    font-size: 3rem;
     line-height: 54px;
 
     color: #ffffff;
@@ -48,8 +48,8 @@
 }
 
 .avatar {
-    width: 9rem;
-    height: 9rem;
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
     object-fit: cover;
     margin: 0px 1.5rem;
