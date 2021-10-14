@@ -1,0 +1,14 @@
+.card {
+    background-color: white;
+    border-radius: 10px;
+    width: 70vw;
+    height: 70vh;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.wordFront {
+    font-size: xxx-large;
+}
