@@ -1,0 +1,125 @@
+.navbar {
+    background: linear-gradient(
+        180deg,
+        #52b69a 0%,
+        #99d98c 84.79%,
+        #b5e48c 100%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7rem;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.nav-logo {
+    align-items: center;
+    margin: 2rem;
+    margin-right: auto;
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin-left: auto;
+    margin-right: 5rem;
+}
+
+.nav-links {
+    font-size: 1.7rem;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-bottom: 3px solid transparent;
+    border: 2px solid white;
+    margin: 1.5rem;
+    border-radius: 1rem;
+}
+
+.searchbar {
+    font-size: 2rem;
+    padding: 4px;
+    padding-left: 40px;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+}
+
+.searchbar:focus {
+    outline: none;
+}
+
+.input-control {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #6c6c6c;
+}
+.searchbar:not(:placeholder-shown) ~ span {
+    display: none;
+}
+
+.user-avatar {
+    margin-left: 3rem;
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 960px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-top: 1pxsolid #fff;
+        position: absolute;
+        top: 80px;
+        left: -110%;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+
+    .nav-menu.active {
+        background: linear-gradient(
+            180deg,
+            #52b69a 0%,
+            #99d98c 84.79%,
+            #b5e48c 100%
+        );
+        left: 0px;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+    .nav-item .active {
+        color: #fff;
+        border: none;
+    }
+    .nav-links {
+        padding: 1.5rem;
+        width: 100%;
+        display: table;
+    }
+
+    .nav-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+}
