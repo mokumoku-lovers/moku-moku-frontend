@@ -4,7 +4,10 @@ import classes from './FormButton.module.css'
 
 const FormButton = (props) => {
     return (
-        <button type="submit" className={classes.btn}>
+        <button
+            type="submit"
+            className={`${classes.btn} ${!props.valid && classes.invalid}`}
+            disabled={!props.valid}>
             {props.text}
         </button>
     )

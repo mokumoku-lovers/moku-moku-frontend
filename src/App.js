@@ -4,6 +4,7 @@ import './App.css'
 import Homepage from './pages/Homepage/Homepage'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
+import UserProfile from './pages/UserProfile/UserProfile'
 
 function App() {
     return (
@@ -15,7 +16,12 @@ function App() {
                 <Route path="/register">
                     <Register />
                 </Route>
-                <Route path="/" component={Homepage} />
+                <Route path="/profile">
+                    <UserProfile />
+                </Route>
+                <Route path="/">
+                    <Homepage />
+                </Route>
             </Switch>
         </Router>
     )
