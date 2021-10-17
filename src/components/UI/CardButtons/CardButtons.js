@@ -6,7 +6,15 @@ const buttonCongfig = {
         {name: "Previous"}, 
         {name: "Show Answer"},
         {name: "Edit"}
-    ], 
+    ],
+    back: [ 
+        {name: "Previous", time: ""},
+        {name: "Again", time: "<1m"}, 
+        {name: "Hard", time: "1d"}, 
+        {name: "Good", time: "4d"},
+        {name: "Easy", time: "10d"},
+        {name: "Edit", time: ""}
+    ] 
 }
 
 const MakeButtons = (side) => {
