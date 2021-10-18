@@ -1,0 +1,23 @@
+.button {
+    width: 12rem;
+    height: 4rem;
+
+    background: #ffffff;
+    border: 2px solid #6ac297;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    font-size: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    color: #67c198;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gradientText {
+    background: -webkit-linear-gradient(#a3db95, #67c198);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

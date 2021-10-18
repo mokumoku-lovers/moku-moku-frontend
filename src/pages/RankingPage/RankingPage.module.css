@@ -1,0 +1,50 @@
+.container {
+    background: rgba(196, 196, 196, 0.19);
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container h1 {
+    font-weight: 500;
+    font-size: 2.9rem;
+    color: #52b69a;
+    text-shadow: 2px 2px 2px #ffffff;
+}
+
+.container section {
+    flex-grow: 1;
+    width: 70%;
+    max-width: 110rem;
+    border-radius: 4rem;
+    background-color: white;
+    margin-top: 8rem;
+    position: relative;
+}
+
+.avatar {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.badge {
+    position: absolute;
+    top: -3rem;
+    right: 3rem;
+}
+
+.point {
+    margin: 0rem auto;
+    margin-top: 10rem;
+}
+
+.buttons {
+    margin: 0rem auto;
+    width: 70rem;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,14 @@
+.avatar {
+    display: block;
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    object-fit: cover;
+
+    border: double 0.5rem transparent;
+    background-image: linear-gradient(white, white),
+        linear-gradient(180deg, #56b89a 0%, #b5e48c 100%);
+
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
