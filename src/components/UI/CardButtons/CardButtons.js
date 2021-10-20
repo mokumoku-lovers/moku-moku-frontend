@@ -20,12 +20,10 @@ const buttonCongfig = {
 const MakeButtons = (side) => {
     return(
     buttonCongfig[side].map((buttonItem)=>(
-            <>  
-                <div className={buttonItem.name}>
-                    <h1 className={classes.buttonHeading}>{buttonItem.time}</h1>
-                    <button className={classes.button}>{buttonItem.name}</button>
-                </div>
-            </>
+        <div key={buttonItem.name} className={buttonItem.name}>
+            <h1 className={classes.buttonHeading}>{buttonItem.time}</h1>
+            <button className={classes.button}>{buttonItem.name}</button>
+        </div>
         ))
     )  
 }
