@@ -16,7 +16,7 @@ const Input = (props) => {
     }
 
     return (
-        <div className={classes.container}>
+        <div className={`${props.className} ${classes.container}`}>
             <input
                 ref={inputRef}
                 {...props}
