@@ -26,11 +26,11 @@ const GeneralInfoForm = () => {
         <div className={classes.container}>
             <form>
                 <div className={classes.row}>
-                    <label htmlFor="name">Display Name</label>
+                    <label htmlFor="display name">Display Name</label>
                     <Input
                         className={classes.input}
-                        id="name"
-                        name="name"
+                        id="display name"
+                        name="display name"
                         type="text"
                         value={name}
                         fontclassname="far fa-user"
@@ -38,7 +38,7 @@ const GeneralInfoForm = () => {
                     />
                 </div>
                 <div className={classes.row}>
-                    <label htmlFor="name">Username</label>
+                    <label htmlFor="username">Username</label>
                     <Input
                         className={classes.input}
                         id="username"
@@ -50,7 +50,7 @@ const GeneralInfoForm = () => {
                     />
                 </div>
                 <div className={classes.row}>
-                    <label htmlFor="name">Email Address</label>
+                    <label htmlFor="email">Email Address</label>
                     <Input
                         className={classes.input}
                         id="email"
@@ -65,8 +65,8 @@ const GeneralInfoForm = () => {
                     <label htmlFor="bio">Bio</label>
                     <TextArea
                         className={classes.input}
-                        id="name"
-                        name="name"
+                        id="bio"
+                        name="bio"
                         onChange={onBioChangeHandler}
                         rows="5"
                         value={bio}
