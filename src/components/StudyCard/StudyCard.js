@@ -9,7 +9,15 @@ const StudyCard = () => {
 
     return (
         <div className={classes.card}>
-            <h1 className={classes.wordFront}> Apple </h1>
+            { cardState ?
+                <div>
+                    <h1 className={classes.wordFront}> Apple </h1>
+                    <div className={classes.separator}/>
+                    <h1 className={classes.wordFront}> りんご </h1>
+                </div>
+                :
+                <h1 className={classes.wordFront}> Apple </h1>
+            }
         </div>
     )
 }
