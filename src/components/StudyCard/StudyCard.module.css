@@ -11,4 +11,11 @@
 
 .wordFront {
     font-size: xxx-large;
+    text-align: center;
+}
+
+.separator {
+    border: 1px solid black;
+    margin: 10rem 0 10rem 0;
+    width: 60vw;
 }
