@@ -16,6 +16,20 @@
 
 .separator {
     border: 1px solid black;
-    margin: 10rem 0 10rem 0;
+    margin: 5rem 0 5rem 0;
     width: 60vw;
+}
+
+.image_question {
+    display: flex;
+    flex-direction: row;
+}
+
+.image_question_column {
+    flex: 50%;
+    align-self: center;
+}
+
+.image {
+    width: 50px;
 }
