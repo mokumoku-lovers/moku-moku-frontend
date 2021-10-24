@@ -3,7 +3,8 @@ import Button from '../../components/UI/FormButton/FormButton'
 import Input from '../../components/UI/Input/Input'
 import MessageBox from '../../components/UI/MessageBox/MessageBox'
 import classes from './Register.module.css'
-
+import { createUser } from '../../features/user/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
 /*
  *	At least one upper case English Letter
  *	At least one lower case English letter
@@ -27,6 +28,9 @@ const RegisterForm = () => {
     const [passwordIsTouch, setPasswordIsTouch] = useState(false)
     const [passwordConfirmIsTouch, setPasswordConfirmIsTouch] = useState(false)
     const [emailIsTouch, setEmailIsTouch] = useState(false)
+
+    // check user is pending to register
+    const { isLoading } = useSelector((state) => state.user)
 
     // check validatiy
     const usernameIsValid = username.trim().length > 0
@@ -72,8 +76,27 @@ const RegisterForm = () => {
         setEmailIsTouch(true)
     }
 
+    const dispatch = useDispatch()
+
+    const onSubmitHandler = async (e) => {
+        e.preventDefault()
+
+        if (overallFormIsValid) {
+            await dispatch(
+                createUser({
+                    email,
+                    username,
+                    password,
+                    password_r: passwordConfirm,
+                })
+            )
+        } else {
+            console.log('Form is not valid.')
+        }
+    }
+
     return (
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={onSubmitHandler}>
             <Input
                 id="username"
                 name="username"
@@ -139,7 +162,7 @@ const RegisterForm = () => {
                 isinvalid={passwordConfirmIsTouchAndInvalid ? 1 : 0}
                 autoComplete="off"
             />
-            <Button text="Sign Up" valid={overallFormIsValid} />
+            <Button text="Sign Up" valid={overallFormIsValid && !isLoading} />
         </form>
     )
 }
