@@ -1,0 +1,43 @@
+.container {
+    padding: 5rem 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.separator {
+    width: 0.2rem;
+    height: 50rem;
+    background-color: rgb(146, 143, 143);
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.formSection {
+    flex-grow: 1;
+    padding: 2rem 4rem;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem 4rem;
+}
+
+.userAvatar {
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+    font-size: 2.5rem;
+}
+
+.username a {
+    text-decoration: none;
+}
