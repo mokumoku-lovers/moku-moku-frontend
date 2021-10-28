@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Input from '../../../components/UI/Input/Input'
 import TextArea from '../../../components/UI/TextArea/TextArea'
 import classes from './GeneralInfoForm.module.css'
-
+import Button from '../../../components/UI/Button/Button'
 const GeneralInfoForm = () => {
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
@@ -22,9 +22,14 @@ const GeneralInfoForm = () => {
         setBio(event.target.value)
     }
 
+    const onSubmitHandler = (event) => {
+        event.preventDefault()
+        console.log('Submit')
+    }
+
     return (
         <div className={classes.container}>
-            <form>
+            <form onSubmit={onSubmitHandler}>
                 <div className={classes.row}>
                     <label htmlFor="display name">Display Name</label>
                     <Input
@@ -72,6 +77,9 @@ const GeneralInfoForm = () => {
                         value={bio}
                     />
                 </div>
+                <Button className={classes.submit__btn} type="submit">
+                    Submit
+                </Button>
             </form>
         </div>
     )
