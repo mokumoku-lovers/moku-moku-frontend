@@ -3,7 +3,7 @@ import classes from './SidebarItem.module.css'
 
 const SidebarItem = (props) => {
     return (
-        <p className={classes.item}>
+        <p onClick={props.onClick} className={classes.item}>
             {props.active && <span className={classes.active}></span>}
             {props.text}
         </p>
