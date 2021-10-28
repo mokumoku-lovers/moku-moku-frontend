@@ -31,6 +31,15 @@ const ProfileEditingPage = (props) => {
                 />
                 <div className={classes.separator} />
                 <div className={classes.formSection}>
+                    <div className={classes.userInfo}>
+                        <div className={classes.userAvatar}>
+                            <Avatar />
+                        </div>
+                        <div className={classes.username}>
+                            <h3>Display Name</h3>
+                            {isEditProfile && <Link>Change Profile Photo</Link>}
+                        </div>
+                    </div>
                     {isEditProfile ? (
                         <GeneralInfoForm />
                     ) : (
