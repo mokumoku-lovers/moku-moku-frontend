@@ -20,7 +20,11 @@ const ProfileEditingPage = (props) => {
     return (
         <div>
             <NavBar />
-            <Sidebar />
+            <Sidebar
+                isEditProfile={isEditProfile}
+                onClickEditProfile={onClickEditProfile}
+                onClickChangePassword={onClickChangePassword}
+            />
             <GeneralInfoForm />
             <ChangePasswordForm />
         </div>
