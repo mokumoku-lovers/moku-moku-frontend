@@ -3,6 +3,7 @@
     font-size: 2.3rem;
     font-weight: bold;
     padding: 2rem 5rem;
+    cursor: pointer;
 }
 
 .active {
