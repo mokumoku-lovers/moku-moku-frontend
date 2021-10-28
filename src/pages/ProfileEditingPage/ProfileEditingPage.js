@@ -37,7 +37,9 @@ const ProfileEditingPage = (props) => {
                         </div>
                         <div className={classes.username}>
                             <h3>Display Name</h3>
-                            {isEditProfile && <Link>Change Profile Photo</Link>}
+                            {isEditProfile && (
+                                <Link to="/">Change Profile Photo</Link>
+                            )}
                         </div>
                     </div>
                     {isEditProfile ? (
