@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Button from '../../../components/UI/Button/Button'
 import Input from '../../../components/UI/Input/Input'
 import classes from './ChangePasswordForm.module.css'
 
@@ -17,9 +18,14 @@ const ChangePasswordForm = () => {
         setConfirmPassword(event.target.value)
     }
 
+    const onSubmitHandler = (event) => {
+        event.preventDefault()
+        console.log('Submit')
+    }
+
     return (
         <div className={classes.container}>
-            <form>
+            <form onSubmit={onSubmitHandler}>
                 <div className={classes.row}>
                     <label htmlFor="old password">Old Password</label>
                     <Input
@@ -56,6 +62,9 @@ const ChangePasswordForm = () => {
                         onChange={onConfirmPasswordChangeHandler}
                     />
                 </div>
+                <Button className={classes.submit__btn} type="submit">
+                    Submit
+                </Button>
             </form>
         </div>
     )
