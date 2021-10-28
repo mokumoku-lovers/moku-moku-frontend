@@ -1,11 +1,19 @@
 import React from 'react'
 import SidebarItem from './SidebarItem'
 
-const Sidebar = () => {
+const Sidebar = (props) => {
     return (
         <div>
-            <SidebarItem active text="Edit Profile" />
-            <SidebarItem text="Change Password" />
+            <SidebarItem
+                onClick={props.onClickEditProfile}
+                active={props.isEditProfile}
+                text="Edit Profile"
+            />
+            <SidebarItem
+                onClick={props.onClickChangePassword}
+                active={!props.isEditProfile}
+                text="Change Password"
+            />
         </div>
     )
 }
