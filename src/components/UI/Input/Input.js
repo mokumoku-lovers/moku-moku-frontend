@@ -24,6 +24,7 @@ const Input = (props) => {
                 className={`${classes.formInput} ${
                     props.isinvalid && classes.invalid
                 }`}
+                autoComplete="on"
             />
             <i className={`${classes.icon} ${props.fontclassname}`}></i>
             {props.type === 'password' && (
