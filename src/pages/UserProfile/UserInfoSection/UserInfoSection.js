@@ -10,7 +10,7 @@ const UserInfoSection = () => {
             <Avatar className={classes.avatar} src="" />
             <div className={classes.user_info__container}>
                 <h1 className={classes.user__info__name}>User#8321</h1>
-                <p>Seize the day</p>
+                <p className={classes.user__info__bio}>Seize the day</p>
                 <Point point={7000} />
                 <div className={classes.user_info__actions}>
                     <Button>Create</Button>

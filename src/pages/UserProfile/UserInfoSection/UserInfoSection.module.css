@@ -21,6 +21,8 @@
     color: #3cac8d;
 }
 
+.user__info__bio {
+    margin-bottom: 1rem;
 }
 
 .user_info__actions {
