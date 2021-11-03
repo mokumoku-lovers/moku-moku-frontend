@@ -1,10 +1,10 @@
-.container{
+.container {
     width: 100%;
     min-height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #C4C4C4;
+    background: rgba(196, 196, 196, 0.19);
 
     padding-top: 17rem;
     display: flex;
@@ -12,7 +12,7 @@
     justify-content: center;
 }
 
-.user_profile__section{
+.user_profile__section {
     width: 70rem;
     margin: 0 auto;
     background-color: white;
