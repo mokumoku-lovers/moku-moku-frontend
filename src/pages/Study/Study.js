@@ -8,9 +8,10 @@ const Study = () => {
     return (
         <section id="study">
             <div className={classes.container}>
-                <StudyCard/>
+                <StudyCard cardState={cardState}/>
+                <CardButtons cardState={cardState}/>
             </div>
-            <CardButtons side="front"/>
+            
         </section>
     )
 }
