@@ -1,7 +1,7 @@
 import React from 'react' 
 import classes from './CardButtons.module.css'
 
-const buttonCongfig = {
+const buttonConfig = {
     front: [
         {name: "Previous"}, 
         {name: "Show Answer"},
