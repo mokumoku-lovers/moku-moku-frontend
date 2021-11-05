@@ -1,9 +1,10 @@
-import React from "react";
-import StudyCard from "../../components/StudyCard/StudyCard";
-import CardButtons from "../../components/UI/CardButtons/CardButtons";
-import classes from "./Study.module.css";
+import React, {useState} from "react"
 
 const Study = () => {
+    //  Card front side: false
+    //  Card back side: true
+    const [cardState, flipCard] = useState(false)
+
     return (
         <section id="study">
             <div className={classes.container}>

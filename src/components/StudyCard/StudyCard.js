@@ -1,10 +1,7 @@
 import React, {useState} from "react";
 import classes from './StudyCard.module.css';
 
-const StudyCard = () => {
-    //  Card front side: false
-    //  Card back side: true
-    const [cardState, flipCard] = useState(false)
+const StudyCard = ({cardState}) => {
     //  Different layout depending on image attribute
     const [image, changeLayout] = useState(true)
 
