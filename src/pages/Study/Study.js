@@ -1,4 +1,7 @@
 import React, {useState} from "react"
+import StudyCard from "../../components/StudyCard/StudyCard"
+import CardButtons from "../../components/UI/CardButtons/CardButtons"
+import classes from "./Study.module.css"
 
 const Study = () => {
     //  Card front side: false
@@ -20,4 +23,4 @@ const Study = () => {
     )
 }
 
-export default Study;
+export default Study

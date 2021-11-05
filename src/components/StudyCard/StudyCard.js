@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import classes from './StudyCard.module.css';
+import React, {useState} from "react"
+import classes from './StudyCard.module.css'
 
 const StudyCard = ({cardState}) => {
     //  Different layout depending on image attribute
@@ -46,4 +46,4 @@ const StudyCard = ({cardState}) => {
     )
 }
 
-export default StudyCard;
+export default StudyCard
