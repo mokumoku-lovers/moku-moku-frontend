@@ -1,7 +1,7 @@
 import React from 'react' 
 import classes from './CardButtons.module.css'
 
-const buttonCongfig = {
+const buttonConfig = {
     front: [
         {name: "Previous"}, 
         {name: "Show Answer"},
@@ -17,24 +17,40 @@ const buttonCongfig = {
     ] 
 }
 
-const MakeButtons = (side) => {
+const CardButtons = ({cardState, parentCallback}) => {
+    const handleClick = e =>{
+        const name= e.currentTarget.value
+        if (name === "Show Answer"){
+            parentCallback()
+        }
+    }
+
+    const MakeButtons = (side) => {    
+        return(
+            buttonConfig[side].map((buttonItem)=>(
+                <div key={buttonItem.name} className={buttonItem.name}>
+                    
+                    <h1 className={classes.buttonHeading}>
+                        {buttonItem.time}
+                    </h1>
+                    
+                    <button 
+                        className={classes.button}
+                        value={buttonItem.name}
+                        onClick={handleClick}
+                    >
+                        {buttonItem.name}
+                    </button>
+
+                </div>
+            ))
+        )  
+    }
+
     return(
-    buttonCongfig[side].map((buttonItem)=>(
-        <div key={buttonItem.name} className={buttonItem.name}>
-            <h1 className={classes.buttonHeading}>{buttonItem.time}</h1>
-            <button className={classes.button}>{buttonItem.name}</button>
-        </div>
-        ))
-    )  
-}
-
-
-const CardButtons = (props) => {
-
-    return(
-        <div className={classes.position}>
-            <div className={classes.buttonGroup}>{MakeButtons(props.side)}</div> 
-        </div>
+            <div className={classes.buttonGroup}>
+                {cardState? MakeButtons("back"): MakeButtons("front")}
+            </div> 
     ); 
 }
 

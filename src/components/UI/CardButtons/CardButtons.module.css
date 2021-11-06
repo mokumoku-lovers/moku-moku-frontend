@@ -1,20 +1,13 @@
-.position{
-    height: 100vh; 
-    width: 100vw; 
-    display: flex; 
-    align-items: flex-end;
-    justify-content: center;
-}
-
 .buttonGroup{
     display: flex; 
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: flex-end;
     justify-content: space-between;
-    width: 90%;
-    min-height: 83px;
-    margin-bottom: 10px; 
+    width: 70%;
+    margin: auto; 
+    margin-bottom: 2%; 
+    white-space: nowrap;
 }
 
 .buttonHeading{
@@ -29,8 +22,8 @@
     color: white;
     font-weight: 600;
     font-size: 2rem;
-    width: 166px; 
-    height: 60px;  
+    width: 16rem;
+    height: 5rem;  
     border-radius: 10px; 
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     border: 0; 
