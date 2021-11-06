@@ -20,7 +20,7 @@ const buttonConfig = {
 const CardButtons = ({cardState, parentCallback}) => {
     const handleClick = e =>{
         const name= e.currentTarget.value
-        if (name =="Show Answer"){
+        if (name === "Show Answer"){
             parentCallback()
         }
     }
