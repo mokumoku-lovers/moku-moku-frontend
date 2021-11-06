@@ -11,8 +11,8 @@
 
 .split {
     flex-basis: 40%;
-
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -55,4 +55,8 @@
 
 .questionIcon {
     font-size: 1.5rem;
+}
+
+.alert__message {
+    margin-bottom: 3rem;
 }

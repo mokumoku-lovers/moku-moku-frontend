@@ -16,7 +16,7 @@ const Input = (props) => {
     }
 
     return (
-        <div className={classes.container}>
+        <div className={`${props.className} ${classes.container}`}>
             <input
                 ref={inputRef}
                 {...props}
@@ -24,6 +24,7 @@ const Input = (props) => {
                 className={`${classes.formInput} ${
                     props.isinvalid && classes.invalid
                 }`}
+                autoComplete="on"
             />
             <i className={`${classes.icon} ${props.fontclassname}`}></i>
             {props.type === 'password' && (
