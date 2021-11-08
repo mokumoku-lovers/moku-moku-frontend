@@ -1,12 +1,12 @@
 import React from 'react'
 import classes from './Avatar.module.css'
 
-export const Avatar = (prop) => {
+export const Avatar = (props) => {
     return (
         <img
-            className={`${prop.className} ${classes.avatar}`}
+            className={`${props.className} ${classes.avatar}`}
             alt="User Profile"
-            src=""
+            src={props.src}
         />
     )
 }
