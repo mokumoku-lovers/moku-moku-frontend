@@ -10,41 +10,22 @@
 .avatar {
     position: absolute;
     top: -8rem;
-    border: 0;
-    width: 12rem;
-    height: 12rem;
-    background: rgb(101, 252, 202);
-    border-radius: 50%;
 }
 
-.user_info__container{
-    margin-top: 5rem;
+.user_info__container {
+    margin-top: 7rem;
     font-size: 1.7rem;
 }
 
-.user__info__name{
-    color: #3CAC8D;
+.user__info__name {
+    color: #3cac8d;
 }
 
-.user_point{
-    display: flex;
-    width: 25rem;
-    justify-content: space-between;
-    color: white;
-    font-size: 1.7rem;
-    font-weight: 600;
-    padding: 8px 20px;
-    background: linear-gradient(180.34deg, #5FBD98 0.3%, rgba(162, 221, 141, 0.921875) 99.7%);
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    margin-top: 2rem;   
+.user__info__bio {
+    margin-bottom: 1rem;
 }
 
-.trophy_icon {
-    color: rgb(255, 255, 88);
-}
-
-.user_info__actions{
+.user_info__actions {
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
