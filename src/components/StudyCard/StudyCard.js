@@ -26,14 +26,19 @@ const StudyCard = ({cardState}) => {
     }
 
     const renderNoImageLayout = () => {
-        return cardState ?
+        return(
             <div>
                 <h1 className={classes.wordFront}> Apple </h1>
-                <div className={classes.separator}/>
-                <h1 className={classes.wordFront}> りんご </h1>
+                {
+                    cardState && (
+                        <div>
+                            <div className={classes.separator}/>
+                            <h1 className={classes.wordFront}> りんご </h1>
+                        </div>
+                    )
+                }
             </div>
-            :
-            <h1 className={classes.wordFront}> Apple </h1>
+        )
     }
 
     return (
