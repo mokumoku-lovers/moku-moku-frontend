@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css'
+import AddCardPage from './pages/AddCardPage/AddCardPage'
 import Homepage from './pages/Homepage/Homepage'
 import Login from './pages/Login/Login'
 import ProfileEditingPage from './pages/ProfileEditingPage/ProfileEditingPage'
@@ -26,6 +27,9 @@ function App() {
                 </Route>
                 <Route path="/edit-profile">
                     <ProfileEditingPage />
+                </Route>
+                <Route path="/add-card">
+                    <AddCardPage />
                 </Route>
                 <Route path="/">
                     <Homepage />
