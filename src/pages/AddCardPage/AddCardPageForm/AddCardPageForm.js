@@ -3,10 +3,12 @@ import TextArea from '../../../components/UI/TextArea/TextArea'
 import classes from './AddCardPageForm.module.css'
 import Button from '../../../components/UI/Button/Button'
 import ButtonSecondary from '../../../components/UI/Button/ButtonSecondary'
+import { useHistory } from 'react-router'
 
 const AddCardPageForm = () => {
     const [cardFront, setCardFront] = useState('')
     const [cardBack, setCardBack] = useState('')
+    const history = useHistory()
 
     const cardFrontChangeHandler = (e) => {
         setCardFront(e.target.value)
@@ -14,6 +16,17 @@ const AddCardPageForm = () => {
 
     const cardBackChangeHandler = (e) => {
         setCardBack(e.target.value)
+    }
+
+    const formSubmitHandler = (e) => {
+        e.preventDefault()
+        console.log('submitting')
+        console.log({ cardFront, cardBack })
+    }
+
+    const formCancelHandler = (e) => {
+        e.preventDefault()
+        history.push('/')
     }
 
     return (
@@ -44,8 +57,10 @@ const AddCardPageForm = () => {
                     required
                 />
                 <div className={classes.buttonGroup}>
-                    <ButtonSecondary>Cancel</ButtonSecondary>
-                    <Button>Save</Button>
+                    <ButtonSecondary onClick={formCancelHandler}>
+                        Cancel
+                    </ButtonSecondary>
+                    <Button onClick={formSubmitHandler}>Save</Button>
                 </div>
             </form>
         </div>
