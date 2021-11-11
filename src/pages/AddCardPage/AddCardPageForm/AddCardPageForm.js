@@ -1,11 +1,12 @@
 import React from 'react'
 import TextArea from '../../../components/UI/TextArea/TextArea'
+import classes from './AddCardPageForm.module.css'
 import Button from '../../../components/UI/Button/Button'
 import ButtonSecondary from '../../../components/UI/Button/ButtonSecondary'
 
 const AddCardPageForm = () => {
     return (
-        <div>
+        <div className={classes.form_container}>
             <form>
                 <label htmlFor="card-front">
                     Card Front <span style={{ color: 'red' }}>*</span>
@@ -27,7 +28,7 @@ const AddCardPageForm = () => {
                     placeholder="Write anything for back side of the card "
                     required
                 />
-                <div>
+                <div className={classes.buttonGroup}>
                     <ButtonSecondary>Cancel</ButtonSecondary>
                     <Button>Save</Button>
                 </div>
