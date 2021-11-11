@@ -1,0 +1,32 @@
+.buttonGroup{
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 70%;
+    margin: auto; 
+    margin-bottom: 2%; 
+    white-space: nowrap;
+}
+
+.buttonHeading{
+    color: #52B69A; 
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+.button{
+    background-color:#7CCB92; 
+    color: white;
+    font-weight: 600;
+    font-size: 2rem;
+    width: 16rem;
+    height: 5rem;  
+    border-radius: 10px; 
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border: 0; 
+    font-family: inherit;
+    cursor: pointer;
+}

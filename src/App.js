@@ -7,6 +7,7 @@ import ProfileEditingPage from './pages/ProfileEditingPage/ProfileEditingPage'
 import RankingPage from './pages/RankingPage/RankingPage'
 import Register from './pages/Register/Register'
 import UserProfile from './pages/UserProfile/UserProfile'
+import Study from "./pages/Study/Study";
 
 function App() {
     return (
@@ -23,6 +24,9 @@ function App() {
                 </Route>
                 <Route path="/profile">
                     <UserProfile />
+                </Route>
+                <Route path="/study">
+                    <Study />
                 </Route>
                 <Route path="/edit-profile">
                     <ProfileEditingPage />
