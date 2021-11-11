@@ -1,5 +1,7 @@
 import React from 'react'
 import TextArea from '../../../components/UI/TextArea/TextArea'
+import Button from '../../../components/UI/Button/Button'
+import ButtonSecondary from '../../../components/UI/Button/ButtonSecondary'
 
 const AddCardPageForm = () => {
     return (
@@ -25,6 +27,10 @@ const AddCardPageForm = () => {
                     placeholder="Write anything for back side of the card "
                     required
                 />
+                <div>
+                    <ButtonSecondary>Cancel</ButtonSecondary>
+                    <Button>Save</Button>
+                </div>
             </form>
         </div>
     )
