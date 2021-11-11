@@ -1,4 +1,5 @@
 .textarea {
+    font-family: inherit;
     padding: 1.5rem 2rem;
     border-radius: 5px;
     border: 1px solid #52b69a;
