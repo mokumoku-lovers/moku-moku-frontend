@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TextArea from '../../../components/UI/TextArea/TextArea'
 import classes from './AddCardPageForm.module.css'
 import Button from '../../../components/UI/Button/Button'
 import ButtonSecondary from '../../../components/UI/Button/ButtonSecondary'
 
 const AddCardPageForm = () => {
+    const [cardFront, setCardFront] = useState('')
+    const [cardBack, setCardBack] = useState('')
+
     return (
         <div className={classes.form_container}>
             <form>
@@ -16,6 +19,7 @@ const AddCardPageForm = () => {
                     name="card-front"
                     rows={4}
                     placeholder="Write anything for front side of the card"
+                    value={cardFront}
                     required
                 />
                 <label htmlFor="card-back">
@@ -26,6 +30,7 @@ const AddCardPageForm = () => {
                     name="card-back"
                     rows={4}
                     placeholder="Write anything for back side of the card "
+                    value={cardBack}
                     required
                 />
                 <div className={classes.buttonGroup}>
