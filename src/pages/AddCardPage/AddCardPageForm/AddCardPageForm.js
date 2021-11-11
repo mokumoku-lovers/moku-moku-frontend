@@ -8,6 +8,14 @@ const AddCardPageForm = () => {
     const [cardFront, setCardFront] = useState('')
     const [cardBack, setCardBack] = useState('')
 
+    const cardFrontChangeHandler = (e) => {
+        setCardFront(e.target.value)
+    }
+
+    const cardBackChangeHandler = (e) => {
+        setCardBack(e.target.value)
+    }
+
     return (
         <div className={classes.form_container}>
             <form>
@@ -20,6 +28,7 @@ const AddCardPageForm = () => {
                     rows={4}
                     placeholder="Write anything for front side of the card"
                     value={cardFront}
+                    onChange={cardFrontChangeHandler}
                     required
                 />
                 <label htmlFor="card-back">
@@ -31,6 +40,7 @@ const AddCardPageForm = () => {
                     rows={4}
                     placeholder="Write anything for back side of the card "
                     value={cardBack}
+                    onChange={cardBackChangeHandler}
                     required
                 />
                 <div className={classes.buttonGroup}>
