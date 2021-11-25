@@ -29,32 +29,38 @@ const ImageField = () => {
         [removeFile]
     )
 
-    const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
-        noClick: true,
-        noKeyboard: true,
-        accept: 'image/jpeg, image/png',
-        onDrop,
-    })
+    const { getRootProps, getInputProps, isDragActive, isDragReject, open } =
+        useDropzone({
+            noClick: true,
+            noKeyboard: true,
+            accept: 'image/jpeg, image/png',
+            onDrop,
+        })
+
+    let formText
+
+    if (isDragReject) {
+        formText = (
+            <p className={classes.text_error}>Only images are allowed.</p>
+        )
+    } else if (isDragActive) {
+        formText = <p className={classes.formText}>Drop the image here ...</p>
+    } else {
+        formText = (
+            <p className={classes.formText}>
+                Drag & Drop to Upload Image <span>OR</span>
+                <Button type="button" onClick={open} className={classes.btn}>
+                    Browse Images
+                </Button>
+            </p>
+        )
+    }
 
     return (
         <section className={classes.container} {...getRootProps()}>
             <input {...getInputProps()} />
-            {files.length ? (
-                files
-            ) : isDragActive ? (
-                <p className={classes.formText}>Drop the image here ...</p>
-            ) : (
-                <p className={classes.formText}>
-                    Drag & Drop to Upload Image <span>OR</span>
-                    <Button
-                        type="button"
-                        onClick={open}
-                        className={classes.btn}
-                    >
-                        Browse Images
-                    </Button>
-                </p>
-            )}
+
+            {files.length ? files : formText}
         </section>
     )
 }
