@@ -26,7 +26,9 @@ const ImageField = () => {
     return (
         <section className={classes.container} {...getRootProps()}>
             <input {...getInputProps()} />
-            {isDragActive ? (
+            {files.length ? (
+                files
+            ) : isDragActive ? (
                 <p className={classes.formText}>Drop the image here ...</p>
             ) : (
                 <p className={classes.formText}>
