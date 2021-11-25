@@ -12,7 +12,7 @@
     font-size: 2rem;
 }
 
-span {
+.margin_and_bold {
     font-weight: bold;
     margin: 0 3rem;
 }

@@ -54,7 +54,8 @@ const ImageField = () => {
     } else {
         formText = (
             <p className={classes.formText}>
-                Drag & Drop to Upload Image <span>OR</span>
+                Drag & Drop to Upload Image{' '}
+                <span className={classes.margin_and_bold}>OR</span>
                 <Button type="button" onClick={open} className={classes.btn}>
                     Browse Images
                 </Button>
