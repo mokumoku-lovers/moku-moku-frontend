@@ -41,10 +41,16 @@ const ImageField = () => {
 
     if (isDragReject) {
         formText = (
-            <p className={classes.text_error}>Only images are allowed.</p>
+            <p style={{ color: 'red' }} className={classes.formText}>
+                Only images are allowed.
+            </p>
         )
     } else if (isDragActive) {
-        formText = <p className={classes.formText}>Drop the image here ...</p>
+        formText = (
+            <p style={{ color: '#52b69a' }} className={classes.formText}>
+                Drop the image here ...
+            </p>
+        )
     } else {
         formText = (
             <p className={classes.formText}>
