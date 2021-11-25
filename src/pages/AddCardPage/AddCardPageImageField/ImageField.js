@@ -6,11 +6,18 @@ import { useDropzone } from 'react-dropzone'
 const ImageField = () => {
     const [files, setFiles] = useState([])
 
+    const removeFile = (idx) => {
+        setFiles(files.filter((file) => file.id !== idx))
+    }
+
     const onDrop = useCallback((acceptedFiles) => {
         setFiles(
             acceptedFiles.map((file, idx) => (
                 <p className={classes.formText} key={idx}>
-                    {file.name}
+                    {file.name}{' '}
+                    <Button type="button" onClick={() => removeFile(idx)}>
+                        Cancel
+                    </Button>
                 </p>
             ))
         )
