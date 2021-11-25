@@ -6,12 +6,6 @@ import { useDropzone } from 'react-dropzone'
 const ImageField = () => {
     const [files, setFiles] = useState([])
 
-    const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
-        noClick: true,
-        noKeyboard: true,
-        accept: 'image/jpeg, image/png',
-    })
-
     const onDrop = useCallback((acceptedFiles) => {
         setFiles(
             acceptedFiles.map((file, idx) => (
@@ -21,6 +15,13 @@ const ImageField = () => {
             ))
         )
     }, [])
+
+    const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+        noClick: true,
+        noKeyboard: true,
+        accept: 'image/jpeg, image/png',
+        onDrop,
+    })
 
     return (
         <section className={classes.container} {...getRootProps()}>
