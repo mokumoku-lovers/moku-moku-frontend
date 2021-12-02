@@ -18,6 +18,10 @@ const ImageField = () => {
             maxFiles: 1,
 
             onDropAccepted: (acceptedFiles) => {
+                if (file) {
+                    removeFile()
+                }
+
                 setFile(
                     <p className={classes.formText}>
                         {acceptedFiles[0].name}{' '}
