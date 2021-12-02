@@ -4,14 +4,11 @@ import Button from '../../../components/UI/Button/Button'
 import { useDropzone } from 'react-dropzone'
 
 const ImageField = () => {
-    const [files, setFiles] = useState([])
+    const [file, setFile] = useState(null)
 
-    const removeFile = useCallback(
-        (idx) => {
-            setFiles(files.filter((file) => file.id !== idx))
-        },
-        [files]
-    )
+    const removeFile = useCallback(() => {
+        setFile(null)
+    }, [])
 
     const onDrop = useCallback(
         (acceptedFiles) => {
