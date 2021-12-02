@@ -39,7 +39,7 @@ const ImageField = () => {
     if (isDragReject) {
         formText = (
             <p style={{ color: 'red' }} className={classes.formText}>
-                Only images are allowed.
+                Only one image is allowed.
             </p>
         )
     } else if (isDragActive) {
@@ -64,7 +64,7 @@ const ImageField = () => {
         <section className={classes.container} {...getRootProps()}>
             <input {...getInputProps()} />
 
-            {files.length ? files : formText}
+            {file ? file : formText}
         </section>
     )
 }
