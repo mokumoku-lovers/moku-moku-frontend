@@ -31,6 +31,21 @@ const ImageField = () => {
                     </p>
                 )
             },
+
+            onDropRejected: (rejectedFiles) => {
+                if (rejectedFiles.length > 1) {
+                    return alert('Too many files! Only one image is allowed!')
+                }
+
+                if (
+                    rejectedFiles.length &&
+                    rejectedFiles[0].errors[0].code === 'file-invalid-type'
+                ) {
+                    return alert(
+                        'File type is invalid. Only image type is allowed.'
+                    )
+                }
+            },
         })
 
     let formText
