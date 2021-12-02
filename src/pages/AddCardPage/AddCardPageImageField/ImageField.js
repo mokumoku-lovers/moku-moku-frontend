@@ -10,28 +10,23 @@ const ImageField = () => {
         setFile(null)
     }, [])
 
-    const onDrop = useCallback(
-        (acceptedFiles) => {
-            setFiles(
-                acceptedFiles.map((file, idx) => (
-                    <p className={classes.formText} key={idx}>
-                        {file.name}{' '}
-                        <Button type="button" onClick={() => removeFile(idx)}>
-                            Cancel
-                        </Button>
-                    </p>
-                ))
-            )
-        },
-        [removeFile]
-    )
-
     const { getRootProps, getInputProps, isDragActive, isDragReject, open } =
         useDropzone({
             noClick: true,
             noKeyboard: true,
             accept: 'image/jpeg, image/png',
-            onDrop,
+            maxFiles: 1,
+
+            onDropAccepted: (acceptedFiles) => {
+                setFile(
+                    <p className={classes.formText}>
+                        {acceptedFiles[0].name}{' '}
+                        <Button type="button" onClick={removeFile}>
+                            Cancel
+                        </Button>
+                    </p>
+                )
+            },
         })
 
     let formText
