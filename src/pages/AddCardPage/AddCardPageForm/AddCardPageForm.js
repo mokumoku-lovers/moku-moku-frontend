@@ -4,6 +4,7 @@ import classes from './AddCardPageForm.module.css'
 import Button from '../../../components/UI/Button/Button'
 import ButtonSecondary from '../../../components/UI/Button/ButtonSecondary'
 import { useHistory } from 'react-router'
+import ImageField from '../AddCardPageImageField/ImageField'
 
 const AddCardPageForm = () => {
     const [cardFront, setCardFront] = useState('')
@@ -56,6 +57,7 @@ const AddCardPageForm = () => {
                     onChange={cardBackChangeHandler}
                     required
                 />
+                <ImageField />
                 <div className={classes.buttonGroup}>
                     <ButtonSecondary onClick={formCancelHandler}>
                         Cancel
