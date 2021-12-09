@@ -8,7 +8,10 @@ import ImageField from '../AddCardPageImageField/ImageField'
 
 const AddCardPageForm = () => {
     const [cardFront, setCardFront] = useState('')
+    const [cardFrontErrorMessage, setCardFrontErrorMessage] = useState('')
+
     const [cardBack, setCardBack] = useState('')
+    const [cardBackErrorMessage, setCardBackErrorMessage] = useState('')
     const history = useHistory()
 
     const cardFrontChangeHandler = (e) => {
