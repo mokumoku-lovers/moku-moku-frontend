@@ -61,6 +61,11 @@ const AddCardPageForm = () => {
                     onChange={cardFrontChangeHandler}
                     required
                 />
+                {cardFrontErrorMessage && (
+                    <p className={classes.errorMessage}>
+                        {cardFrontErrorMessage}
+                    </p>
+                )}
                 <label htmlFor="card-back">
                     Card Back <span style={{ color: 'red' }}>*</span>
                 </label>
@@ -73,6 +78,11 @@ const AddCardPageForm = () => {
                     onChange={cardBackChangeHandler}
                     required
                 />
+                {cardBackErrorMessage && (
+                    <p className={classes.errorMessage}>
+                        {cardBackErrorMessage}
+                    </p>
+                )}
                 <ImageField />
                 <div className={classes.buttonGroup}>
                     <ButtonSecondary onClick={formCancelHandler}>
