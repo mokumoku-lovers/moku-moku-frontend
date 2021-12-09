@@ -23,9 +23,20 @@ const AddCardPageForm = () => {
     }
 
     const formSubmitHandler = (e) => {
+        let formIsValid = true
         e.preventDefault()
         console.log('submitting')
         console.log({ cardFront, cardBack })
+
+        if (cardFront === '') {
+            setCardFrontErrorMessage('Text for card front is required!')
+            formIsValid = false
+        }
+
+        if (cardBack === '') {
+            setCardBackErrorMessage('Text for card back is required!')
+            formIsValid = false
+        }
     }
 
     const formCancelHandler = (e) => {
