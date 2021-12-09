@@ -4,7 +4,12 @@ import classes from './TextArea.module.css'
 const TextArea = (props) => {
     return (
         <div className={props.className}>
-            <textarea {...props} className={classes.textarea}>
+            <textarea
+                {...props}
+                className={`${classes.textarea} ${
+                    props.errorBorder && classes.errorBorder
+                } `}
+            >
                 {props.text}
             </textarea>
         </div>
