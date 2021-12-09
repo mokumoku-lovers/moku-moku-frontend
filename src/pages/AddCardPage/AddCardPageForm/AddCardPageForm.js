@@ -37,6 +37,8 @@ const AddCardPageForm = () => {
             setCardBackErrorMessage('Text for card back is required!')
             formIsValid = false
         }
+
+        formIsValid && history.push('/profile/')
     }
 
     const formCancelHandler = (e) => {
