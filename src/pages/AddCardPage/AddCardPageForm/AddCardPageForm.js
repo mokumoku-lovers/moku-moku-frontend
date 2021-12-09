@@ -16,10 +16,12 @@ const AddCardPageForm = () => {
 
     const cardFrontChangeHandler = (e) => {
         setCardFront(e.target.value)
+        setCardFrontErrorMessage('')
     }
 
     const cardBackChangeHandler = (e) => {
         setCardBack(e.target.value)
+        setCardBackErrorMessage('')
     }
 
     const formSubmitHandler = (e) => {
