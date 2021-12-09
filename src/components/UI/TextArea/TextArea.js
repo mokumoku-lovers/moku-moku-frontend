@@ -7,7 +7,7 @@ const TextArea = (props) => {
             <textarea
                 {...props}
                 className={`${classes.textarea} ${
-                    props.errorBorder && classes.errorBorder
+                    props.errorborder && classes.errorBorder
                 } `}
             >
                 {props.text}

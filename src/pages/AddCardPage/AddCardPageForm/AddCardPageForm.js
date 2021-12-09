@@ -27,8 +27,6 @@ const AddCardPageForm = () => {
     const formSubmitHandler = (e) => {
         let formIsValid = true
         e.preventDefault()
-        console.log('submitting')
-        console.log({ cardFront, cardBack })
 
         if (cardFront === '') {
             setCardFrontErrorMessage('Text for card front is required!')
@@ -61,7 +59,7 @@ const AddCardPageForm = () => {
                     placeholder="Write anything for front side of the card"
                     value={cardFront}
                     onChange={cardFrontChangeHandler}
-                    errorBorder={cardFrontErrorMessage !== ''}
+                    errorborder={cardFrontErrorMessage !== '' ? 1 : 0}
                     required
                 />
                 {cardFrontErrorMessage && (
@@ -79,7 +77,7 @@ const AddCardPageForm = () => {
                     placeholder="Write anything for back side of the card "
                     value={cardBack}
                     onChange={cardBackChangeHandler}
-                    errorBorder={cardBackErrorMessage !== ''}
+                    errorborder={cardBackErrorMessage !== '' ? 1 : 0}
                     required
                 />
                 {cardBackErrorMessage && (
