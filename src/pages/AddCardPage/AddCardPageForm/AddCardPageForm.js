@@ -61,6 +61,7 @@ const AddCardPageForm = () => {
                     placeholder="Write anything for front side of the card"
                     value={cardFront}
                     onChange={cardFrontChangeHandler}
+                    errorBorder={cardFrontErrorMessage !== ''}
                     required
                 />
                 {cardFrontErrorMessage && (
@@ -78,6 +79,7 @@ const AddCardPageForm = () => {
                     placeholder="Write anything for back side of the card "
                     value={cardBack}
                     onChange={cardBackChangeHandler}
+                    errorBorder={cardBackErrorMessage !== ''}
                     required
                 />
                 {cardBackErrorMessage && (
