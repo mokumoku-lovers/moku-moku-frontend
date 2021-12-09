@@ -12,3 +12,7 @@
 .textarea:focus {
     outline: none;
 }
+
+.errorBorder {
+    border: 1px solid rgb(167, 33, 33);
+}
