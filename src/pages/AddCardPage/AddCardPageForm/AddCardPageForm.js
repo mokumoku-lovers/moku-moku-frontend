@@ -43,7 +43,7 @@ const AddCardPageForm = () => {
 
     const formCancelHandler = (e) => {
         e.preventDefault()
-        history.push('/')
+        history.push('/profile/')
     }
 
     return (
