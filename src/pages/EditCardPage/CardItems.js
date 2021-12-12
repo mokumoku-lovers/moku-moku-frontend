@@ -47,7 +47,7 @@ const CardItems = () => {
     const onClickEditHandler = (id) => {
         console.log('clicked edit button')
         console.log(`Id is ${id}`)
-        history.push(`/add-card/?${id}`)
+        history.push(`/add-card?${id}`)
     }
 
     const cards = dummy_card.map((card) => (
