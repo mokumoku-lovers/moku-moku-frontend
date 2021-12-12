@@ -1,6 +1,11 @@
 import React from 'react'
+import Button from '../../components/UI/Button/Button'
+import classes from './CardItems.module.css'
+import { useHistory } from 'react-router-dom'
 
 const CardItems = () => {
+    const history = useHistory()
+
     const dummy_card = [
         {
             id: 1,
@@ -38,6 +43,13 @@ const CardItems = () => {
             back: 'rwerwesf asf qwr saf ',
         },
     ]
+
+    const onClickEditHandler = (id) => {
+        console.log('clicked edit button')
+        console.log(`Id is ${id}`)
+        history.push(`/add-card/?${id}`)
+    }
+
     const cards = dummy_card.map((card) => (
         <React.Fragment key={card.id}>
             <p>{card.id}</p>
