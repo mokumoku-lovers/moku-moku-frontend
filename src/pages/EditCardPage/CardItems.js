@@ -54,10 +54,14 @@ const CardItems = () => {
             </div>
         </React.Fragment>
     ))
+
     return (
         <div className={classes.container}>
+            <p></p>
             <h1>Card Front</h1>
             <h1>Card Back</h1>
+            <p></p>
+            {cards}
         </div>
     )
 }
