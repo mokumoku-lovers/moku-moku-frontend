@@ -1,0 +1,23 @@
+.container {
+    border: 1px dashed rgb(170, 170, 170);
+    background-color: white;
+    padding: 3rem;
+    width: 100%;
+    margin: 3rem auto;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.formText {
+    font-size: 2rem;
+}
+
+.margin_and_bold {
+    font-weight: bold;
+    margin: 0 3rem;
+}
+
+.btn {
+    width: max-content;
+    padding: 0 1rem;
+}
