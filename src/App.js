@@ -9,6 +9,7 @@ import RankingPage from './pages/RankingPage/RankingPage'
 import Register from './pages/Register/Register'
 import UserProfile from './pages/UserProfile/UserProfile'
 import Study from "./pages/Study/Study";
+import EditCardPage from './pages/EditCardPage/EditCardPage'
 
 function App() {
     return (
@@ -34,6 +35,9 @@ function App() {
                 </Route>
                 <Route path="/add-card">
                     <AddCardPage />
+                </Route>
+                <Route path="/edit-card">
+                    <EditCardPage />
                 </Route>
                 <Route path="/">
                     <Homepage />
