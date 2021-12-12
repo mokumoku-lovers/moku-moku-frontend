@@ -38,6 +38,22 @@ const CardItems = () => {
             back: 'rwerwesf asf qwr saf ',
         },
     ]
+    const cards = dummy_card.map((card) => (
+        <React.Fragment key={card.id}>
+            <p>{card.id}</p>
+            <div>
+                <p className={classes.grid__text}>{card.front}</p>
+            </div>
+            <div>
+                <p className={classes.grid__text}>{card.back}</p>
+            </div>
+            <div>
+                <Button onClick={() => onClickEditHandler(card.id)}>
+                    Edit
+                </Button>
+            </div>
+        </React.Fragment>
+    ))
     return (
         <div className={classes.container}>
             <h1>Card Front</h1>
