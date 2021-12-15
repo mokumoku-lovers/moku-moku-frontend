@@ -1,12 +1,16 @@
 import React from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import classes from './EditCardPage.module.css'
+import EditCardPageHeader from './EditCardPageHeader'
 
 const EditCardPage = () => {
     return (
-        <div className={classes.container}>
-            <NavBar/>
-        </div>
+        <>
+            <NavBar />
+            <div className={classes.container}>
+                <EditCardPageHeader />
+            </div>
+        </>
     )
 }
 
