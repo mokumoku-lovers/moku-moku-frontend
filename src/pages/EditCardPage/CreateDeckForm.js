@@ -13,6 +13,8 @@ const CreateDeckForm = (props) => {
         setTitle(e.target.value)
     }
 
+    const isFormValid = title !== ''
+
     return (
         <Model>
             <form
@@ -34,7 +36,7 @@ const CreateDeckForm = (props) => {
 
                 <div className={classes.buttons}>
                     <ButtonSecondary>Cancel</ButtonSecondary>
-                    <Button>Save</Button>
+                    <Button disabled={!isFormValid}>Save</Button>
                 </div>
             </form>
         </Model>
