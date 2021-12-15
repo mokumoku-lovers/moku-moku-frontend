@@ -5,8 +5,11 @@ import Button from '../../components/UI/Button/Button'
 import ButtonSecondary from '../../components/UI/Button/ButtonSecondary'
 import Model from '../../components/UI/Model/Model'
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 const CreateDeckForm = (props) => {
+    const history = useHistory()
+
     const [title, setTitle] = useState('')
 
     const onChangeTitle = (e) => {
@@ -35,7 +38,13 @@ const CreateDeckForm = (props) => {
                 </div>
 
                 <div className={classes.buttons}>
-                    <ButtonSecondary>Cancel</ButtonSecondary>
+                    <ButtonSecondary
+                        onClick={() => {
+                            history.push('/profile/')
+                        }}
+                    >
+                        Cancel
+                    </ButtonSecondary>
                     <Button disabled={!isFormValid}>Save</Button>
                 </div>
             </form>
