@@ -39,13 +39,16 @@ const CreateDeckForm = (props) => {
 
                 <div className={classes.buttons}>
                     <ButtonSecondary
+                        type="button"
                         onClick={() => {
                             history.push('/profile/')
                         }}
                     >
                         Cancel
                     </ButtonSecondary>
-                    <Button disabled={!isFormValid}>Save</Button>
+                    <Button type="submit" disabled={!isFormValid}>
+                        Save
+                    </Button>
                 </div>
             </form>
         </Model>
