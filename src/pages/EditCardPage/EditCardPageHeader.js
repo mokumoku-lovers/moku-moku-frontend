@@ -7,6 +7,14 @@ const EditCardPageHeader = (props) => {
         <div className={classes.container}>
             <div>
                 <div>
+                    <p
+                        className={classes.deck__title}
+                        contentEditable={editing}
+                        ref={deckRef}
+                        suppressContentEditableWarning={true}
+                    >
+                        {deckTitle}
+                    </p>
                     {editing ? (
                         <i
                             className={`far fa-save ${classes.icon} ${classes.iconSave}`}
