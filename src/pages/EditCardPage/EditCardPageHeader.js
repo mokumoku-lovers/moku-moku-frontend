@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react'
 import Button from '../../components/UI/Button/Button'
 import classes from './EditCardPageHeader.module.css'
+import { useHistory } from 'react-router-dom'
 
 const EditCardPageHeader = (props) => {
+    const history = useHistory()
     const deckRef = useRef()
     const [editing, setEditing] = useState(false)
     const onClickTitleEditHandler = () => {
@@ -22,6 +24,15 @@ const EditCardPageHeader = (props) => {
         setDeckTitle(deckRef.current.innerText)
         deckRef.current.style.color = 'black'
     }
+
+    const clickAddCardButton = () => {
+        history.push('/add-card/')
+    }
+
+    const clickStudyButton = () => {
+        history.push('/study/')
+    }
+
     return (
         <div className={classes.container}>
             <div>
