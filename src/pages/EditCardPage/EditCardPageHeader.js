@@ -6,7 +6,14 @@ import { useHistory } from 'react-router-dom'
 const EditCardPageHeader = (props) => {
     const history = useHistory()
     const deckRef = useRef()
+
     const [editing, setEditing] = useState(false)
+    const [deckTitle, setDeckTitle] = useState('Deck title')
+
+    useEffect(() => {
+        setDeckTitle(props.title || 'Deck title')
+    }, [props.title])
+
     const onClickTitleEditHandler = () => {
         setEditing(true)
 
