@@ -34,6 +34,7 @@ const CreateDeckForm = (props) => {
                         value={title}
                         placeholder="Enter your deck title"
                         onChange={onChangeTitle}
+                        fontclassname="fas fa-file-alt"
                     />
                 </div>
 
