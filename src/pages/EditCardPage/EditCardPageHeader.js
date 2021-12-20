@@ -1,35 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Button from '../../components/UI/Button/Button'
 import classes from './EditCardPageHeader.module.css'
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import DeckForm from './DeckForm'
 
 const EditCardPageHeader = (props) => {
     const history = useHistory()
-    const deckRef = useRef()
 
-    const [editing, setEditing] = useState(false)
-    const [deckTitle, setDeckTitle] = useState('Deck title')
-
-    useEffect(() => {
-        setDeckTitle(props.title || 'Deck title')
-    }, [props.title])
+    const [showEditForm, setShowEditForm] = useState()
+    const title = useSelector((state) => state.deck.title)
 
     const onClickTitleEditHandler = () => {
-        setEditing(true)
-
-        // focus to edit deck's title when user click edit icon
-        // normal deckRef.current.focus() is not working so I used setTimeout
-        setTimeout(function () {
-            deckRef.current.focus()
-        }, 0)
-
-        deckRef.current.style.color = '#a9a9a9'
-    }
-
-    const onClickTitleSaveHandler = () => {
-        setEditing(false)
-        setDeckTitle(deckRef.current.innerText)
-        deckRef.current.style.color = 'black'
+        setShowEditForm(true)
     }
 
     const clickAddCardButton = () => {
@@ -44,25 +27,14 @@ const EditCardPageHeader = (props) => {
         <div className={classes.container}>
             <div>
                 <div>
-                    <p
-                        className={classes.deck__title}
-                        contentEditable={editing}
-                        ref={deckRef}
-                        suppressContentEditableWarning={true}
-                    >
-                        {deckTitle}
-                    </p>
-                    {editing ? (
-                        <i
-                            className={`far fa-save ${classes.icon} ${classes.iconSave}`}
-                            onClick={onClickTitleSaveHandler}
-                        ></i>
-                    ) : (
-                        <i
-                            onClick={onClickTitleEditHandler}
-                            className={`fas fa-edit ${classes.icon} ${classes.iconEdit}`}
-                        ></i>
-                    )}
+                    <p className={classes.deck__title}>{title}</p>
+
+                    <i
+                        onClick={onClickTitleEditHandler}
+                        className={`fas fa-edit ${classes.icon} ${classes.iconEdit}`}
+                    ></i>
+
+                    {showEditForm && <DeckForm />}
                 </div>
                 <p className={classes.card__count}>0 card</p>
             </div>
