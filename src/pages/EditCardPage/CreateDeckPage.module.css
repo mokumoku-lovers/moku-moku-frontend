@@ -1,0 +1,30 @@
+.form {
+    width: 40rem;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.form h1 {
+    padding: 1.5rem;
+    color: #66a874;
+    font-size: 2.5rem;
+    text-align: center;
+    border-bottom: 1px solid #52b69a;
+}
+
+.formControl {
+    padding: 3rem;
+}
+
+.formControl input {
+    margin-bottom: 4rem;
+}
+
+.buttons {
+    padding: 2rem;
+    text-align: end;
+}
+
+.buttons > * {
+    margin: 0 1rem;
+}
