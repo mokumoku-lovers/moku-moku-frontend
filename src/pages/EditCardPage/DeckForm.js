@@ -1,20 +1,14 @@
-import React from 'react'
-import classes from './CreateDeckForm.module.css'
-import Input from '../../components/UI/Input/Input'
-import Button from '../../components/UI/Button/Button'
-import ButtonSecondary from '../../components/UI/Button/ButtonSecondary'
+import React, { useState } from 'react'
 import Model from '../../components/UI/Model/Model'
-import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import classes from './CreateDeckPage.module.css'
+import Input from '../../components/UI/Input/Input'
+import ButtonSecondary from '../../components/UI/Button/ButtonSecondary'
+import Button from '../../components/UI/Button/Button'
+import { useSelector } from 'react-redux'
 
-const CreateDeckForm = (props) => {
-    const history = useHistory()
-
-    const [title, setTitle] = useState('')
-
-    const onChangeTitle = (e) => {
-        setTitle(e.target.value)
-    }
+const DeckForm = ({ edit, onCancelHandler, onSaveHandler }) => {
+    const oldTitle = useSelector((state) => state.deck.title)
+    const [title, setTitle] = useState(oldTitle)
 
     const isFormValid = title !== ''
 
@@ -22,9 +16,9 @@ const CreateDeckForm = (props) => {
         <Model>
             <form
                 className={classes.form}
-                onSubmit={(e) => props.onClickCreateDeck(e, title)}
+                onSubmit={(e) => onSaveHandler(e, title)}
             >
-                <h1>Create Your Deck</h1>
+                <h1>{edit ? 'Edit' : 'Create'} Your Deck</h1>
 
                 <div className={classes.formControl}>
                     <label htmlFor="title">
@@ -33,7 +27,7 @@ const CreateDeckForm = (props) => {
                     <Input
                         value={title}
                         placeholder="Enter your deck title"
-                        onChange={onChangeTitle}
+                        onChange={(e) => setTitle(e.target.value)}
                         fontclassname="fas fa-file-alt"
                     />
                 </div>
@@ -42,7 +36,8 @@ const CreateDeckForm = (props) => {
                     <ButtonSecondary
                         type="button"
                         onClick={() => {
-                            history.push('/profile/')
+                            if (edit) setTitle(oldTitle)
+                            onCancelHandler()
                         }}
                     >
                         Cancel
@@ -56,4 +51,4 @@ const CreateDeckForm = (props) => {
     )
 }
 
-export default CreateDeckForm
+export default DeckForm
