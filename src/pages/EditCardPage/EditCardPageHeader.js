@@ -4,9 +4,12 @@ import classes from './EditCardPageHeader.module.css'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import DeckForm from './DeckForm'
+import { useDispatch } from 'react-redux'
+import { onSaveTitle } from '../../features/deckTitle/deckSlice'
 
 const EditCardPageHeader = (props) => {
     const history = useHistory()
+    const dispatch = useDispatch()
 
     const [showEditForm, setShowEditForm] = useState()
     const title = useSelector((state) => state.deck.title)
@@ -23,6 +26,17 @@ const EditCardPageHeader = (props) => {
         history.push('/study/')
     }
 
+    const onCancelHandler = () => {
+        setShowEditForm(false)
+    }
+
+    const onSaveHandler = (e, title) => {
+        e.preventDefault()
+        setShowEditForm(false)
+        dispatch(onSaveTitle(title))
+        console.log('Updated')
+    }
+
     return (
         <div className={classes.container}>
             <div>
@@ -34,7 +48,13 @@ const EditCardPageHeader = (props) => {
                         className={`fas fa-edit ${classes.icon} ${classes.iconEdit}`}
                     ></i>
 
-                    {showEditForm && <DeckForm />}
+                    {showEditForm && (
+                        <DeckForm
+                            edit={true}
+                            onCancelHandler={onCancelHandler}
+                            onSaveHandler={onSaveHandler}
+                        />
+                    )}
                 </div>
                 <p className={classes.card__count}>0 card</p>
             </div>
