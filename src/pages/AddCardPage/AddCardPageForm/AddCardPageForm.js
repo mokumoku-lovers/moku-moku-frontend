@@ -38,12 +38,12 @@ const AddCardPageForm = () => {
             formIsValid = false
         }
 
-        formIsValid && history.push('/profile/')
+        formIsValid && history.push('/edit-card/10/')
     }
 
     const formCancelHandler = (e) => {
         e.preventDefault()
-        history.push('/profile/')
+        history.push('/edit-card/10/')
     }
 
     return (
