@@ -1,28 +1,18 @@
 .container {
-<<<<<<< HEAD
-=======
     padding: 5rem;
->>>>>>> d97b87903ccf326ab712d5cffc70190ef3e232da
+    padding-top: 2rem;
     display: flex;
     justify-content: space-between;
 }
 
 .deck__title {
-<<<<<<< HEAD
-    color: #a9a9a9;
-=======
->>>>>>> d97b87903ccf326ab712d5cffc70190ef3e232da
     font-size: 3rem;
     background-color: transparent;
     width: auto;
     border: 0;
-<<<<<<< HEAD
-    width: 15rem;
-=======
     width: max-content;
     display: inline-block;
     margin-right: 2rem;
->>>>>>> d97b87903ccf326ab712d5cffc70190ef3e232da
 }
 
 .deck__title:focus,
@@ -44,8 +34,6 @@
 .card__buttons > * {
     margin-left: 3rem;
 }
-<<<<<<< HEAD
-=======
 
 .icon {
     font-size: 3rem;
@@ -59,4 +47,3 @@
 .iconEdit {
     color: blue;
 }
->>>>>>> d97b87903ccf326ab712d5cffc70190ef3e232da
