@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from '../../components/NavBar/NavBar'
+import CardItems from './CardItems'
 import classes from './EditCardPage.module.css'
 import EditCardPageHeader from './EditCardPageHeader'
 
@@ -8,7 +9,8 @@ const EditCardPage = (props) => {
         <div className={classes.container}>
             <NavBar />
             <EditCardPageHeader />
-        </div>
+            <CardItems/>
+        </div>   
     )
 }
 
