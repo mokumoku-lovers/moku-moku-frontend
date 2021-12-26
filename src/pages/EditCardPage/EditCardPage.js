@@ -6,11 +6,13 @@ import EditCardPageHeader from './EditCardPageHeader'
 
 const EditCardPage = (props) => {
     return (
-        <div className={classes.container}>
+        <>
             <NavBar />
-            <EditCardPageHeader />
-            <CardItems />
-        </div>
+            <div className={classes.container}>
+                <EditCardPageHeader />
+                <CardItems />
+            </div>
+        </>
     )
 }
 
