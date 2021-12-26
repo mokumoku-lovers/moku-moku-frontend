@@ -4,15 +4,13 @@ import CardItems from './CardItems'
 import classes from './EditCardPage.module.css'
 import EditCardPageHeader from './EditCardPageHeader'
 
-const EditCardPage = () => {
+const EditCardPage = (props) => {
     return (
-        <>
+        <div className={classes.container}>
             <NavBar />
-            <div className={classes.container}>
-                <EditCardPageHeader />
-                <CardItems />
-            </div>
-        </>
+            <EditCardPageHeader />
+            <CardItems />
+        </div>
     )
 }
 
