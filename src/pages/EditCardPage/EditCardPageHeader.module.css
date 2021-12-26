@@ -1,0 +1,48 @@
+.container {
+    padding: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.deck__title {
+    font-size: 3rem;
+    background-color: transparent;
+    width: auto;
+    border: 0;
+    width: max-content;
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.deck__title:focus,
+.deck__title:active {
+    outline: none;
+}
+
+.deck__title__edit {
+    height: 3rem;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+.card__count {
+    color: #5fbd98;
+    font-size: 2.5rem;
+}
+
+.card__buttons > * {
+    margin-left: 3rem;
+}
+
+.icon {
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.iconSave {
+    color: green;
+}
+
+.iconEdit {
+    color: blue;
+}

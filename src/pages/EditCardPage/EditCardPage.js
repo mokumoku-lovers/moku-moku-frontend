@@ -2,15 +2,15 @@ import React from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import CardItems from './CardItems'
 import classes from './EditCardPage.module.css'
+import EditCardPageHeader from './EditCardPageHeader'
 
-const EditCardPage = () => {
+const EditCardPage = (props) => {
     return (
-        <>
-        <NavBar/>
-            <div className={classes.container}>
-                <CardItems/>
-            </div>
-        </>
+        <div className={classes.container}>
+            <NavBar />
+            <EditCardPageHeader />
+            <CardItems/>
+        </div>   
     )
 }
 
