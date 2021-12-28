@@ -20,6 +20,11 @@ const AuthNav = () => {
                     className={classes['user-avatar']}
                     onClick={() => setShowProfile(!showProfile)}
                 />
+                {showProfile && (
+                    <div className={classes.profile_card}>
+                        <ProfileCard />
+                    </div>
+                )}
             </div>
         </ul>
     )
