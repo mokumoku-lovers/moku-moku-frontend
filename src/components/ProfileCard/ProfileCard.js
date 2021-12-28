@@ -7,7 +7,7 @@ const ProfileCard = () => {
     return (
         <div className={classes.container}>
             <div className={classes.info__container}>
-                <Link to="/profile/" className={classes.avator}>
+                <Link to="/profile/" className={classes.avatar}>
                     <img src={Icon} alt="Avatar" />
                 </Link>
                 <h3 className={classes.username}>Username</h3>
