@@ -3,6 +3,8 @@ import classes from './NavBar.module.css'
 import icon from '../../icon.svg'
 import { useState } from 'react'
 import ProfileCard from '../ProfileCard/ProfileCard'
+import { useEffect } from 'react'
+import { useCallback } from 'react'
 
 const AuthNav = () => {
     const [showProfile, setShowProfile] = useState(false)
@@ -13,6 +15,11 @@ const AuthNav = () => {
             document.removeEventListener('click', closeProfileHandler)
         }
     }, [])
+
+    useEffect(() => {
+        return () => document.removeEventListener('click', closeProfileHandler)
+    }, [closeProfileHandler])
+
     const showProfileHandler = (e) => {
         setShowProfile(true)
         e.stopPropagation()
