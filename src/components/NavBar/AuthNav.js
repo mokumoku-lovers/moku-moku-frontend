@@ -7,11 +7,18 @@ import ProfileCard from '../ProfileCard/ProfileCard'
 const AuthNav = () => {
     const [showProfile, setShowProfile] = useState(false)
 
+    const closeProfileHandler = useCallback((e) => {
+        if (!e.target.closest('#avatar')) {
+            setShowProfile(false)
+            document.removeEventListener('click', closeProfileHandler)
+        }
+    }, [])
     const showProfileHandler = (e) => {
         setShowProfile(true)
         e.stopPropagation()
         document.addEventListener('click', closeProfileHandler)
     }
+
     return (
         <ul className={classes['nav-menu']}>
             <div className={classes['input-control']}>
