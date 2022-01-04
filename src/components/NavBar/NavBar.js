@@ -7,9 +7,8 @@ import AuthNav from './AuthNav'
 
 // Mock islogin data
 // later will be replaced by data from server
-let isLoggedIn = true
 
-const NavBar = () => {
+const NavBar = ({ isLoggedIn = true }) => {
     return (
         <nav className={classes.navbar}>
             <NavLink exact to="/">
