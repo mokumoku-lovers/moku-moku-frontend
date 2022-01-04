@@ -7,7 +7,7 @@ const Homepage = () => {
     return (
         <>
             <NavBar isLoggedIn={false} />
-            <section>
+            <section className={classes.container}>
                 <div>
                     <h1>Hello! We're</h1>
                     <h1>Moku Moku</h1>
