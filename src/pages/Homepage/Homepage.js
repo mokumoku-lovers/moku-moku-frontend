@@ -8,13 +8,13 @@ const Homepage = () => {
         <>
             <NavBar isLoggedIn={false} />
             <section className={classes.container}>
-                <div>
-                    <h1>Hello! We're</h1>
-                    <h1>Moku Moku</h1>
-                    <h1>Learn it. Remember it.</h1>
-                    <button>Get Started</button>
+                <div className={classes.content}>
+                    <p className={classes.subtitle}>Hello! We're</p>
+                    <p className={classes.title}>Moku Moku</p>
+                    <p className={classes.subtitle}>Learn it. Remember it.</p>
+                    <button className={classes.button}>Get Started</button>
                 </div>
-                <div>
+                <div className={classes.image__section}>
                     <img src={illustration} alt="" />
                 </div>
             </section>
