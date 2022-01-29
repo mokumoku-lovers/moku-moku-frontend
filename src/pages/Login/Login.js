@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import IntroSection from '../../components/IntroSection/IntroSection'
 import classes from './Login.module.css'
 import LoginForm from './LoginForm'
@@ -7,8 +7,15 @@ import { useSelector } from 'react-redux'
 import Alert from '../../components/UI/Alert/Alert'
 import { useState } from 'react'
 import { useEffect } from 'react'
+
 const Login = () => {
     const { error, loginData } = useSelector((state) => state.auth)
+    const history = useHistory()
+
+    if (loginData) {
+        history.replace('/profile/')
+    }
+
     const [showAlert, setShowAlert] = useState(false)
 
     useEffect(() => {
@@ -30,17 +37,6 @@ const Login = () => {
                 onDimiss={onDismissHandler}
             >
                 {error.message}
-            </Alert>
-        )
-    } else if (loginData) {
-        alert = (
-            <Alert
-                className={classes.alert__message}
-                alert_type="info"
-                icon="times"
-                onDimiss={onDismissHandler}
-            >
-                Login Successfully
             </Alert>
         )
     }
