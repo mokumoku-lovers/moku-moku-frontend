@@ -5,17 +5,29 @@ import classes from './Login.module.css'
 import LoginForm from './LoginForm'
 import { useSelector } from 'react-redux'
 import Alert from '../../components/UI/Alert/Alert'
+import { useState } from 'react'
+import { useEffect } from 'react'
 const Login = () => {
     const { error, loginData } = useSelector((state) => state.auth)
+    const [showAlert, setShowAlert] = useState(false)
+
+    useEffect(() => {
+        if (error || loginData) setShowAlert(true)
+    }, [error, loginData, setShowAlert])
+
+    const onDismissHandler = () => {
+        alert = null
+        setShowAlert(false)
+    }
 
     let alert
-
     if (error) {
         alert = (
             <Alert
                 className={classes.alert__message}
                 alert_type="danger"
                 icon="times"
+                onDimiss={onDismissHandler}
             >
                 {error.message}
             </Alert>
@@ -26,6 +38,7 @@ const Login = () => {
                 className={classes.alert__message}
                 alert_type="info"
                 icon="times"
+                onDimiss={onDismissHandler}
             >
                 Login Successfully
             </Alert>
@@ -37,7 +50,7 @@ const Login = () => {
             <IntroSection />
             <section className={classes.split}>
                 <div className={classes.content}>
-                    {alert}
+                    {showAlert && alert}
                     <p className={classes.title}>Hello Again!</p>
                     <p className={classes.subtitle}>Welcome Back</p>
                     <LoginForm />
