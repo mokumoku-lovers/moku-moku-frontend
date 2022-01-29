@@ -76,7 +76,6 @@
 .feature__content {
     margin-top: auto;
     margin-bottom: auto;
-    transform: translateY(-50%);
 }
 
 .feature__content:nth-of-type(2n) {
@@ -95,7 +94,7 @@
 }
 
 .feature__img img {
-    width: 500px;
+    width: 100%;
 }
 
 .wave2 {
