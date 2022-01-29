@@ -1,23 +1,30 @@
 import React from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import classes from './Homepage.module.css'
-import illustration from './studying.svg'
+import girl from './girl.png'
+import wave2 from './wave2.svg'
+import card from './cardImages/card.png'
+import cardWithAnswer from './cardImages/cardWithAnswer.png'
+import cardWithImage from './cardImages/cardWithImage.png'
+import leaderboard from './cardImages/leaderboard.png'
 
 const Homepage = () => {
     return (
         <>
             <NavBar isLoggedIn={false} />
-            <section className={classes.container}>
-                <div className={classes.content}>
-                    <p className={classes.subtitle}>Hello! We're</p>
-                    <p className={classes.title}>Moku Moku</p>
-                    <p className={classes.subtitle}>Learn it. Remember it.</p>
-                    <button className={classes.button}>Get Started</button>
-                </div>
-                <div className={classes.image__section}>
-                    <img src={illustration} alt="" />
-                </div>
-            </section>
+            <main className={classes.main}>
+                <section className={classes.heroSection}>
+                    <div className={classes.content}>
+                        <h1>CREATE IT. REMEMBER IT</h1>
+                        <h3>Master any subject, one success at a time</h3>
+                        <button>Get Started</button>
+                    </div>
+
+                    <div className={classes.image}>
+                        <img src={girl} alt="hero" />
+                    </div>
+                </section>
+            </main>
         </>
     )
 }
