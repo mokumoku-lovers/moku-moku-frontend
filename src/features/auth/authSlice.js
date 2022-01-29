@@ -41,9 +41,11 @@ const authSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.loginData = action.payload
+                state.error = null
             })
             .addCase(login.rejected, (state, action) => {
                 state.isLoading = false
+                state.loginData = null
                 state.error = action.payload
             })
     },
