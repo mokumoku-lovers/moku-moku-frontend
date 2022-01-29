@@ -14,6 +14,7 @@ const LoginForm = () => {
     const [emailIsTouch, setEmailIsTouch] = useState(false)
     const [passwordIsTouch, setPasswordIsTouch] = useState(false)
 
+    const { isLoading } = useSelector((state) => state.auth)
     const dispatch = useDispatch()
 
     const emailIsValid =
@@ -80,7 +81,7 @@ const LoginForm = () => {
                 autoComplete="off"
                 required
             />
-            <Button text="Login" valid={overallFormIsValid} />
+            <Button text="Login" valid={overallFormIsValid && !isLoading} />
             <p className={classes.forgetPassword}>Forget Password</p>
         </form>
     )
