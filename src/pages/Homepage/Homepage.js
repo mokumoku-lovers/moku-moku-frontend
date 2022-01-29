@@ -42,11 +42,21 @@ const Homepage = () => {
                             <p>Master any subject, one success at a time</p>
                         </div>
                         <div className={classes.feature__img}>
-                            <img src={cardWithAnswer} alt="" />
+                            <img
+                                style={{
+                                    display: 'inherit',
+                                    marginLeft: 'auto',
+                                }}
+                                src={cardWithAnswer}
+                                alt=""
+                            />
                         </div>
                     </div>
 
-                    <div className={classes.feature}>
+                    <div
+                        className={classes.feature}
+                        style={{ marginBottom: 0 }}
+                    >
                         <div className={classes.feature__img}>
                             <img src={cardWithImage} alt="" />
                         </div>
