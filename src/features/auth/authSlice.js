@@ -11,17 +11,14 @@ const initialState = {
 export const login = createAsyncThunk(
     'auth/login',
     async (formData, { rejectWithValue }) => {
-        console.log(formData)
         try {
             const response = await axios.post(
                 'http://168.138.215.26:9001/oauth/login',
                 formData
             )
-            console.log(response.data)
             return response.data
         } catch (err) {
             if (err.response) {
-                console.log(err.response.data)
                 return rejectWithValue(err.response.data)
             }
         }
