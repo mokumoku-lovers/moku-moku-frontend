@@ -56,6 +56,14 @@ const Homepage = () => {
                         </div>
                     </div>
                 </section>
+                <img className={classes.wave2} src={wave2} alt="" />
+
+                <section className={classes.leaderboard}>
+                    <div className={classes.leaderboard__container}>
+                        <h1>See you at our leaderboard.</h1>
+                        <img src={leaderboard} alt="Leaderboard" />
+                    </div>
+                </section>
             </main>
         </>
     )
