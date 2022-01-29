@@ -10,14 +10,12 @@ const initialState = {
 
 export const login = createAsyncThunk(
     'auth/login',
-    async (_, { rejectWithValue }) => {
+    async (formData, { rejectWithValue }) => {
+        console.log(formData)
         try {
             const response = await axios.post(
                 'http://168.138.215.26:9001/oauth/login',
-                {
-                    email: 'testiasdfasfng1@forauth.com',
-                    password: 'Hello123!@#',
-                }
+                formData
             )
             console.log(response.data)
             return response.data
