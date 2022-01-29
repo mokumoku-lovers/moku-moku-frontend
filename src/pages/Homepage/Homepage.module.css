@@ -55,12 +55,49 @@
     /* transform: scale(1.5); */
     object-fit: contain;
 }
+
+.features {
+    min-height: 100vh;
+    background-color: #e2f9f3;
+    padding-top: 5rem;
 }
 
-.image__section {
-    flex-grow: 1;
+.feature {
+    display: flex;
+    justify-content: space-between;
+    margin: 10rem auto;
+    width: 100rem;
 }
 
-.image__section img {
+.feature > * {
+    flex-basis: 50%;
+}
+
+.feature__content {
+    margin-top: auto;
+    margin-bottom: auto;
+    transform: translateY(-50%);
+}
+
+.feature__content:nth-of-type(2n) {
+    text-align: right;
+}
+
+.feature__content h1 {
+    font-size: 4rem;
+    color: #004d2c;
+    line-height: 2;
+}
+
+.feature__content p {
+    font-size: 1.5rem;
+    color: #15624c;
+}
+
+.feature__img img {
+    width: 500px;
+}
+
+.wave2 {
     width: 100%;
 }
