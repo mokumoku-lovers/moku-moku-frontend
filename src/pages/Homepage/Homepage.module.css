@@ -101,3 +101,25 @@
 .wave2 {
     width: 100%;
 }
+
+.leaderboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaderboard__container {
+    margin: 5rem 0;
+    text-align: center;
+}
+
+.leaderboard__container h1 {
+    font-size: 4rem;
+    line-height: 2;
+    color: #004d2c;
+    margin-bottom: 3rem;
+}
+
+.leaderboard__container img {
+    width: 800px;
+}
