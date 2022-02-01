@@ -15,33 +15,31 @@ const Register = () => {
     }
 
     useEffect(() => {
-        if (user.isLogin || user.error) {
+        if (!user.isLoading && user.error) {
             setShowAlert(true)
         }
     }, [user])
+
+    let alert
+
+    if (user.error) {
+        alert = (
+            <Alert
+                className={classes.alert__message}
+                alert_type="danger"
+                icon="times"
+                onDimiss={onDimissHanlder}
+            >
+                {user.error}
+            </Alert>
+        )
+    }
 
     return (
         <div className={classes.container}>
             <IntroSection />
             <section className={classes.split}>
-                {user.error && showAlert && (
-                    <Alert
-                        className={classes.alert__message}
-                        alert_type="danger"
-                        icon="times"
-                        onDimiss={onDimissHanlder}>
-                        {user.error}
-                    </Alert>
-                )}
-                {user.isLogin && !user.error && showAlert && (
-                    <Alert
-                        className={classes.alert__message}
-                        alert_type="info"
-                        icon="times"
-                        onDimiss={onDimissHanlder}>
-                        Register Successfully!
-                    </Alert>
-                )}
+                {showAlert && alert}
                 <div className={classes.content}>
                     <p className={classes.title}>Hello!</p>
                     <p className={classes.subtitle}>Sign Up to Get Started</p>
