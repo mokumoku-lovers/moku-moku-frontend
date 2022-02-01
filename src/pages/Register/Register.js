@@ -15,7 +15,7 @@ const Register = () => {
     }
 
     useEffect(() => {
-        if (!user.isLoading && user.error) {
+        if (user.status === 'failed' && user.error) {
             setShowAlert(true)
         }
     }, [user])
