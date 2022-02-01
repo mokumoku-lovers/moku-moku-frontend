@@ -2,14 +2,18 @@ import React, { useEffect, useState } from 'react'
 import classes from './Register.module.css'
 import IntroSection from '../../components/IntroSection/IntroSection'
 import RegisterForm from './RegisterForm'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Alert from '../../components/UI/Alert/Alert'
 import { useSelector } from 'react-redux'
 
 const Register = () => {
+    const history = useHistory()
     const user = useSelector((state) => state.user)
     const [showAlert, setShowAlert] = useState(false)
 
+    if (user.status === 'succeeded') {
+        history.replace('/login/')
+    }
     const onDimissHanlder = () => {
         setShowAlert(false)
     }
