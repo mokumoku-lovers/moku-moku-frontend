@@ -37,7 +37,7 @@ const userSlice = createSlice({
                 state.status = 'succeeded'
             })
             .addCase(createUser.rejected, (state, action) => {
-                state.status = 'falied'
+                state.status = 'failed'
                 state.error = action.payload
             })
     },
