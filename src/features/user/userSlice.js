@@ -31,14 +31,11 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(createUser.pending, (state, action) => {
+            .addCase(createUser.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(createUser.fulfilled, (state, action) => {
+            .addCase(createUser.fulfilled, (state) => {
                 state.isLoading = false
-                state.isLogin = true
-                state.user = action.payload
-                state.error = null
             })
             .addCase(createUser.rejected, (state, action) => {
                 state.isLoading = false
