@@ -3,8 +3,7 @@ import axios from '../../axios/axiosInstance'
 
 const initialState = {
     user: null,
-    isLogin: false,
-    isLoading: false,
+    status: 'idel',
     error: null,
 }
 
@@ -31,17 +30,14 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(createUser.pending, (state, action) => {
-                state.isLoading = true
+            .addCase(createUser.pending, (state) => {
+                state.status = 'loading'
             })
-            .addCase(createUser.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.isLogin = true
-                state.user = action.payload
-                state.error = null
+            .addCase(createUser.fulfilled, (state) => {
+                state.status = 'succeeded'
             })
             .addCase(createUser.rejected, (state, action) => {
-                state.isLoading = false
+                state.status = 'failed'
                 state.error = action.payload
             })
     },

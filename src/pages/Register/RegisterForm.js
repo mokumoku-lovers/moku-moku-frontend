@@ -86,8 +86,10 @@ const RegisterForm = () => {
                 createUser({
                     email,
                     username,
-                    password,
-                    password_r: passwordConfirm,
+                    passwords: {
+                        password,
+                        password_r: passwordConfirm,
+                    },
                 })
             )
         } else {
@@ -136,14 +138,16 @@ const RegisterForm = () => {
                         <i
                             onClick={() => setShowPasswordMessageBox(true)}
                             className={`far fa-question-circle ${classes.questionIcon}`}
-                            style={{ cursor: 'pointer', color: 'blue' }}></i>
+                            style={{ cursor: 'pointer', color: 'blue' }}
+                        ></i>
                     </span>
                     {'  '}
                     Password need to be strong.
                 </p>
                 {showPasswordMessageBox && (
                     <MessageBox
-                        onClickDismiss={() => setShowPasswordMessageBox(false)}>
+                        onClickDismiss={() => setShowPasswordMessageBox(false)}
+                    >
                         Must be at least 8 characters contain one lowercase
                         character, one uppercase character, one special
                         character, one number and no space.
