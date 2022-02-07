@@ -24,6 +24,20 @@ export const createUser = createAsyncThunk(
     }
 )
 
+export const getUser = createAsyncThunk(
+    'user/getUser',
+    async (id, { rejectWithValue }) => {
+        try {
+            const response = await axios.get(`/users/${id}`)
+            console.log(response)
+            return response.data
+        } catch (err) {
+            console.log(err.response.data.message)
+            return rejectWithValue(err.response.data.message)
+        }
+    }
+)
+
 const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -37,6 +51,17 @@ const userSlice = createSlice({
                 state.status = 'succeeded'
             })
             .addCase(createUser.rejected, (state, action) => {
+                state.status = 'failed'
+                state.error = action.payload
+            })
+            .addCase(getUser.pending, (state) => {
+                state.status = 'loading'
+            })
+            .addCase(getUser.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                state.user = action.payload
+            })
+            .addCase(getUser.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.payload
             })
