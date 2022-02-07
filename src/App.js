@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import './App.css'
 import AddCardPage from './pages/AddCardPage/AddCardPage'
 import Homepage from './pages/Homepage/Homepage'
@@ -22,27 +23,27 @@ function App() {
                 <Route path="/register">
                     <Register />
                 </Route>
-                <Route path="/ranking">
+                <ProtectedRoute path="/ranking">
                     <RankingPage />
-                </Route>
-                <Route path="/profile">
+                </ProtectedRoute>
+                <ProtectedRoute path="/profile">
                     <UserProfile />
-                </Route>
-                <Route path="/study">
+                </ProtectedRoute>
+                <ProtectedRoute path="/study">
                     <Study />
-                </Route>
-                <Route path="/edit-profile">
+                </ProtectedRoute>
+                <ProtectedRoute path="/edit-profile">
                     <ProfileEditingPage />
-                </Route>
-                <Route path="/add-card">
+                </ProtectedRoute>
+                <ProtectedRoute path="/add-card">
                     <AddCardPage />
-                </Route>
-                <Route path="/create-deck">
+                </ProtectedRoute>
+                <ProtectedRoute path="/create-deck">
                     <CreateDeckPage />
-                </Route>
-                <Route path="/edit-card">
+                </ProtectedRoute>
+                <ProtectedRoute path="/edit-card">
                     <EditCardPage />
-                </Route>
+                </ProtectedRoute>
                 <Route path="/">
                     <Homepage />
                 </Route>
