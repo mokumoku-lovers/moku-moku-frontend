@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Button from '../../components/UI/FormButton/FormButton'
 import Input from '../../components/UI/Input/Input'
 import classes from './Login.module.css'
+import { login } from '../../features/auth/authSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const emailRegex = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
@@ -11,6 +13,9 @@ const LoginForm = () => {
 
     const [emailIsTouch, setEmailIsTouch] = useState(false)
     const [passwordIsTouch, setPasswordIsTouch] = useState(false)
+
+    const { isLoading } = useSelector((state) => state.auth)
+    const dispatch = useDispatch()
 
     const emailIsValid =
         email.trim().length > 0 && emailRegex.test(String(email).toLowerCase())
@@ -35,7 +40,12 @@ const LoginForm = () => {
     const onSubmitFormHandler = (e) => {
         if (overallFormIsValid) {
             e.preventDefault()
-            alert('Login successful')
+            dispatch(
+                login({
+                    email,
+                    password,
+                })
+            )
 
             setEmail('')
             setPassword('')
@@ -71,7 +81,7 @@ const LoginForm = () => {
                 autoComplete="off"
                 required
             />
-            <Button text="Login" valid={overallFormIsValid} />
+            <Button text="Login" valid={overallFormIsValid && !isLoading} />
             <p className={classes.forgetPassword}>Forget Password</p>
         </form>
     )
