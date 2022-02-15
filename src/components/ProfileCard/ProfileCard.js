@@ -1,18 +1,20 @@
 import React from 'react'
-import Icon from '../../icon.svg'
 import classes from './ProfileCard.module.css'
 import { Link } from 'react-router-dom'
+import NavUserInfo from './NavUserInfo'
+import NavUserInfoLoader from './NavUserInfoLoader'
+import { useSelector } from 'react-redux'
 
 const ProfileCard = () => {
+    const { user, status } = useSelector((store) => store.user)
+
     return (
         <div className={classes.container}>
-            <div className={classes.info__container}>
-                <Link to="/profile/" className={classes.avatar}>
-                    <img src={Icon} alt="Avatar" />
-                </Link>
-                <h3 className={classes.username}>Username</h3>
-                <p className={classes.email}>smileycat@gmail.com</p>
-            </div>
+            {status !== 'succeeded' || !user ? (
+                <NavUserInfoLoader />
+            ) : (
+                <NavUserInfo email={user.email} username={user.username} />
+            )}
             <Link to="/edit-profile/" className={classes.settings}>
                 Settings
             </Link>
