@@ -43,6 +43,7 @@ const GeneralInfoForm = () => {
                         type="text"
                         value={name}
                         fontclassname="far fa-user"
+                        placeholder="Enter your new display name"
                         onChange={onNameChangeHandler}
                     />
                 </div>
@@ -55,6 +56,7 @@ const GeneralInfoForm = () => {
                         type="text"
                         value={username}
                         fontclassname="far fa-user"
+                        placeholder="Enter your new username"
                         onChange={onUsernameChangeHandler}
                     />
                 </div>
@@ -67,6 +69,7 @@ const GeneralInfoForm = () => {
                         type="email"
                         value={email}
                         fontclassname="fas fa-envelope"
+                        placeholder="Enter your new email address"
                         onChange={onEmailChangeHandler}
                     />
                 </div>
@@ -77,6 +80,7 @@ const GeneralInfoForm = () => {
                         id="bio"
                         name="bio"
                         onChange={onBioChangeHandler}
+                        placeholder="Write anything for bio"
                         rows="5"
                         value={bio}
                     />
