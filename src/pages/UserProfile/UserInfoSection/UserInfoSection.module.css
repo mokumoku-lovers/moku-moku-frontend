@@ -26,7 +26,8 @@
 }
 
 .user_info__actions {
-    margin-top: 2rem;
+    width: 25rem;
+    margin: 2rem auto;
     display: flex;
     justify-content: space-between;
 }
