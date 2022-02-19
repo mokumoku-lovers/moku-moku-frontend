@@ -17,6 +17,10 @@ const UserInfoSection = () => {
         history.push('/create-deck')
     }
 
+    const onClickEditButton = () => {
+        history.push('/edit-profile')
+    }
+
     return (
         <div className={classes.container}>
             <Avatar className={classes.avatar} src={icon} />
@@ -28,7 +32,7 @@ const UserInfoSection = () => {
                 <Point point={points} />
                 <div className={classes.user_info__actions}>
                     <Button onClick={onClickCreateButton}>Create</Button>
-                    <Button>Edit</Button>
+                    <Button onClick={onClickEditButton}>Edit</Button>
                 </div>
             </div>
         </div>
