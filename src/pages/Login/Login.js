@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import IntroSection from '../../components/IntroSection/IntroSection'
 import classes from './Login.module.css'
 import LoginForm from './LoginForm'
@@ -10,17 +10,16 @@ import { useEffect } from 'react'
 
 const Login = () => {
     const { error, loginData } = useSelector((state) => state.auth)
-    const history = useHistory()
-
-    if (loginData) {
-        history.replace('/profile/')
-    }
 
     const [showAlert, setShowAlert] = useState(false)
 
     useEffect(() => {
         if (error || loginData) setShowAlert(true)
     }, [error, loginData, setShowAlert])
+
+    if (loginData) {
+        return <Redirect to="/profile/" />
+    }
 
     const onDismissHandler = () => {
         alert = null

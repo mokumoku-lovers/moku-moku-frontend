@@ -4,11 +4,11 @@ import classes from './NavBar.module.css'
 import logo from '../../logo.svg'
 import GuestNav from './GuestNav'
 import AuthNav from './AuthNav'
+import { useSelector } from 'react-redux'
 
-// Mock islogin data
-// later will be replaced by data from server
+const NavBar = () => {
+    const { loginData } = useSelector((store) => store.auth)
 
-const NavBar = ({ isLoggedIn = true }) => {
     return (
         <nav className={classes.navbar}>
             <NavLink exact to="/">
@@ -18,7 +18,7 @@ const NavBar = ({ isLoggedIn = true }) => {
                     alt="MokuMoku"
                 />
             </NavLink>
-            {isLoggedIn ? <AuthNav /> : <GuestNav />}
+            {loginData ? <AuthNav /> : <GuestNav />}
         </nav>
     )
 }
