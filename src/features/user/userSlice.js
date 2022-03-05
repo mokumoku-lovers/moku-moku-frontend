@@ -57,9 +57,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        logout: (state) => {
-            state.user = null
-        },
+        logout: () => initialState,
     },
     extraReducers: (builder) => {
         builder
