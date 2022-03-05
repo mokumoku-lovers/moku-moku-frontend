@@ -38,17 +38,38 @@ export const getUser = createAsyncThunk(
     }
 )
 
+export const updateUserProfile = createAsyncThunk(
+    'users/updateUserProfile',
+    async ({ userId, formData }, { rejectWithValue }) => {
+        try {
+            const response = await axios.patch(`/users/${userId}`, formData)
+            return response.data
+        } catch (err) {
+            if (err.response) {
+                console.log(err.response.data.message)
+                return rejectWithValue(err.response.data.message)
+            }
+        }
+    }
+)
+
 const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+        logout: (state) => {
+            state.user = null
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(createUser.pending, (state) => {
                 state.status = 'loading'
             })
-            .addCase(createUser.fulfilled, (state) => {
+            .addCase(createUser.fulfilled, (state, action) => {
                 state.status = 'succeeded'
+                // delete later
+                state.user = action.payload
             })
             .addCase(createUser.rejected, (state, action) => {
                 state.status = 'failed'
@@ -65,7 +86,20 @@ const userSlice = createSlice({
                 state.status = 'failed'
                 state.error = action.payload
             })
+            .addCase(updateUserProfile.pending, (state) => {
+                state.status = 'loading'
+            })
+            .addCase(updateUserProfile.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                state.user = action.payload
+            })
+            .addCase(updateUserProfile.rejected, (state, action) => {
+                state.status = 'failed'
+                state.error = action.payload
+            })
     },
 })
+
+export const { logout } = userSlice.actions
 
 export default userSlice.reducer

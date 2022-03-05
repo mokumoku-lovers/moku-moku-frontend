@@ -3,10 +3,17 @@ import classes from './ProfileCard.module.css'
 import { Link } from 'react-router-dom'
 import NavUserInfo from './NavUserInfo'
 import NavUserInfoLoader from './NavUserInfoLoader'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../../features/user/userSlice'
 
 const ProfileCard = () => {
     const { user, status } = useSelector((store) => store.user)
+    const dispatch = useDispatch()
+
+    const handleLogout = () => {
+        console.log('first')
+        dispatch(logout())
+    }
 
     return (
         <div className={classes.container}>
@@ -18,7 +25,15 @@ const ProfileCard = () => {
             <Link to="/edit-profile/" className={classes.settings}>
                 Settings
             </Link>
-            <div className={classes.logout}>Logout</div>
+            <div
+                style={{
+                    cursor: 'pointer',
+                }}
+                onClick={handleLogout}
+                className={classes.logout}
+            >
+                Logout
+            </div>
         </div>
     )
 }

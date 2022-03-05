@@ -54,6 +54,9 @@ const Login = () => {
                         <Link to="/register">
                             <span className={classes.link}>Sign Up Here</span>
                         </Link>
+                        <Link to="/profile">
+                            <span className={classes.link}>Profile</span>
+                        </Link>
                     </p>
                 </div>
             </section>

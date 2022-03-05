@@ -6,6 +6,7 @@ import Sidebar from './Sidebar/Sidebar'
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm'
 import { Avatar } from '../../components/UI/Avatar/Avatar'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const ProfileEditingPage = (props) => {
     const [isEditProfile, setIsEditProfile] = useState(
@@ -19,6 +20,8 @@ const ProfileEditingPage = (props) => {
     const onClickChangePassword = () => {
         setIsEditProfile(false)
     }
+
+    const { display_name } = useSelector((store) => store.user.user)
 
     return (
         <>
@@ -36,7 +39,9 @@ const ProfileEditingPage = (props) => {
                             <Avatar />
                         </div>
                         <div className={classes.username}>
-                            <h3>Display Name</h3>
+                            <h3>
+                                {display_name ? display_name : 'Display Name'}
+                            </h3>
                             {isEditProfile && (
                                 <Link to="/">Change Profile Photo</Link>
                             )}

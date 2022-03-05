@@ -3,15 +3,17 @@ import Input from '../../../components/UI/Input/Input'
 import TextArea from '../../../components/UI/TextArea/TextArea'
 import classes from './GeneralInfoForm.module.css'
 import Button from '../../../components/UI/Button/Button'
-import { useSelector } from 'react-redux'
+import { updateUserProfile } from '../../../features/user/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const GeneralInfoForm = () => {
-    const { user } = useSelector((store) => store.user)
-
-    const [name, setName] = useState(user.display_name)
-    const [username, setUsername] = useState(user.username)
-    const [email, setEmail] = useState(user.email)
-    const [bio, setBio] = useState(user.bio)
+    const [name, setName] = useState('')
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [bio, setBio] = useState('')
+    // redux hooks
+    const dispatch = useDispatch()
+    const { id: userId } = useSelector((store) => store.user.user)
 
     const onNameChangeHandler = (event) => {
         setName(event.target.value)
@@ -26,9 +28,24 @@ const GeneralInfoForm = () => {
         setBio(event.target.value)
     }
 
+    const resetField = () => {
+        setName('')
+        setUsername('')
+        setEmail('')
+        setBio('')
+    }
+
     const onSubmitHandler = (event) => {
         event.preventDefault()
         console.log('Submit')
+        const formData = {
+            display_name: name,
+            username,
+            email,
+            biography: bio,
+        }
+        dispatch(updateUserProfile({ userId, formData }))
+        resetField()
     }
 
     return (
