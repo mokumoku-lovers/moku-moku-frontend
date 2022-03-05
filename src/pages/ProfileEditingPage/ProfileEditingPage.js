@@ -7,6 +7,7 @@ import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm'
 import { Avatar } from '../../components/UI/Avatar/Avatar'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Icon from '../../icon.svg'
 
 const ProfileEditingPage = (props) => {
     const [isEditProfile, setIsEditProfile] = useState(
@@ -36,7 +37,7 @@ const ProfileEditingPage = (props) => {
                 <div className={classes.formSection}>
                     <div className={classes.userInfo}>
                         <div className={classes.userAvatar}>
-                            <Avatar />
+                            <Avatar src={Icon} />
                         </div>
                         <div className={classes.username}>
                             <h3>
