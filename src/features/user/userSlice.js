@@ -66,10 +66,8 @@ const userSlice = createSlice({
             .addCase(createUser.pending, (state) => {
                 state.status = 'loading'
             })
-            .addCase(createUser.fulfilled, (state, action) => {
+            .addCase(createUser.fulfilled, (state) => {
                 state.status = 'succeeded'
-                // delete later
-                state.user = action.payload
             })
             .addCase(createUser.rejected, (state, action) => {
                 state.status = 'failed'
