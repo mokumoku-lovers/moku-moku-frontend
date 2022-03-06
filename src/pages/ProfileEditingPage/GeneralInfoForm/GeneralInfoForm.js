@@ -13,7 +13,7 @@ const GeneralInfoForm = () => {
     const [name, setName] = useState(user.display_name)
     const [username, setUsername] = useState(user.username)
     const [email, setEmail] = useState(user.email)
-    const [bio, setBio] = useState(user.bio)
+    const [bio, setBio] = useState(user.biography)
 
     // redux hooks
     const dispatch = useDispatch()
