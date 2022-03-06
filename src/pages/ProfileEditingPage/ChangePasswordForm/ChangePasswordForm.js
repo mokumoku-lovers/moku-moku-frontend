@@ -7,6 +7,9 @@ const ChangePasswordForm = () => {
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    // redux hooks
+    const userId = useSelector((store) => store.user.user.id)
+    const dispatch = useDispatch()
 
     const onOldPasswordChangeHandler = (event) => {
         setOldPassword(event.target.value)
@@ -18,9 +21,16 @@ const ChangePasswordForm = () => {
         setConfirmPassword(event.target.value)
     }
 
-    const onSubmitHandler = (event) => {
+    const onSubmitHandler = async (event) => {
         event.preventDefault()
         console.log('Submit')
+        const formData = {
+            old_password: oldPassword,
+            password: newPassword,
+            password_r: confirmPassword,
+        }
+        const res = await dispatch(updateUserPassword({ formData, userId }))
+    }
     }
 
     return (
