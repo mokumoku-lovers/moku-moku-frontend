@@ -40,7 +40,11 @@ const ChangePasswordForm = () => {
             setAlert({ type: 'danger', message: res.payload.message })
         } else if (res.type === 'user/updateUserPassword/fulfilled') {
             setAlert({ type: 'info', message: res.payload.data })
+        }
     }
+
+    const onDimissAlertHandler = () => {
+        setAlert(null)
     }
 
     return (
