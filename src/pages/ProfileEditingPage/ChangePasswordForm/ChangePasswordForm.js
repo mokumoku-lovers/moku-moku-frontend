@@ -1,12 +1,17 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../components/UI/Button/Button'
 import Input from '../../../components/UI/Input/Input'
 import classes from './ChangePasswordForm.module.css'
+import { updateUserPassword } from '../../../features/user/userSlice'
+import Alert from '../../../components/UI/Alert/Alert'
 
 const ChangePasswordForm = () => {
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [alert, setAlert] = useState(null)
+
     // redux hooks
     const userId = useSelector((store) => store.user.user.id)
     const dispatch = useDispatch()
@@ -30,11 +35,26 @@ const ChangePasswordForm = () => {
             password_r: confirmPassword,
         }
         const res = await dispatch(updateUserPassword({ formData, userId }))
+
+        if (res.type === 'user/updateUserPassword/rejected') {
+            setAlert({ type: 'danger', message: res.payload.message })
+        } else if (res.type === 'user/updateUserPassword/fulfilled') {
+            setAlert({ type: 'info', message: res.payload.data })
     }
     }
 
     return (
         <div className={classes.container}>
+            {alert && (
+                <Alert
+                    icon="times"
+                    onDimiss={onDimissAlertHandler}
+                    alert_type={alert.type}
+                >
+                    {alert.message}
+                </Alert>
+            )}
+            <br />
             <form onSubmit={onSubmitHandler}>
                 <div className={classes.row}>
                     <label htmlFor="old password">Old Password</label>
