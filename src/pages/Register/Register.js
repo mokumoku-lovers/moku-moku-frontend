@@ -54,9 +54,6 @@ const Register = () => {
                             <span className={classes.link}>Login Here</span>
                         </Link>
                     </p>
-                    <Link to="/profile">
-                        <span className={classes.link}>Profile</span>
-                    </Link>
                 </div>
             </section>
         </div>
