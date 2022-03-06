@@ -51,6 +51,15 @@ const ChangePasswordForm = () => {
         setConfirmPasswordTouch(true)
     }
 
+    const resetFields = () => {
+        setOldPassword('')
+        setNewPassword('')
+        setConfirmPassword('')
+        setOldPasswordTouch(false)
+        setNewPasswordTouch(false)
+        setConfirmPasswordTouch(false)
+    }
+
     const onSubmitHandler = async (event) => {
         event.preventDefault()
         const formData = {
@@ -64,6 +73,7 @@ const ChangePasswordForm = () => {
             setAlert({ type: 'danger', message: res.payload.message })
         } else if (res.type === 'user/updateUserPassword/fulfilled') {
             setAlert({ type: 'info', message: res.payload.data })
+            resetFields()
         }
     }
 
