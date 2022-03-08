@@ -3,7 +3,9 @@ import Input from '../../../components/UI/Input/Input'
 import TextArea from '../../../components/UI/TextArea/TextArea'
 import classes from './GeneralInfoForm.module.css'
 import Button from '../../../components/UI/Button/Button'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateUserProfile } from '../../../features/user/userSlice'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 const GeneralInfoForm = () => {
     const { user } = useSelector((store) => store.user)
@@ -11,7 +13,14 @@ const GeneralInfoForm = () => {
     const [name, setName] = useState(user.display_name)
     const [username, setUsername] = useState(user.username)
     const [email, setEmail] = useState(user.email)
-    const [bio, setBio] = useState(user.bio)
+    const [bio, setBio] = useState(user.biography)
+
+    // redux hooks
+    const dispatch = useDispatch()
+    const { id: userId } = useSelector((store) => store.user.user)
+
+    // react router hook
+    const history = useHistory()
 
     const onNameChangeHandler = (event) => {
         setName(event.target.value)
@@ -26,9 +35,25 @@ const GeneralInfoForm = () => {
         setBio(event.target.value)
     }
 
+    const resetField = () => {
+        setName('')
+        setUsername('')
+        setEmail('')
+        setBio('')
+        history.push('/profile')
+    }
+
     const onSubmitHandler = (event) => {
         event.preventDefault()
         console.log('Submit')
+        const formData = {
+            display_name: name,
+            username,
+            email,
+            biography: bio,
+        }
+        dispatch(updateUserProfile({ userId, formData }))
+        resetField()
     }
 
     return (

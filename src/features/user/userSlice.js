@@ -38,6 +38,21 @@ export const getUser = createAsyncThunk(
     }
 )
 
+export const updateUserProfile = createAsyncThunk(
+    'users/updateUserProfile',
+    async ({ userId, formData }, { rejectWithValue }) => {
+        try {
+            const response = await axios.patch(`/users/${userId}`, formData)
+            return response.data
+        } catch (err) {
+            if (err.response) {
+                console.log(err.response.data.message)
+                return rejectWithValue(err.response.data.message)
+            }
+        }
+    }
+)
+
 export const updateUserPassword = createAsyncThunk(
     'user/updateUserPassword',
     async ({ userId, formData }, { rejectWithValue }) => {
@@ -59,7 +74,9 @@ export const updateUserPassword = createAsyncThunk(
 const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+        logout: () => initialState,
+    },
     extraReducers: (builder) => {
         builder
             .addCase(createUser.pending, (state) => {
@@ -83,7 +100,18 @@ const userSlice = createSlice({
                 state.status = 'failed'
                 state.error = action.payload
             })
-            .addCase(updateUserPassword.pending, (state) => {
+            .addCase(updateUserProfile.pending, (state) => {
+                state.status = 'loading'
+            })
+            .addCase(updateUserProfile.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                state.user = action.payload
+            })
+            .addCase(updateUserProfile.rejected, (state, action) => {
+                state.status = 'failed'
+                state.error = action.payload
+            })
+       .addCase(updateUserPassword.pending, (state) => {
                 state.status = 'loading'
             })
             .addCase(updateUserPassword.fulfilled, (state) => {
@@ -96,4 +124,7 @@ const userSlice = createSlice({
     },
 })
 
+export const { logout } = userSlice.actions
+
 export default userSlice.reducer
+
