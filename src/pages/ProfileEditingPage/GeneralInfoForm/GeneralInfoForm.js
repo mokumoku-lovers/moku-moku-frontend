@@ -5,7 +5,9 @@ import classes from './GeneralInfoForm.module.css'
 import Button from '../../../components/UI/Button/Button'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateUserProfile } from '../../../features/user/userSlice'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import Alert from '../../../components/UI/Alert/Alert'
+
+const emailRegex = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
 const GeneralInfoForm = () => {
     const { user } = useSelector((store) => store.user)
@@ -29,9 +31,6 @@ const GeneralInfoForm = () => {
     const dispatch = useDispatch()
     const { id: userId } = useSelector((store) => store.user.user)
 
-    // react router hook
-    const history = useHistory()
-
     const onNameChangeHandler = (event) => {
         setName(event.target.value)
     }
@@ -49,7 +48,6 @@ const GeneralInfoForm = () => {
 
     const onSubmitHandler = async (event) => {
         event.preventDefault()
-        console.log('Submit')
         const formData = {
             display_name: name,
             username,
@@ -57,7 +55,7 @@ const GeneralInfoForm = () => {
             biography: bio,
         }
         const res = await dispatch(updateUserProfile({ userId, formData }))
-        console.log(res)
+
         if (res.type === 'users/updateUserProfile/fulfilled') {
             setAlert({ type: 'info', message: 'Update info successfully!' })
         } else if (res.type === 'users/updateUserProfile/rejected') {
