@@ -10,9 +10,18 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 const GeneralInfoForm = () => {
     const { user } = useSelector((store) => store.user)
 
-    const [name, setName] = useState(user.display_name)
-    const [username, setUsername] = useState(user.username)
+    const [name, setName] = useState(user.display_name || '')
+
+    const [username, setUsername] = useState(user.username || '')
+    const [usernameTouched, setUsernameTouched] = useState(false)
+    const usernameValid =
+        username.trim().length >= 3 && username.trim().length < 500
+
     const [email, setEmail] = useState(user.email)
+    const [emailTouched, setEmailTouched] = useState(false)
+    const emailValid =
+        email.trim().length > 0 && emailRegex.test(String(email).toLowerCase())
+
     const [bio, setBio] = useState(user.biography)
 
     // redux hooks
