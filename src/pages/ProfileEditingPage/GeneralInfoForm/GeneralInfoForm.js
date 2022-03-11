@@ -23,6 +23,7 @@ const GeneralInfoForm = () => {
         email.trim().length > 0 && emailRegex.test(String(email).toLowerCase())
 
     const [bio, setBio] = useState(user.biography)
+    const [alert, setAlert] = useState(null)
 
     // redux hooks
     const dispatch = useDispatch()
@@ -46,15 +47,7 @@ const GeneralInfoForm = () => {
         setBio(event.target.value)
     }
 
-    const resetField = () => {
-        setName('')
-        setUsername('')
-        setEmail('')
-        setBio('')
-        history.push('/profile')
-    }
-
-    const onSubmitHandler = (event) => {
+    const onSubmitHandler = async (event) => {
         event.preventDefault()
         console.log('Submit')
         const formData = {
@@ -63,12 +56,30 @@ const GeneralInfoForm = () => {
             email,
             biography: bio,
         }
-        dispatch(updateUserProfile({ userId, formData }))
-        resetField()
+        const res = await dispatch(updateUserProfile({ userId, formData }))
+        console.log(res)
+        if (res.type === 'users/updateUserProfile/fulfilled') {
+            setAlert({ type: 'info', message: 'Update info successfully!' })
+        } else if (res.type === 'users/updateUserProfile/rejected') {
+            setAlert({ type: 'danger', message: 'Something went wrong!' })
+        }
+    }
+    const onDimissAlertHandler = () => {
+        setAlert(null)
     }
 
     return (
         <div className={classes.container}>
+            {alert && (
+                <Alert
+                    icon="times"
+                    onDimiss={onDimissAlertHandler}
+                    alert_type={alert.type}
+                >
+                    {alert.message}
+                </Alert>
+            )}
+            <br />
             <form onSubmit={onSubmitHandler}>
                 <div className={classes.row}>
                     <label htmlFor="display name">Display Name</label>
