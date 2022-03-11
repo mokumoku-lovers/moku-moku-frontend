@@ -35,9 +35,11 @@ const GeneralInfoForm = () => {
         setName(event.target.value)
     }
     const onUsernameChangeHandler = (event) => {
+        setUsernameTouched(true)
         setUsername(event.target.value)
     }
     const onEmailChangeHandler = (event) => {
+        setEmailTouched(true)
         setEmail(event.target.value)
     }
     const onBioChangeHandler = (event) => {
@@ -92,6 +94,7 @@ const GeneralInfoForm = () => {
                         fontclassname="far fa-user"
                         placeholder="Enter your new username"
                         onChange={onUsernameChangeHandler}
+                        isinvalid={usernameTouched && !usernameValid ? 1 : 0}
                     />
                 </div>
                 <div className={classes.row}>
@@ -105,6 +108,7 @@ const GeneralInfoForm = () => {
                         fontclassname="fas fa-envelope"
                         placeholder="Enter your new email address"
                         onChange={onEmailChangeHandler}
+                        isinvalid={emailTouched && !emailValid ? 1 : 0}
                     />
                 </div>
                 <div className={classes.row}>
@@ -119,7 +123,11 @@ const GeneralInfoForm = () => {
                         value={bio}
                     />
                 </div>
-                <Button className={classes.submit__btn} type="submit">
+                <Button
+                    className={classes.submit__btn}
+                    type="submit"
+                    disabled={!emailValid || !usernameValid}
+                >
                     Submit
                 </Button>
             </form>
