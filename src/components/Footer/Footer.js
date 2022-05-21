@@ -1,7 +1,8 @@
 import React from 'react'
 import classes from './Footer.module.css'
 import Logo from '../../logo.svg'
-import ButtonSecondary from '../UI/Button/ButtonSecondary'
+import { NavLink } from 'react-router-dom'
+
 const Footer = () => {
     return (
         <footer className={classes.footer}>
@@ -13,10 +14,18 @@ const Footer = () => {
                     <button>Get Started</button>
                 </div>
                 <ul className={classes.links}>
-                    <li>Home</li>
-                    <li>Sign Up</li>
-                    <li>Login</li>
-                    <li>Ranking</li>
+                    <li>
+                        <NavLink to={'/'}>Home</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={'/register'}>Sign Up</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={'/login'}>Login</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={'/ranking'}>Ranking</NavLink>
+                    </li>
                 </ul>
             </div>
         </footer>
