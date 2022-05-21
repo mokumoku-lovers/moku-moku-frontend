@@ -8,6 +8,7 @@ import cardWithAnswer from './cardImages/cardWithAnswer.png'
 import cardWithImage from './cardImages/cardWithImage.png'
 import leaderboard from './cardImages/leaderboard.png'
 import CardImg from './Cards.png'
+import Footer from '../../components/Footer/Footer'
 const Homepage = () => {
     return (
         <>
@@ -85,6 +86,7 @@ const Homepage = () => {
                     </div>
                 </section>
             </main>
+            <Footer />
         </>
     )
 }
