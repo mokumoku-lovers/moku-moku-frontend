@@ -68,13 +68,12 @@
 .features {
     min-height: 100vh;
     background-color: #e2f9f3;
-    padding-top: 5rem;
 }
 
 .feature {
     display: flex;
     justify-content: space-between;
-    margin: 10rem auto;
+    margin: 5rem auto;
     max-width: 100rem;
 }
 
@@ -92,7 +91,7 @@
 }
 
 .feature__content h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: #004d2c;
     line-height: 2;
 }
@@ -104,6 +103,37 @@
 
 .feature__img img {
     width: 100%;
+}
+
+.featureTitle {
+    color: #004d2c;
+    font-size: 4rem;
+    position: relative;
+    width: max-content;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+.featureTitle::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    font-size: 6rem;
+}
+
+.featureTitle::after {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 6rem;
+}
+
+.wave1 {
+    width: 100%;
+    position: relative;
+    top: 10px;
 }
 
 .wave2 {

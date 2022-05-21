@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import classes from './Homepage.module.css'
+import wave1 from './wave1.svg'
 import wave2 from './wave2.svg'
 import card from './cardImages/card.png'
 import cardWithAnswer from './cardImages/cardWithAnswer.png'
@@ -30,48 +31,52 @@ const Homepage = () => {
                     </div>
                 </section>
 
-                <section className={classes.features}>
-                    <div className={classes.feature}>
-                        <div className={classes.feature__img}>
-                            <img src={card} alt="" />
+                <section>
+                    <img src={wave1} className={classes.wave1} alt="wave 1" />
+                    <div className={classes.features}>
+                        <h1 className={classes.featureTitle}>
+                            There is always one more card to learn{' '}
+                        </h1>
+                        <div className={classes.feature}>
+                            <div className={classes.feature__img}>
+                                <img src={card} alt="" />
+                            </div>
+                            <div className={classes.feature__content}>
+                                <h1>Create your card.</h1>
+                                <p>Master any subject, one success at a time</p>
+                            </div>
                         </div>
-                        <div className={classes.feature__content}>
-                            <h1>Create your card.</h1>
-                            <p>Master any subject, one success at a time</p>
+                        <div className={classes.feature}>
+                            <div className={classes.feature__content}>
+                                <h1>Answer your card.</h1>
+                                <p>Master any subject, one success at a time</p>
+                            </div>
+                            <div className={classes.feature__img}>
+                                <img
+                                    style={{
+                                        display: 'inherit',
+                                        marginLeft: 'auto',
+                                    }}
+                                    src={cardWithAnswer}
+                                    alt=""
+                                />
+                            </div>
+                        </div>
+                        <div
+                            className={classes.feature}
+                            style={{ marginBottom: 0 }}
+                        >
+                            <div className={classes.feature__img}>
+                                <img src={cardWithImage} alt="" />
+                            </div>
+                            <div className={classes.feature__content}>
+                                <h1>With images is fine.</h1>
+                                <p>Master any subject, one success at a time</p>
+                            </div>
                         </div>
                     </div>
-
-                    <div className={classes.feature}>
-                        <div className={classes.feature__content}>
-                            <h1>Answer your card.</h1>
-                            <p>Master any subject, one success at a time</p>
-                        </div>
-                        <div className={classes.feature__img}>
-                            <img
-                                style={{
-                                    display: 'inherit',
-                                    marginLeft: 'auto',
-                                }}
-                                src={cardWithAnswer}
-                                alt=""
-                            />
-                        </div>
-                    </div>
-
-                    <div
-                        className={classes.feature}
-                        style={{ marginBottom: 0 }}
-                    >
-                        <div className={classes.feature__img}>
-                            <img src={cardWithImage} alt="" />
-                        </div>
-                        <div className={classes.feature__content}>
-                            <h1>With images is fine.</h1>
-                            <p>Master any subject, one success at a time</p>
-                        </div>
-                    </div>
+                    <img className={classes.wave2} src={wave2} alt="" />
                 </section>
-                <img className={classes.wave2} src={wave2} alt="" />
 
                 <section className={classes.leaderboard}>
                     <div className={classes.leaderboard__container}>
