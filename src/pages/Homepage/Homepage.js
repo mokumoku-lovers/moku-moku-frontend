@@ -9,7 +9,11 @@ import cardWithImage from './cardImages/cardWithImage.png'
 import leaderboard from './cardImages/leaderboard.png'
 import CardImg from './Cards.png'
 import Footer from '../../components/Footer/Footer'
+import { useHistory } from 'react-router-dom'
+
 const Homepage = () => {
+    const history = useHistory()
+
     return (
         <>
             <NavBar isLoggedIn={false} />
@@ -20,7 +24,9 @@ const Homepage = () => {
                             <h1>CREATE IT. </h1>
                             <h1>REMEMBER IT</h1>
                             <h3>Master any subject, one success at a time</h3>
-                            <button>Get Started</button>
+                            <button onClick={() => history.push('/login')}>
+                                Get Started
+                            </button>
                         </div>
                         <div className={classes.rightContent}>
                             <img
