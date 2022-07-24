@@ -28,7 +28,11 @@ export const getUser = createAsyncThunk(
     'user/getUser',
     async (id, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`/users/${id}`)
+            const response = await axios.get(`/users/${id}`, {
+                headers: {
+                    access_token: '618a06d4987e22d0d8c8cc72cecb750d',
+                },
+            })
             console.log(response)
             return response.data
         } catch (err) {
@@ -111,7 +115,7 @@ const userSlice = createSlice({
                 state.status = 'failed'
                 state.error = action.payload
             })
-       .addCase(updateUserPassword.pending, (state) => {
+            .addCase(updateUserPassword.pending, (state) => {
                 state.status = 'loading'
             })
             .addCase(updateUserPassword.fulfilled, (state) => {
@@ -127,4 +131,3 @@ const userSlice = createSlice({
 export const { logout } = userSlice.actions
 
 export default userSlice.reducer
-
