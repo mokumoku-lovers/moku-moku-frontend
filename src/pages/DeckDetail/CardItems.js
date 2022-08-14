@@ -32,7 +32,7 @@ const CardItems = ({ deckId }) => {
     }, [deckId, dispatch])
 
     const onClickEditHandler = (id) => {
-        history.push(`/edit-card/${id}`)
+        history.push(`/card/${id}`)
     }
 
     const cards = cardList.map((card, idx) => (
