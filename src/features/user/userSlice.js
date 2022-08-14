@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '../../axios/axiosInstance'
+import axios from '../../axios/axiosInstanceFunction'
 
 const initialState = {
     user: null,
@@ -12,7 +12,7 @@ export const createUser = createAsyncThunk(
     async (formData, { rejectWithValue }) => {
         console.log(formData)
         try {
-            const response = await axios.post('/users', formData)
+            const response = await axios('http://168.138.215.26:9000/').post('/users', formData)
             console.log(response)
             return response.data
         } catch (err) {
@@ -28,11 +28,7 @@ export const getUser = createAsyncThunk(
     'user/getUser',
     async (id, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`/users/${id}`, {
-                headers: {
-                    access_token: '618a06d4987e22d0d8c8cc72cecb750d',
-                },
-            })
+            const response = await axios('http://168.138.215.26:9000/').get(`/users/${id}`)
             console.log(response)
             return response.data
         } catch (err) {
@@ -46,7 +42,7 @@ export const updateUserProfile = createAsyncThunk(
     'users/updateUserProfile',
     async ({ userId, formData }, { rejectWithValue }) => {
         try {
-            const response = await axios.patch(`/users/${userId}`, formData)
+            const response = await axios('http://168.138.215.26:9000/').patch(`/users/${userId}`, formData)
             return response.data
         } catch (err) {
             if (err.response) {
@@ -62,7 +58,7 @@ export const updateUserPassword = createAsyncThunk(
     async ({ userId, formData }, { rejectWithValue }) => {
         try {
             console.log(formData)
-            const response = await axios.patch(
+            const response = await axios('http://168.138.215.26:9000/').patch(
                 `users/${userId}/change_password`,
                 formData
             )
