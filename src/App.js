@@ -35,13 +35,13 @@ function App() {
                 <ProtectedRoute path="/edit-profile">
                     <ProfileEditingPage />
                 </ProtectedRoute>
-                <ProtectedRoute path="/add-card">
+                <ProtectedRoute path="/deck/:deckId/add-card">
                     <AddCardPage />
                 </ProtectedRoute>
                 <ProtectedRoute path="/create-deck">
                     <CreateDeckPage />
                 </ProtectedRoute>
-                <ProtectedRoute path="/edit-card">
+                <ProtectedRoute path="/deck/:deckId">
                     <EditCardPage />
                 </ProtectedRoute>
                 <Route path="/">
