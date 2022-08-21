@@ -60,6 +60,24 @@ export const getDeckById = createAsyncThunk(
     }
 )
 
+export const updateDeckById = createAsyncThunk(
+    'deck/updateDateById',
+    async ({ deckId, formData }, { rejectWithValue }) => {
+        try {
+            await axios('http://168.138.215.26:9002/').patch(
+                `/deck/${deckId}`,
+                formData
+            )
+            return { title: formData.name }
+        } catch (err) {
+            if (err.response) {
+                console.log(err.response.data.message)
+                return rejectWithValue(err.response.data.message)
+            }
+        }
+    }
+)
+
 export const deckSlice = createSlice({
     name: 'deck',
     initialState,
@@ -78,6 +96,9 @@ export const deckSlice = createSlice({
                 state.id = action.payload.id
                 state.cards = action.payload.cards
                 state.title = action.payload.name
+            })
+            .addCase(updateDeckById.fulfilled, (state, action) => {
+                state.title = action.payload.title
             })
         // .addCase(getUserDeck.fulfilled, (state, action) => {
         //     state.title = action.payload.title

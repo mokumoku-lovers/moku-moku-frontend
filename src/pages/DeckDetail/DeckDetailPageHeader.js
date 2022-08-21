@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import DeckForm from './DeckForm'
 import { useDispatch } from 'react-redux'
-import { onSaveTitle } from '../../features/deckTitle/deckSlice'
+import { updateDeckById } from '../../features/deckTitle/deckSlice'
 import { useParams } from 'react-router-dom'
 
 const DeckDetailPageHeader = (props) => {
@@ -36,9 +36,9 @@ const DeckDetailPageHeader = (props) => {
 
     const onSaveHandler = (e, title) => {
         e.preventDefault()
+        const formData = { name: title }
+        dispatch(updateDeckById({ deckId, formData }))
         setShowEditForm(false)
-        dispatch(onSaveTitle(title))
-        console.log('Updated')
     }
 
     return (
