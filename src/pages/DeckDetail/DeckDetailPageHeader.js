@@ -27,7 +27,7 @@ const DeckDetailPageHeader = (props) => {
     }
 
     const clickStudyButton = () => {
-        history.push('/study/')
+        history.push(`/study/${deckId}`)
     }
 
     const onCancelHandler = () => {
