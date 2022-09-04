@@ -49,7 +49,18 @@ export const getDeckById = createAsyncThunk(
             const response = await axios('http://168.138.215.26:9002/').get(
                 `/deck/${deckId}`
             )
-            console.log('get deck by id', response.data)
+
+            if (response.data.cards) {
+                const fetchCardsResponse = await Promise.all(
+                    response.data.cards.map((cardId) =>
+                        axios('http://168.138.215.26:9002/').get(
+                            `card/${cardId}`
+                        )
+                    )
+                )
+                const cards = fetchCardsResponse.map((res) => res.data)
+                response.data.cards = [...cards]
+            }
             return response.data
         } catch (err) {
             if (err.response) {
