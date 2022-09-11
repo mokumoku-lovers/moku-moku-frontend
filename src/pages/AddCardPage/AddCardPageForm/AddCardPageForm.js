@@ -5,6 +5,9 @@ import Button from '../../../components/UI/Button/Button'
 import ButtonSecondary from '../../../components/UI/Button/ButtonSecondary'
 import { useHistory } from 'react-router'
 import ImageField from '../AddCardPageImageField/ImageField'
+import axios from '../../../axios/axiosInstanceFunction'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 
 const AddCardPageForm = () => {
     const [cardFront, setCardFront] = useState('')
@@ -13,6 +16,8 @@ const AddCardPageForm = () => {
     const [cardBack, setCardBack] = useState('')
     const [cardBackErrorMessage, setCardBackErrorMessage] = useState('')
     const history = useHistory()
+    const { deckId } = useParams()
+    const { cards  } = useSelector((store) => store.deck)
 
     const cardFrontChangeHandler = (e) => {
         setCardFront(e.target.value)
@@ -24,7 +29,7 @@ const AddCardPageForm = () => {
         setCardBackErrorMessage('')
     }
 
-    const formSubmitHandler = (e) => {
+    const formSubmitHandler = async (e) => {
         let formIsValid = true
         e.preventDefault()
 
@@ -38,12 +43,29 @@ const AddCardPageForm = () => {
             formIsValid = false
         }
 
-        formIsValid && history.push('/edit-card/10/')
+        if (formIsValid) {
+            const response = await axios('http://168.138.215.26:9002/').post(
+                '/card',
+                {
+                    front: cardFront,
+                    back: cardBack,
+                }
+            )
+            console.log(response.data, 'create card')
+            const { id: cardId } = response.data
+            await axios('http://168.138.215.26:9002/').patch(
+                `/deck/${deckId}`,
+                {
+                    cards: [...cards, cardId],
+                }
+            )
+            history.push(`/deck/${deckId}`)
+        }
     }
 
     const formCancelHandler = (e) => {
         e.preventDefault()
-        history.push('/edit-card/10/')
+        history.goBack()
     }
 
     return (

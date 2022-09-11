@@ -10,8 +10,8 @@ import RankingPage from './pages/RankingPage/RankingPage'
 import Register from './pages/Register/Register'
 import UserProfile from './pages/UserProfile/UserProfile'
 import Study from './pages/Study/Study'
-import EditCardPage from './pages/EditCardPage/EditCardPage'
-import CreateDeckPage from './pages/EditCardPage/CreateDeckPage'
+import DeckDetail from './pages/DeckDetail/DeckDetail'
+import CreateDeckPage from './pages/DeckDetail/CreateDeckPage'
 
 function App() {
     return (
@@ -35,14 +35,17 @@ function App() {
                 <ProtectedRoute path="/edit-profile">
                     <ProfileEditingPage />
                 </ProtectedRoute>
-                <ProtectedRoute path="/add-card">
+                <ProtectedRoute path="/deck/:deckId/add-card">
+                    <AddCardPage />
+                </ProtectedRoute>
+                <ProtectedRoute path="/card/:cardId">
                     <AddCardPage />
                 </ProtectedRoute>
                 <ProtectedRoute path="/create-deck">
                     <CreateDeckPage />
                 </ProtectedRoute>
-                <ProtectedRoute path="/edit-card">
-                    <EditCardPage />
+                <ProtectedRoute path="/deck/:deckId">
+                    <DeckDetail />
                 </ProtectedRoute>
                 <Route path="/">
                     <Homepage />

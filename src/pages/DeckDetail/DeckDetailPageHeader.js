@@ -1,25 +1,29 @@
 import React, { useState } from 'react'
 import Button from '../../components/UI/Button/Button'
-import classes from './EditCardPageHeader.module.css'
+import classes from './DeckDetailPageHeader.module.css'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import DeckForm from './DeckForm'
 import { useDispatch } from 'react-redux'
 import { onSaveTitle } from '../../features/deckTitle/deckSlice'
+import { useParams } from 'react-router-dom'
 
-const EditCardPageHeader = (props) => {
+const DeckDetailPageHeader = (props) => {
     const history = useHistory()
     const dispatch = useDispatch()
 
+    const { deckId } = useParams()
+
     const [showEditForm, setShowEditForm] = useState()
     const title = useSelector((state) => state.deck.title)
+    const cards = useSelector((state) => state.deck.cards)
 
     const onClickTitleEditHandler = () => {
         setShowEditForm(true)
     }
 
     const clickAddCardButton = () => {
-        history.push('/add-card/')
+        history.push(`/deck/${deckId}/add-card/`)
     }
 
     const clickStudyButton = () => {
@@ -56,7 +60,7 @@ const EditCardPageHeader = (props) => {
                         />
                     )}
                 </div>
-                <p className={classes.card__count}>0 card</p>
+                <p className={classes.card__count}>{cards.length} card</p>
             </div>
             <div className={classes.card__buttons}>
                 <Button onClick={clickAddCardButton}>Add Card</Button>
@@ -66,4 +70,4 @@ const EditCardPageHeader = (props) => {
     )
 }
 
-export default EditCardPageHeader
+export default DeckDetailPageHeader
