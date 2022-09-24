@@ -7,6 +7,7 @@ import DeckForm from './DeckForm'
 import { useDispatch } from 'react-redux'
 import { updateDeckById } from '../../features/deckTitle/deckSlice'
 import { useParams } from 'react-router-dom'
+import { setCurrentCardIdx } from '../../features/study/studySlice'
 
 const DeckDetailPageHeader = (props) => {
     const history = useHistory()
@@ -27,6 +28,7 @@ const DeckDetailPageHeader = (props) => {
     }
 
     const clickStudyButton = () => {
+        dispatch(setCurrentCardIdx(0))
         history.push(`/study/${deckId}`)
     }
 
