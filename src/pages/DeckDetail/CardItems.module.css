@@ -16,6 +16,7 @@
     align-items: center;
     grid-template-rows: max-content;
     column-gap: 20px;
+    grid-template-rows: 80px;
     grid-template-columns: 20px min-content repeat(2, 1fr) min-content;
     border-bottom: 1px solid #e3e3e3;
 }
@@ -55,6 +56,11 @@
 }
 
 .actionButtons {
+    margin-left: auto;
     display: none;
     gap: 10px;
+}
+
+.danger {
+    background: #ff5757;
 }
