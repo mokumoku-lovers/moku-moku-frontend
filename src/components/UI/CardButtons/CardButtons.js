@@ -1,6 +1,8 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import classes from './CardButtons.module.css'
+import { setCurrentCardIdx } from '../../../features/study/studySlice'
 
 const buttonConfig = {
     front: [{ name: 'Previous' }, { name: 'Show Answer' }, { name: 'Edit' }],
@@ -14,15 +16,32 @@ const buttonConfig = {
     ],
 }
 
-const CardButtons = ({ cardState, parentCallback }) => {
+const CardButtons = ({ cardItem, cardState, parentCallback, isFinal }) => {
+    const { currentCardIdx } = useSelector((store) => store.study)
+    const deckId = useSelector((store) => store.deck.id)
     let history = useHistory()
+    const dispatch = useDispatch()
 
     const handleClick = (e) => {
         const name = e.currentTarget.value
-        if (name === 'Show Answer') {
-            parentCallback()
-        } else if (name === 'Edit') {
-            history.push(`/card/62efb8cf6816d4a1e74aee3f`)
+        switch (name) {
+            case 'Show Answer':
+                parentCallback()
+                break
+            case 'Edit':
+                history.push(`/card/${cardItem.id}`)
+                break
+            case 'Easy':
+                if (isFinal) {
+                    return history.replace(`/deck/${deckId}`)
+                }
+                dispatch(setCurrentCardIdx(currentCardIdx + 1))
+                break
+            case 'Previous':
+                dispatch(setCurrentCardIdx(currentCardIdx - 1))
+                break
+            default:
+            // code block
         }
     }
 
@@ -32,6 +51,9 @@ const CardButtons = ({ cardState, parentCallback }) => {
                 <h1 className={classes.buttonHeading}>{buttonItem.time}</h1>
 
                 <button
+                    disabled={
+                        buttonItem.name === 'Previous' && currentCardIdx === 0
+                    }
                     className={classes.button}
                     value={buttonItem.name}
                     onClick={handleClick}
