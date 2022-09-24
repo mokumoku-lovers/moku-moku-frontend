@@ -5,6 +5,7 @@ const initialState = {
     id: '',
     title: '',
     cards: [],
+    cardDetails: [],
 }
 
 export const createDeck = createAsyncThunk(
@@ -59,7 +60,7 @@ export const getDeckById = createAsyncThunk(
                     )
                 )
                 const cards = fetchCardsResponse.map((res) => res.data)
-                response.data.cards = [...cards]
+                response.data.cardDetails = [...cards]
             }
             return response.data
         } catch (err) {
@@ -106,6 +107,7 @@ export const deckSlice = createSlice({
             .addCase(getDeckById.fulfilled, (state, action) => {
                 state.id = action.payload.id
                 state.cards = action.payload.cards
+                state.cardDetails = action.payload.cardDetails
                 state.title = action.payload.name
             })
             .addCase(updateDeckById.fulfilled, (state, action) => {

@@ -67,7 +67,6 @@ const AddCardPageForm = ({ cardId }) => {
                     front: cardFront,
                     back: cardBack,
                 })
-                console.log(response.data)
                 history.goBack()
             } else {
                 const response = await axios(

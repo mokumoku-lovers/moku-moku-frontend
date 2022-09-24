@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 const CardItems = ({ deckId }) => {
     const history = useHistory()
-    const { cards: cardList } = useSelector((store) => store.deck)
+    const { cardDetails: cardList } = useSelector((store) => store.deck)
 
     const onClickEditHandler = (id) => {
         history.push(`/card/${id}`)
