@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import axios from '../../axios/axiosInstanceFunction'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     currentCardIdx: 0,

@@ -61,12 +61,13 @@ const AddCardPageForm = ({ cardId }) => {
 
         if (formIsValid) {
             if (cardId) {
-                const response = await axios(
-                    'http://168.138.215.26:9002/'
-                ).patch(`/card/${cardId}`, {
-                    front: cardFront,
-                    back: cardBack,
-                })
+                await axios('http://168.138.215.26:9002/').patch(
+                    `/card/${cardId}`,
+                    {
+                        front: cardFront,
+                        back: cardBack,
+                    }
+                )
                 history.goBack()
             } else {
                 const response = await axios(

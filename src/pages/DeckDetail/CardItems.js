@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Button from '../../components/UI/Button/Button'
 import classes from './CardItems.module.css'
 import { useHistory } from 'react-router-dom'
