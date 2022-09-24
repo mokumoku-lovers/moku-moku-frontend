@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import axios from '../../axios/axiosInstanceFunction'
+import TrashIcon from '../../assets/images/trash.svg'
+import EditIcon from '../../assets/images/edit.svg'
 
 const CardItems = ({ deckId }) => {
     const history = useHistory()
@@ -27,8 +29,20 @@ const CardItems = ({ deckId }) => {
         }
     }
 
-    const onSelectCheckbox = (id) => {
-        console.log('the id is ', id)
+    const onSelectCheckbox = (e, id) => {
+        if (e.target.checked) {
+            setSelectedIds([...selectedIds, id])
+        } else {
+            setSelectedIds(
+                selectedIds.filter((current_id) => current_id !== id)
+            )
+        }
+        console.log(selectedIds)
+    }
+
+    const onClickDeleteSelected = () => {
+        alert(`Deleting ${selectedIds}`)
+        setSelectedIds([])
     }
 
     const cards = cardList.map((card, idx) => (
@@ -36,7 +50,7 @@ const CardItems = ({ deckId }) => {
             <div className={classes.checkbox}>
                 <input
                     type="checkbox"
-                    onChange={() => onSelectCheckbox(card.id)}
+                    onChange={(e) => onSelectCheckbox(e, card.id)}
                 />
             </div>
             <p>{idx + 1}</p>
@@ -46,18 +60,11 @@ const CardItems = ({ deckId }) => {
             <div style={{ display: 'flex', alignItems: 'center' }}>
                 <p className={classes.grid__text}>{card.back}</p>
                 <div className={classes.actionButtons}>
-                    <div>
-                        <Button onClick={() => onClickEditHandler(card.id)}>
-                            Edit
-                        </Button>
+                    <div onClick={() => onClickEditHandler(card.id)}>
+                        <img src={EditIcon} alt="edit" />
                     </div>
-                    <div>
-                        <Button
-                            className={classes.danger}
-                            onClick={() => onClickDeleteHandler(card.id)}
-                        >
-                            Delete
-                        </Button>
+                    <div onClick={() => onClickDeleteHandler(card.id)}>
+                        <img src={TrashIcon} alt="delete" />
                     </div>
                 </div>
             </div>
@@ -70,8 +77,21 @@ const CardItems = ({ deckId }) => {
                 <p></p>
                 <p></p>
                 <h1>Card Front</h1>
-                <h1>Card Back</h1>
-                <p></p>
+                <div style={{ display: 'flex' }}>
+                    <h1>Card Back</h1>
+                    <div style={{ marginLeft: 'auto' }}>
+                        {selectedIds.length ? (
+                            <Button
+                                className={classes.danger}
+                                onClick={() => onClickDeleteSelected()}
+                            >
+                                Delete
+                            </Button>
+                        ) : (
+                            ''
+                        )}
+                    </div>
+                </div>
             </div>
             {cards}
         </div>

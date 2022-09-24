@@ -58,7 +58,11 @@
 .actionButtons {
     margin-left: auto;
     display: none;
-    gap: 10px;
+    gap: 30px;
+}
+
+.actionButtons > div {
+    cursor: pointer;
 }
 
 .danger {
