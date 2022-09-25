@@ -67,7 +67,6 @@ export const deckSlice = createSlice({
         onSaveTitle: (state, action) => {
             state.title = action.payload
         },
-        logout: () => initialState
     },
     extraReducers: (builder) => {
         builder
@@ -89,5 +88,5 @@ export const deckSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { onSaveTitle } = deckSlice.actions
-export const { logout } = deckSlice.actions
+
 export default deckSlice.reducer

@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '../../axios/axiosInstanceFunction'
-import { authFailureError } from '../authFailureCheck'
 
 const initialState = {
     user: null,
@@ -33,7 +32,6 @@ export const getUser = createAsyncThunk(
             console.log(response)
             return response.data
         } catch (err) {
-            authFailureError(err)
             console.log(err.response.data.message)
             return rejectWithValue(err.response.data.message)
         }
@@ -47,7 +45,6 @@ export const updateUserProfile = createAsyncThunk(
             const response = await axios('http://168.138.215.26:9000/').patch(`/users/${userId}`, formData)
             return response.data
         } catch (err) {
-            authFailureError(err)
             if (err.response) {
                 console.log(err.response.data.message)
                 return rejectWithValue(err.response.data.message)
@@ -68,7 +65,6 @@ export const updateUserPassword = createAsyncThunk(
             console.log(response)
             return response // change user successfully || response.message => 'old password is incorrect'
         } catch (err) {
-            authFailureError(err)
             console.log(err.response.data)
             return rejectWithValue(err.response.data)
         }
