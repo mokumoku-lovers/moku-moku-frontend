@@ -67,6 +67,7 @@ export const deckSlice = createSlice({
         onSaveTitle: (state, action) => {
             state.title = action.payload
         },
+        logout: () => initialState,
     },
     extraReducers: (builder) => {
         builder
