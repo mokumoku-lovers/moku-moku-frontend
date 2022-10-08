@@ -30,3 +30,8 @@
     font-family: inherit;
     cursor: pointer;
 }
+
+.button:disabled {
+    background: #aaaaaa;
+    cursor: not-allowed;
+}
