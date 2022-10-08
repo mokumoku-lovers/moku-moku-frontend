@@ -1,63 +1,98 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Button from '../../components/UI/Button/Button'
 import classes from './CardItems.module.css'
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import axios from '../../axios/axiosInstanceFunction'
-import { useDispatch } from 'react-redux'
-import { getDeckById } from '../../features/deckTitle/deckSlice'
+import TrashIcon from '../../assets/images/trash.svg'
+import EditIcon from '../../assets/images/edit.svg'
 
 const CardItems = ({ deckId }) => {
     const history = useHistory()
-
-    const [cardList, setCardList] = useState([])
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        const fetchCard = async () => {
-            const response = await dispatch(getDeckById(deckId))
-            const cardIds = response.payload.cards
-
-            const responses = await Promise.all(
-                cardIds.map((cardId) =>
-                    axios('http://168.138.215.26:9002/').get(`card/${cardId}`)
-                )
-            )
-
-            const cards = responses.map((res) => res.data)
-            setCardList(cards)
-        }
-
-        fetchCard()
-    }, [deckId, dispatch])
+    const { cardDetails: cardList } = useSelector((store) => store.deck)
+    const [selectedIds, setSelectedIds] = useState([])
 
     const onClickEditHandler = (id) => {
         history.push(`/card/${id}`)
     }
 
+    const onClickDeleteHandler = async (id) => {
+        console.log('deleted', id)
+        try {
+            const response = await axios('http://168.138.215.26:9002/').delete(
+                `/card/${id}`
+            )
+            console.log(response)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const onSelectCheckbox = (e, id) => {
+        if (e.target.checked) {
+            setSelectedIds([...selectedIds, id])
+        } else {
+            setSelectedIds(
+                selectedIds.filter((current_id) => current_id !== id)
+            )
+        }
+        console.log(selectedIds)
+    }
+
+    const onClickDeleteSelected = () => {
+        alert(`Deleting ${selectedIds}`)
+        setSelectedIds([])
+    }
+
     const cards = cardList.map((card, idx) => (
-        <React.Fragment key={card.id}>
+        <div className={classes.card_row} key={card.id}>
+            <div className={classes.checkbox}>
+                <input
+                    type="checkbox"
+                    onChange={(e) => onSelectCheckbox(e, card.id)}
+                />
+            </div>
             <p>{idx + 1}</p>
             <div>
                 <p className={classes.grid__text}>{card.front}</p>
             </div>
-            <div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
                 <p className={classes.grid__text}>{card.back}</p>
+                <div className={classes.actionButtons}>
+                    <div onClick={() => onClickEditHandler(card.id)}>
+                        <img src={EditIcon} alt="edit" />
+                    </div>
+                    <div onClick={() => onClickDeleteHandler(card.id)}>
+                        <img src={TrashIcon} alt="delete" />
+                    </div>
+                </div>
             </div>
-            <div>
-                <Button onClick={() => onClickEditHandler(card.id)}>
-                    Edit
-                </Button>
-            </div>
-        </React.Fragment>
+        </div>
     ))
 
     return (
         <div className={classes.container}>
-            <p></p>
-            <h1>Card Front</h1>
-            <h1>Card Back</h1>
-            <p></p>
+            <div className={classes.row}>
+                <p></p>
+                <p></p>
+                <h1>Card Front</h1>
+                <div style={{ display: 'flex' }}>
+                    <h1>Card Back</h1>
+                    <div style={{ marginLeft: 'auto' }}>
+                        {selectedIds.length ? (
+                            <Button
+                                className={classes.danger}
+                                onClick={() => onClickDeleteSelected()}
+                            >
+                                Delete
+                            </Button>
+                        ) : (
+                            ''
+                        )}
+                    </div>
+                </div>
+            </div>
             {cards}
         </div>
     )

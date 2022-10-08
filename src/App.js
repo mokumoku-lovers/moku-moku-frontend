@@ -29,7 +29,7 @@ function App() {
                 <ProtectedRoute path="/profile">
                     <UserProfile />
                 </ProtectedRoute>
-                <ProtectedRoute path="/study">
+                <ProtectedRoute path="/study/:deckId">
                     <Study />
                 </ProtectedRoute>
                 <ProtectedRoute path="/edit-profile">

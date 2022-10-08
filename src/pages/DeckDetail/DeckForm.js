@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 
 const DeckForm = ({ edit, onCancelHandler, onSaveHandler }) => {
     const oldTitle = useSelector((state) => state.deck.title)
-    const [title, setTitle] = useState(oldTitle)
+    const [title, setTitle] = useState(edit ? oldTitle : '')
 
     const isFormValid = title !== ''
 
