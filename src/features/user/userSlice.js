@@ -74,9 +74,6 @@ export const updateUserPassword = createAsyncThunk(
 const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {
-        logout: () => initialState,
-    },
     extraReducers: (builder) => {
         builder
             .addCase(createUser.pending, (state) => {
@@ -123,7 +120,5 @@ const userSlice = createSlice({
             })
     },
 })
-
-export const { logout } = userSlice.actions
 
 export default userSlice.reducer
