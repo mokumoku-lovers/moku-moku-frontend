@@ -19,3 +19,16 @@
     align-self: stretch;
     border-radius: 2rem;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        flex-flow: column-reverse;
+    }
+    .user_profile__section {
+        margin: initial;
+        width: auto;
+    }
+}
