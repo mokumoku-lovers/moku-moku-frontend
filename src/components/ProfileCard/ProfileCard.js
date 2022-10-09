@@ -4,16 +4,13 @@ import { Link } from 'react-router-dom'
 import NavUserInfo from './NavUserInfo'
 import NavUserInfoLoader from './NavUserInfoLoader'
 import { useSelector, useDispatch } from 'react-redux'
-import { logout as userLogout } from '../../features/user/userSlice'
-import { logout as authLogout } from '../../features/auth/authSlice'
 
 const ProfileCard = () => {
     const { user } = useSelector((store) => store.user)
     const dispatch = useDispatch()
 
     const handleLogout = () => {
-        dispatch(userLogout())
-        dispatch(authLogout())
+        dispatch({type: 'logout'})
     }
 
     return (
