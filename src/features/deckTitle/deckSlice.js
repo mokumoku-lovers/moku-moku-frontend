@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { checkToken } from '../../app/checkToken'
 import axios from '../../axios/axiosInstanceFunction'
 
 const initialState = {
@@ -19,6 +20,7 @@ export const createDeck = createAsyncThunk(
             return { id: response.data, title: formData.name }
         } catch (err) {
             if (err.response) {
+                checkToken(err.response.data)
                 console.log(err.response.data.message)
                 return rejectWithValue(err.response.data.message)
             }
@@ -65,6 +67,7 @@ export const getDeckById = createAsyncThunk(
             return response.data
         } catch (err) {
             if (err.response) {
+                checkToken(err.response.data)
                 console.log(err.response.data.message)
                 return rejectWithValue(err.response.data.message)
             }
@@ -83,6 +86,7 @@ export const updateDeckById = createAsyncThunk(
             return { title: formData.name }
         } catch (err) {
             if (err.response) {
+                checkToken(err.response.data)
                 console.log(err.response.data.message)
                 return rejectWithValue(err.response.data.message)
             }

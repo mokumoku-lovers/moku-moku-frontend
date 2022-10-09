@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { checkToken } from '../../app/checkToken'
 import axios from '../../axios/axiosInstanceFunction'
 
 const initialState = {
@@ -32,6 +33,7 @@ export const getUser = createAsyncThunk(
             console.log(response)
             return response.data
         } catch (err) {
+            checkToken(err.response.data)
             console.log(err.response.data.message)
             return rejectWithValue(err.response.data.message)
         }
@@ -46,6 +48,7 @@ export const updateUserProfile = createAsyncThunk(
             return response.data
         } catch (err) {
             if (err.response) {
+                checkToken(err.response.data)
                 console.log(err.response.data.message)
                 return rejectWithValue(err.response.data.message)
             }
@@ -65,6 +68,7 @@ export const updateUserPassword = createAsyncThunk(
             console.log(response)
             return response // change user successfully || response.message => 'old password is incorrect'
         } catch (err) {
+            checkToken(err.response.data)
             console.log(err.response.data)
             return rejectWithValue(err.response.data)
         }
