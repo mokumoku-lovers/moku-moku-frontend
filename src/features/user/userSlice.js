@@ -10,13 +10,12 @@ const initialState = {
 export const createUser = createAsyncThunk(
     'user/createUser',
     async (formData, { rejectWithValue }) => {
-        console.log(formData)
         try {
             const response = await axios('http://168.138.215.26:9000/').post(
                 '/users',
                 formData
             )
-            console.log(response)
+
             return response.data
         } catch (err) {
             if (err.response) {
@@ -34,7 +33,7 @@ export const getUser = createAsyncThunk(
             const response = await axios('http://168.138.215.26:9000/').get(
                 `/users/${id}`
             )
-            console.log(response)
+
             return response.data
         } catch (err) {
             console.log(err.response.data.message)
@@ -65,12 +64,11 @@ export const updateUserPassword = createAsyncThunk(
     'user/updateUserPassword',
     async ({ userId, formData }, { rejectWithValue }) => {
         try {
-            console.log(formData)
             const response = await axios('http://168.138.215.26:9000/').patch(
                 `users/${userId}/change_password`,
                 formData
             )
-            console.log(response)
+
             return response // change user successfully || response.message => 'old password is incorrect'
         } catch (err) {
             console.log(err.response.data)
