@@ -7,7 +7,8 @@ import DeckForm from './DeckForm'
 import { useDispatch } from 'react-redux'
 import { updateDeckById } from '../../features/deckTitle/deckSlice'
 import { useParams } from 'react-router-dom'
-import { setCurrentCardIdx } from '../../features/study/studySlice'
+import { setStudyCards } from '../../features/study/studySlice'
+import { shuffle } from '../../utils/shuffleArray'
 
 const DeckDetailPageHeader = (props) => {
     const history = useHistory()
@@ -28,7 +29,8 @@ const DeckDetailPageHeader = (props) => {
     }
 
     const clickStudyButton = () => {
-        dispatch(setCurrentCardIdx(0))
+        const shuffledCards = shuffle(cards.slice())
+        dispatch(setStudyCards(shuffledCards))
         history.push(`/study/${deckId}`)
     }
 
