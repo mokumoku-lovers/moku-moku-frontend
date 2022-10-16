@@ -47,10 +47,10 @@ const LoginForm = () => {
                 })
             )
 
-            setEmail('')
-            setPassword('')
-            setEmailIsTouch(false)
-            setPasswordIsTouch(false)
+            // setEmail('')
+            // setPassword('')
+            // setEmailIsTouch(false)
+            // setPasswordIsTouch(false)
         } else {
             return
         }

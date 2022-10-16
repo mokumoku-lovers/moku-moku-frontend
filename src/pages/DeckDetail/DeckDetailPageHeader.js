@@ -1,29 +1,35 @@
 import React, { useState } from 'react'
 import Button from '../../components/UI/Button/Button'
-import classes from './EditCardPageHeader.module.css'
+import classes from './DeckDetailPageHeader.module.css'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import DeckForm from './DeckForm'
 import { useDispatch } from 'react-redux'
-import { onSaveTitle } from '../../features/deckTitle/deckSlice'
+import { updateDeckById } from '../../features/deckTitle/deckSlice'
+import { useParams } from 'react-router-dom'
+import { setCurrentCardIdx } from '../../features/study/studySlice'
 
-const EditCardPageHeader = (props) => {
+const DeckDetailPageHeader = (props) => {
     const history = useHistory()
     const dispatch = useDispatch()
 
+    const { deckId } = useParams()
+
     const [showEditForm, setShowEditForm] = useState()
     const title = useSelector((state) => state.deck.title)
+    const cards = useSelector((state) => state.deck.cards)
 
     const onClickTitleEditHandler = () => {
         setShowEditForm(true)
     }
 
     const clickAddCardButton = () => {
-        history.push('/add-card/')
+        history.push(`/deck/${deckId}/add-card/`)
     }
 
     const clickStudyButton = () => {
-        history.push('/study/')
+        dispatch(setCurrentCardIdx(0))
+        history.push(`/study/${deckId}`)
     }
 
     const onCancelHandler = () => {
@@ -32,9 +38,9 @@ const EditCardPageHeader = (props) => {
 
     const onSaveHandler = (e, title) => {
         e.preventDefault()
+        const formData = { name: title }
+        dispatch(updateDeckById({ deckId, formData }))
         setShowEditForm(false)
-        dispatch(onSaveTitle(title))
-        console.log('Updated')
     }
 
     return (
@@ -56,7 +62,7 @@ const EditCardPageHeader = (props) => {
                         />
                     )}
                 </div>
-                <p className={classes.card__count}>0 card</p>
+                <p className={classes.card__count}>{cards.length} card</p>
             </div>
             <div className={classes.card__buttons}>
                 <Button onClick={clickAddCardButton}>Add Card</Button>
@@ -66,4 +72,4 @@ const EditCardPageHeader = (props) => {
     )
 }
 
-export default EditCardPageHeader
+export default DeckDetailPageHeader
