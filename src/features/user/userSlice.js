@@ -87,7 +87,6 @@ export const updateUserPoint = createAsyncThunk(
                 `/users/${userId}`,
                 { points }
             )
-            console.log(response.data)
             return response.data
         } catch (err) {
             console.dir(err)
