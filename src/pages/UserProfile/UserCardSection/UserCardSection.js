@@ -26,8 +26,8 @@ const UserCardSection = () => {
 
     return (
         <div className={classes.container}>
+            <h1 className={classes.title}>All Card</h1>
             <div className={classes.card_section}>
-                <h1 className={classes.title}>All Card</h1>
                 {loading ? (
                     <p>Loading...</p>
                 ) : decks.length > 0 ? (
