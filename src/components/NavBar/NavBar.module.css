@@ -42,35 +42,6 @@
     border-radius: 1rem;
 }
 
-.searchbar {
-    font-size: 2rem;
-    padding: 4px;
-    padding-left: 40px;
-    border: none;
-    border-radius: 10px;
-    font-family: inherit;
-}
-
-.searchbar:focus {
-    outline: none;
-}
-
-.input-control {
-    position: relative;
-}
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    color: #6c6c6c;
-}
-.searchbar:not(:placeholder-shown) ~ span {
-    display: none;
-}
-
 .user-avatar {
     margin-left: 3rem;
     width: 5.5rem;
