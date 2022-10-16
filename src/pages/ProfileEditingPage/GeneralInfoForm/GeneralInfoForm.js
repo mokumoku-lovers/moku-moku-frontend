@@ -9,7 +9,7 @@ import Alert from '../../../components/UI/Alert/Alert'
 
 const emailRegex = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
-const GeneralInfoForm = () => {
+const GeneralInfoForm = ({ selectedImage }) => {
     const { user } = useSelector((store) => store.user)
 
     const [name, setName] = useState(user.display_name || '')
@@ -47,12 +47,22 @@ const GeneralInfoForm = () => {
     }
 
     const onSubmitHandler = async (event) => {
+        // if (selectedImage) {
+        //     const formData = new FormData()
+        //     formData.append('display_name', name)
+        //     formData.append('username', username)
+        //     formData.append('email', email)
+        //     formData.append('biography', bio)
+        //     formData.append('profile_picture', selectedImage)
+        // }
+
         event.preventDefault()
         const formData = {
             display_name: name,
             username,
             email,
             biography: bio,
+            // profile_picture: selectedImage,
         }
         const res = await dispatch(updateUserProfile({ userId, formData }))
 
