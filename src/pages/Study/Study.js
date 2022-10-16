@@ -9,9 +9,8 @@ const Study = () => {
     //  Card back side: true
     const [cardState, flipCard] = useState(false)
     const { cardDetails: cards } = useSelector((store) => store.deck)
-    const { currentCardIdx } = useSelector((store) => store.study)
-    const [currentCard, setCurrentCard] = useState(cards[currentCardIdx])
-    const [isFinal, setIsFinal] = useState(false)
+    const { studyCards } = useSelector((store) => store.study)
+    const [currentCard, setCurrentCard] = useState({})
 
     function flip() {
         flipCard(true)
@@ -19,23 +18,27 @@ const Study = () => {
 
     useEffect(() => {
         flipCard(false)
-        setCurrentCard(cards[currentCardIdx])
-
-        if (currentCardIdx === cards.length - 1) {
-            setIsFinal(true)
-        }
-    }, [currentCardIdx, cards])
+        setCurrentCard(cards.find((card) => card.id === studyCards[0]))
+    }, [cards, studyCards])
 
     return (
         <section id="study">
             <div className={classes.container}>
-                <StudyCard cardState={cardState} cardItem={currentCard} />
-                <CardButtons
-                    cardState={cardState}
-                    parentCallback={flip}
-                    cardItem={currentCard}
-                    isFinal={isFinal}
-                />
+                {currentCard ? (
+                    <>
+                        <StudyCard
+                            cardState={cardState}
+                            cardItem={currentCard}
+                        />
+                        <CardButtons
+                            cardState={cardState}
+                            parentCallback={flip}
+                            cardItem={currentCard}
+                        />
+                    </>
+                ) : (
+                    <p>There is no more cards.</p>
+                )}
             </div>
         </section>
     )
