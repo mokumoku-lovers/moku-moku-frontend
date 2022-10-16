@@ -79,6 +79,23 @@ export const updateUserPassword = createAsyncThunk(
     }
 )
 
+export const updateUserPoint = createAsyncThunk(
+    'user/updateUserPoint',
+    async ({ userId, points }, { rejectWithValue }) => {
+        try {
+            const response = await axios('http://168.138.215.26:9000/').patch(
+                `/users/${userId}`,
+                { points }
+            )
+            console.log(response.data)
+            return response.data
+        } catch (err) {
+            console.dir(err)
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
 const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -128,6 +145,10 @@ const userSlice = createSlice({
             .addCase(updateUserPassword.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.payload
+            })
+            .addCase(updateUserPoint.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                state.user = action.payload
             })
     },
 })
