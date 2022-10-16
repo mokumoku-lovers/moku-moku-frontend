@@ -8,7 +8,7 @@ import { logout as userLogout } from '../../features/user/userSlice'
 import { logout as authLogout } from '../../features/auth/authSlice'
 
 const ProfileCard = () => {
-    const { user, status } = useSelector((store) => store.user)
+    const { user } = useSelector((store) => store.user)
     const dispatch = useDispatch()
 
     const handleLogout = () => {
@@ -18,10 +18,15 @@ const ProfileCard = () => {
 
     return (
         <div className={classes.container}>
-            {status !== 'succeeded' || !user ? (
+            {!user ? (
                 <NavUserInfoLoader />
             ) : (
-                <NavUserInfo email={user.email} username={user.username} />
+                <NavUserInfo
+                    email={user.email}
+                    username={
+                        user.display_name ? user.display_name : user.username
+                    }
+                />
             )}
             <Link to="/edit-profile/" className={classes.settings}>
                 Settings
