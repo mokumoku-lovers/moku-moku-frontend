@@ -42,3 +42,24 @@
 .username a {
     text-decoration: none;
 }
+
+.changeProfileLabel {
+    color: #3f97ff;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.selectedImageContainer {
+    display: flex;
+    gap: 2rem;
+}
+
+.selectedImageName {
+    font-size: 1.7rem;
+    color: rgb(113, 113, 113);
+}
+
+.removeIcon {
+    width: 16px;
+    cursor: pointer;
+}

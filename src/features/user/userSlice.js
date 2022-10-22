@@ -12,7 +12,10 @@ export const createUser = createAsyncThunk(
     async (formData, { rejectWithValue }) => {
         console.log(formData)
         try {
-            const response = await axios('http://168.138.215.26:9000/').post('/users', formData)
+            const response = await axios('http://168.138.215.26:9000/').post(
+                '/users',
+                formData
+            )
             console.log(response)
             return response.data
         } catch (err) {
@@ -28,7 +31,9 @@ export const getUser = createAsyncThunk(
     'user/getUser',
     async (id, { rejectWithValue }) => {
         try {
-            const response = await axios('http://168.138.215.26:9000/').get(`/users/${id}`)
+            const response = await axios('http://168.138.215.26:9000/').get(
+                `/users/${id}`
+            )
             console.log(response)
             return response.data
         } catch (err) {
@@ -42,7 +47,10 @@ export const updateUserProfile = createAsyncThunk(
     'users/updateUserProfile',
     async ({ userId, formData }, { rejectWithValue }) => {
         try {
-            const response = await axios('http://168.138.215.26:9000/').patch(`/users/${userId}`, formData)
+            const response = await axios('http://168.138.215.26:9000/').patch(
+                `/users/${userId}`,
+                formData
+            )
             return response.data
         } catch (err) {
             if (err.response) {
