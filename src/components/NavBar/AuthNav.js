@@ -28,10 +28,6 @@ const AuthNav = () => {
 
     return (
         <ul className={classes['nav-menu']}>
-            <div className={classes['input-control']}>
-                <input type="text" className={classes.searchbar} />
-                <i className={`fas fa-search ${classes['search-icon']}`}></i>
-            </div>
             <div id="avatar" className={classes.avatar_container}>
                 <img
                     src={icon}

@@ -5,11 +5,13 @@ import NavBar from '../../components/NavBar/NavBar'
 import Sidebar from './Sidebar/Sidebar'
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm'
 import { Avatar } from '../../components/UI/Avatar/Avatar'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Icon from '../../icon.svg'
+import RemoveIcon from '../../assets/images/trash.svg'
 
 const ProfileEditingPage = (props) => {
+    const [selectedImage, setSelectedImage] = useState(null)
+
     const [isEditProfile, setIsEditProfile] = useState(
         props.isEditProfile || true
     )
@@ -20,6 +22,10 @@ const ProfileEditingPage = (props) => {
 
     const onClickChangePassword = () => {
         setIsEditProfile(false)
+    }
+
+    const handleSelectProfileImage = (e) => {
+        setSelectedImage(e.target.files[0])
     }
 
     const { display_name } = useSelector((store) => store.user.user)
@@ -44,12 +50,51 @@ const ProfileEditingPage = (props) => {
                                 {display_name ? display_name : 'Display Name'}
                             </h3>
                             {isEditProfile && (
-                                <Link to="/">Change Profile Photo</Link>
+                                <div>
+                                    <label
+                                        className={classes.changeProfileLabel}
+                                        htmlFor="profilePhoto"
+                                    >
+                                        {selectedImage
+                                            ? 'Select other image'
+                                            : 'Change profile photo'}
+                                    </label>
+                                    <input
+                                        onChange={handleSelectProfileImage}
+                                        style={{ display: 'none' }}
+                                        type="file"
+                                        id="profilePhoto"
+                                        name="profilePhoto"
+                                    />
+                                    {selectedImage && (
+                                        <div
+                                            className={
+                                                classes.selectedImageContainer
+                                            }
+                                        >
+                                            <p
+                                                className={
+                                                    classes.selectedImageName
+                                                }
+                                            >
+                                                {selectedImage.name}
+                                            </p>
+                                            <img
+                                                onClick={() =>
+                                                    setSelectedImage(null)
+                                                }
+                                                className={classes.removeIcon}
+                                                src={RemoveIcon}
+                                                alt="remove"
+                                            />
+                                        </div>
+                                    )}
+                                </div>
                             )}
                         </div>
                     </div>
                     {isEditProfile ? (
-                        <GeneralInfoForm />
+                        <GeneralInfoForm selectedImage={selectedImage} />
                     ) : (
                         <ChangePasswordForm />
                     )}

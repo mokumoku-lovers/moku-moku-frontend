@@ -24,13 +24,13 @@ const UserProfile = () => {
         <>
             <NavBar />
             <div className={classes.container}>
+                <UserCardSection />
                 <div className={classes.user_profile__section}>
                     {isLoading || !user.user ? (
                         <UserInfoLoading />
                     ) : (
                         <UserInfoSection />
                     )}
-                    <UserCardSection />
                 </div>
             </div>
         </>
