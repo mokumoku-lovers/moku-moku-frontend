@@ -56,6 +56,23 @@ export const updateUserProfile = createAsyncThunk(
     }
 )
 
+
+export const updateUserProfilePicture = createAsyncThunk(
+    'users/updateUserProfilePicture',
+    async ({ userId, formData }, { rejectWithValue }) => {
+        try {
+            const response = await axios('http://168.138.215.26:9000/').post(`/users/${userId}/upload_profile_pic`, formData)
+            return response.data
+        } catch (err) {
+            if (err.response) {
+                checkToken(err.response.data)
+                console.log(err.response.data.message)
+                return rejectWithValue(err.response.data.message)
+            }
+        }
+    }
+)
+
 export const updateUserPassword = createAsyncThunk(
     'user/updateUserPassword',
     async ({ userId, formData }, { rejectWithValue }) => {
@@ -109,6 +126,17 @@ const userSlice = createSlice({
                 state.user = action.payload
             })
             .addCase(updateUserProfile.rejected, (state, action) => {
+                state.status = 'failed'
+                state.error = action.payload
+            })
+            .addCase(updateUserProfilePicture.pending, (state) => {
+                state.status = 'loading'
+            })
+            .addCase(updateUserProfilePicture.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                state.user = action.payload
+            })
+            .addCase(updateUserProfilePicture.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.payload
             })
