@@ -4,7 +4,7 @@ import TextArea from '../../../components/UI/TextArea/TextArea'
 import classes from './GeneralInfoForm.module.css'
 import Button from '../../../components/UI/Button/Button'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateUserProfile } from '../../../features/user/userSlice'
+import { updateUserProfile, updateUserProfilePicture} from '../../../features/user/userSlice'
 import Alert from '../../../components/UI/Alert/Alert'
 
 const emailRegex = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/
@@ -47,22 +47,22 @@ const GeneralInfoForm = ({ selectedImage }) => {
     }
 
     const onSubmitHandler = async (event) => {
-        // if (selectedImage) {
-        //     const formData = new FormData()
-        //     formData.append('display_name', name)
-        //     formData.append('username', username)
-        //     formData.append('email', email)
-        //     formData.append('biography', bio)
-        //     formData.append('profile_picture', selectedImage)
-        // }
-
         event.preventDefault()
+        if (selectedImage) {
+            const profilePicture = new FormData()
+            profilePicture.append('file', selectedImage)
+            const profilePictureUpdateResponse = await dispatch(updateUserProfilePicture({userId,profilePicture}))
+            if (profilePictureUpdateResponse.type === 'users/updateUserProfilePicture/fulfilled') {
+                setAlert({ type: 'info', message: 'Updated profile picture successfully!' })
+            } else if (profilePictureUpdateResponse.type === 'users/updateUserProfilePicture/rejected') {
+                setAlert({ type: 'danger', message: 'Something went wrong!' })
+            }
+        }
         const formData = {
             display_name: name,
             username,
             email,
-            biography: bio,
-            // profile_picture: selectedImage,
+            biography: bio
         }
         const res = await dispatch(updateUserProfile({ userId, formData }))
 
