@@ -12,30 +12,6 @@ import axios from '../../axios/axiosInstanceFunction'
 import RankingPageLoader from '../../components/Ranking/RankingPageLoader'
 import Icon from '../../icon.svg'
 
-const mockData = [
-    {
-        name: 'User1',
-        point: '7000',
-        img_src:
-            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit',
-        rank: '1st',
-    },
-    {
-        name: 'User2',
-        point: '5000',
-        img_src:
-            'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit',
-        rank: '2nd',
-    },
-    {
-        name: 'User3',
-        point: '3000',
-        img_src:
-            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit',
-        rank: '3rd',
-    },
-]
-
 const RankingPage = () => {
     const [users, setUsers] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -44,9 +20,9 @@ const RankingPage = () => {
         const fetchUsers = async () => {
             try {
                 const response = await axios('http://168.138.215.26:9000').get(
-                    '/users'
+                    '/users?by=points'
                 )
-                console.log(response, 'This is the users')
+                setUsers(response.data)
             } catch (err) {
                 console.log(err)
             } finally {
@@ -65,22 +41,25 @@ const RankingPage = () => {
             {isLoading ? (
                 <RankingPageLoader />
             ) : (
-                <section>
+                <section className={classes.leaderboardContent}>
                     <Avatar className={classes.avatar} src={Icon} />
                     <Badge className={classes.badge} />
-                    <Point className={classes.point} point={7000} />
+                    <h1 className={classes.username}>{users[0].username}</h1>
+                    <Point className={classes.point} point={users[0].points} />
 
                     <div className={classes.buttons}>
                         <ButtonSecondary>Friends</ButtonSecondary>
                         <Button>Global</Button>
                     </div>
-                    {mockData.map((item) => (
+                    {users.slice(2).map((item, idx) => (
                         <RankingListItem
                             key={item.name}
-                            name={item.name}
-                            img_src={item.img_src}
-                            point={item.point}
-                            rank={item.rank}
+                            name={item.username}
+                            img_src={
+                                'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit'
+                            }
+                            point={item.points}
+                            rank={idx + 2}
                         />
                     ))}
                 </section>
