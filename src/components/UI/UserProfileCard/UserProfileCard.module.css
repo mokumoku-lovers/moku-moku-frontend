@@ -17,6 +17,20 @@
     cursor: pointer;
     color: white;
     margin: 2rem 0;
+    position: relative;
+}
+
+.trashIcon {
+    position: absolute;
+    opacity: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 1rem;
+    right: 1rem;
+}
+
+.container:hover .trashIcon {
+    opacity: 1;
 }
 
 .title {
