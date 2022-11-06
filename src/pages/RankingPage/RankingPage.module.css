@@ -20,8 +20,8 @@
     max-width: 110rem;
     border-radius: 4rem;
     background-color: white;
-    margin-top: 8rem;
     position: relative;
+    margin-top: 8rem;
 }
 
 .avatar {
@@ -39,7 +39,11 @@
 
 .point {
     margin: 0rem auto;
-    margin-top: 10rem;
+}
+
+.username {
+    margin-top: 8rem;
+    text-align: center;
 }
 
 .buttons {
