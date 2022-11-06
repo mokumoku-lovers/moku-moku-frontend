@@ -13,7 +13,7 @@ const UserProfileCard = (props) => {
             <Link
                 key={props.id}
                 to={`/deck/${props.id}`}
-                style={{ textDecoration: 'none', color: 'white' }}
+                className={classes.cardLink}
             >
                 <p className={classes.title}>{props.title}</p>
                 <p className={classes.text}>{props.text}</p>
