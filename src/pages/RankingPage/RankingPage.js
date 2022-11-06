@@ -21,7 +21,7 @@ const RankingPage = () => {
         const fetchUsers = async () => {
             try {
                 const response = await axios('http://168.138.215.26:9000').get(
-                    '/users?by=points'
+                    '/users'
                 )
                 setUsers(response.data)
             } catch (err) {
