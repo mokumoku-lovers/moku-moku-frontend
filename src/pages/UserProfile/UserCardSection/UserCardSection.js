@@ -5,24 +5,22 @@ import axios from '../../../axios/axiosInstanceFunction'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { getUserDeck } from '../../../features/deckTitle/deckSlice'
 
 const UserCardSection = () => {
     const [loading, setLoading] = useState(true)
-    const [decks, setDecks] = useState([])
-    const { user_id } = useSelector((store) => store.auth.loginData)
+    const { decks } = useSelector((store) => store.deck)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchUserDeck = async () => {
-            const response = await axios('http://168.138.215.26:9002/').get(
-                `/decks/${user_id}`
-            )
-
-            setDecks(response.data ? response.data : [])
+            await dispatch(getUserDeck())
             setLoading(false)
         }
 
         fetchUserDeck()
-    }, [user_id])
+    }, [dispatch])
 
     return (
         <div className={classes.container}>
@@ -30,22 +28,17 @@ const UserCardSection = () => {
             <div className={classes.card_section}>
                 {loading ? (
                     <p>Loading...</p>
-                ) : decks.length > 0 ? (
+                ) : decks?.length > 0 ? (
                     decks.map((deck) => (
-                        <Link
+                        <UserProfileCard
                             key={deck.id}
-                            to={`/deck/${deck.id}`}
-                            style={{ textDecoration: 'none' }}
-                        >
-                            <UserProfileCard
-                                key={deck.id}
-                                title={deck.name}
-                                text={`${deck.cards.length} cards`}
-                            />
-                        </Link>
+                            title={deck.name}
+                            id={deck.id}
+                            text={`${deck.cards.length} cards`}
+                        />
                     ))
                 ) : (
-                    <p>There is no deck yet!</p>
+                    <h2>There is no deck yet!</h2>
                 )}
             </div>
         </div>

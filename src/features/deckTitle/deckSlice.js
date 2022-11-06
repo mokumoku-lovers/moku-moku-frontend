@@ -5,6 +5,7 @@ import axios from '../../axios/axiosInstanceFunction'
 const initialState = {
     id: '',
     title: '',
+    decks: [],
     cards: [],
     cardDetails: [],
 }
@@ -28,22 +29,24 @@ export const createDeck = createAsyncThunk(
     }
 )
 
-// export const getUserDeck = createAsyncThunk(
-//     'deck/getUserDeck',
-//     async (_, { rejectWithValue }) => {
-//         try {
-//             const response = await axios('http://168.138.215.26:9002/').get(
-//                 '/decks/168'
-//             )
-//             return response.data
-//         } catch (err) {
-//             if (err.response) {
-//                 console.log(err.response.data.message)
-//                 return rejectWithValue(err.response.data.message)
-//             }
-//         }
-//     }
-// )
+export const getUserDeck = createAsyncThunk(
+    'deck/getUserDeck',
+    async (_, { getState, rejectWithValue }) => {
+        try {
+            const stateValues = getState()
+            const { user_id } = stateValues.auth.loginData
+            const response = await axios('http://168.138.215.26:9002/').get(
+                `/decks/${user_id}`
+            )
+            return response.data
+        } catch (err) {
+            if (err.response) {
+                console.log(err.response.data.message)
+                return rejectWithValue(err.response.data.message)
+            }
+        }
+    }
+)
 
 export const getDeckById = createAsyncThunk(
     'deck/getDeckById',
@@ -117,10 +120,9 @@ export const deckSlice = createSlice({
             .addCase(updateDeckById.fulfilled, (state, action) => {
                 state.title = action.payload.title
             })
-        // .addCase(getUserDeck.fulfilled, (state, action) => {
-        //     state.title = action.payload.title
-        //     state.id = action.payload.id
-        // })
+            .addCase(getUserDeck.fulfilled, (state, action) => {
+                state.decks = action.payload
+            })
     },
 })
 
