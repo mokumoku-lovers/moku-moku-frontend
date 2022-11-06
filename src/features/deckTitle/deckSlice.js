@@ -79,7 +79,7 @@ export const getDeckById = createAsyncThunk(
 )
 
 export const updateDeckById = createAsyncThunk(
-    'deck/updateDateById',
+    'deck/updateDeckById',
     async ({ deckId, formData }, { rejectWithValue }) => {
         try {
             await axios('http://168.138.215.26:9002/').patch(
@@ -97,13 +97,27 @@ export const updateDeckById = createAsyncThunk(
     }
 )
 
+export const deleteDeckById = createAsyncThunk(
+    'deck/deleteDeckById',
+    async ({ deckId }) => {
+        try {
+            await axios('http://168.138.215.26:9002/').delete(`/deck/${deckId}`)
+            return { deckId }
+        } catch (err) {
+            if (err.response) {
+                console.log(err.response)
+            }
+        }
+    }
+)
+
 export const deckSlice = createSlice({
     name: 'deck',
     initialState,
     reducers: {
         onSaveTitle: (state, action) => {
             state.title = action.payload
-        }
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -119,6 +133,11 @@ export const deckSlice = createSlice({
             })
             .addCase(updateDeckById.fulfilled, (state, action) => {
                 state.title = action.payload.title
+            })
+            .addCase(deleteDeckById.fulfilled, (state, action) => {
+                state.decks = state.decks.filter(
+                    (deck) => deck.id !== action.payload.deckId
+                )
             })
             .addCase(getUserDeck.fulfilled, (state, action) => {
                 state.decks = action.payload
