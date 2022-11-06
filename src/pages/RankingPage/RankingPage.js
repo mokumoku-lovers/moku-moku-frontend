@@ -27,9 +27,7 @@ const RankingPage = () => {
             } catch (err) {
                 console.log(err)
             } finally {
-                setTimeout(() => {
-                    setIsLoading(false)
-                }, 2000)
+                setIsLoading(false)
             }
         }
 
@@ -43,12 +41,14 @@ const RankingPage = () => {
                 <h1>Leaderboard</h1>
                 {isLoading ? (
                     <RankingPageLoader />
+                ) : !users.length ? (
+                    <h2>There is no users yet.</h2>
                 ) : (
                     <section className={classes.leaderboardContent}>
                         <Avatar className={classes.avatar} src={Icon} />
                         <Badge className={classes.badge} />
                         <h1 className={classes.username}>
-                            {users[0].username}
+                            {users[0].display_name || users[0].username}
                         </h1>
                         <Point
                             className={classes.point}
@@ -62,9 +62,9 @@ const RankingPage = () => {
                         {users.slice(2).map((item, idx) => (
                             <RankingListItem
                                 key={item.name}
-                                name={item.username}
+                                name={item.display_name || item.username}
                                 img_src={
-                                    'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit'
+                                    item.profile_picture || '/images/user.png'
                                 }
                                 point={item.points}
                                 rank={idx + 2}
