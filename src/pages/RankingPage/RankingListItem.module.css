@@ -52,6 +52,7 @@
     height: 6.5rem;
     border-radius: 50%;
     object-fit: cover;
+    padding: 0.2rem;
     margin: 0px 1.5rem;
 
     border: double 0.4rem transparent;

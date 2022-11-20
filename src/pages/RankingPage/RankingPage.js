@@ -6,53 +6,73 @@ import Badge from '../../components/UI/Badge/Badge'
 import Button from '../../components/UI/Button/Button'
 import ButtonSecondary from '../../components/UI/Button/ButtonSecondary'
 import Point from '../../components/UI/Point/Point'
-const mockData = [
-    {
-        name: 'User1',
-        point: '7000',
-        img_src:
-            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit',
-        rank: '1st',
-    },
-    {
-        name: 'User2',
-        point: '5000',
-        img_src:
-            'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit',
-        rank: '2nd',
-    },
-    {
-        name: 'User3',
-        point: '3000',
-        img_src:
-            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit',
-        rank: '3rd',
-    },
-]
+import { useEffect } from 'react'
+import { useState } from 'react'
+import axios from '../../axios/axiosInstanceFunction'
+import RankingPageLoader from '../../components/Ranking/RankingPageLoader'
+import Icon from '../../icon.svg'
+import NavBar from '../../components/NavBar/NavBar'
 
 const RankingPage = () => {
-    return (
-        <div className={classes.container}>
-            <h1>Leaderboard</h1>
-            <section>
-                <Avatar className={classes.avatar} />
-                <Badge className={classes.badge} />
-                <Point className={classes.point} point={7000} />
+    const [users, setUsers] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
-                <div className={classes.buttons}>
-                    <ButtonSecondary>Friends</ButtonSecondary>
-                    <Button>Global</Button>
-                </div>
-                {mockData.map((item) => (
-                    <RankingListItem
-                        key={item.name}
-                        name={item.name}
-                        img_src={item.img_src}
-                        point={item.point}
-                        rank={item.rank}
-                    />
-                ))}
-            </section>
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await axios('http://168.138.215.26:9000').get(
+                    '/users'
+                )
+                setUsers(response.data)
+            } catch (err) {
+                console.log(err)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+
+        fetchUsers()
+    }, [])
+
+    return (
+        <div>
+            <NavBar />
+            <div className={classes.container}>
+                <h1>Leaderboard</h1>
+                {isLoading ? (
+                    <RankingPageLoader />
+                ) : !users.length ? (
+                    <h2>There is no users yet.</h2>
+                ) : (
+                    <section className={classes.leaderboardContent}>
+                        <Avatar className={classes.avatar} src={Icon} />
+                        <Badge className={classes.badge} />
+                        <h1 className={classes.username}>
+                            {users[0].display_name || users[0].username}
+                        </h1>
+                        <Point
+                            className={classes.point}
+                            point={users[0].points}
+                        />
+
+                        <div className={classes.buttons}>
+                            <ButtonSecondary>Friends</ButtonSecondary>
+                            <Button>Global</Button>
+                        </div>
+                        {users.slice(2).map((item, idx) => (
+                            <RankingListItem
+                                key={item.name}
+                                name={item.display_name || item.username}
+                                img_src={
+                                    item.profile_picture || '/images/user.png'
+                                }
+                                point={item.points}
+                                rank={idx + 2}
+                            />
+                        ))}
+                    </section>
+                )}
+            </div>
         </div>
     )
 }
