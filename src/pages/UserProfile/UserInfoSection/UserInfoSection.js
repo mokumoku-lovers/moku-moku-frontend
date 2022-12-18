@@ -21,7 +21,10 @@ const UserInfoSection = () => {
 
     return (
         <div className={classes.container}>
-            <Avatar className={classes.avatar} src={profile_picture} />
+            <Avatar
+                className={classes.avatar}
+                src={`http://168.138.215.26:9000/users/pics/${profile_picture}`}
+            />
             <div className={classes.user_info__container}>
                 <h1 className={classes.user__info__name}>
                     {display_name ? display_name : username}

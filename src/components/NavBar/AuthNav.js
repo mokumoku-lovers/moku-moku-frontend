@@ -33,7 +33,7 @@ const AuthNav = () => {
                 <img
                     src={
                         user?.profile_picture
-                            ? user.profile_picture
+                            ? `http://168.138.215.26:9000/users/pics/${user?.profile_picture}`
                             : '/images/user.png'
                     }
                     alt="Icon"

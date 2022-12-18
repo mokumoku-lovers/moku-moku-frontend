@@ -6,7 +6,6 @@ import Sidebar from './Sidebar/Sidebar'
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm'
 import { Avatar } from '../../components/UI/Avatar/Avatar'
 import { useDispatch, useSelector } from 'react-redux'
-import Icon from '../../icon.svg'
 import RemoveIcon from '../../assets/images/trash.svg'
 import { uploadProfileImage } from '../../features/user/userSlice'
 
@@ -15,6 +14,8 @@ const ProfileEditingPage = (props) => {
     const {
         loginData: { user_id },
     } = useSelector((store) => store.auth)
+
+    const { profile_picture } = useSelector((store) => store.user.user)
 
     const [selectedImage, setSelectedImage] = useState(null)
     const [selectImageUrl, setSelectImageUrl] = useState(null)
@@ -65,7 +66,13 @@ const ProfileEditingPage = (props) => {
                     <div className={classes.userInfo}>
                         <div className={classes.userAvatar}>
                             <Avatar
-                                src={selectImageUrl ? selectImageUrl : Icon}
+                                src={
+                                    selectImageUrl
+                                        ? selectImageUrl
+                                        : profile_picture
+                                        ? `http://168.138.215.26:9000/users/pics/${profile_picture}`
+                                        : '/images/user.png'
+                                }
                             />
                         </div>
                         <div className={classes.username}>
@@ -118,7 +125,7 @@ const ProfileEditingPage = (props) => {
                         </div>
                     </div>
                     {isEditProfile ? (
-                        <GeneralInfoForm selectedImage={selectedImage} />
+                        <GeneralInfoForm />
                     ) : (
                         <ChangePasswordForm />
                     )}

@@ -7,7 +7,11 @@ const NavUserInfo = ({ username, email, profile_picture }) => {
         <div className={classes.info__container}>
             <Link to="/profile/" className={classes.avatar}>
                 <img
-                    src={profile_picture ? profile_picture : '/images/user.png'}
+                    src={
+                        profile_picture
+                            ? `http://168.138.215.26:9000/users/pics/${profile_picture}`
+                            : '/images/user.png'
+                    }
                     alt="Avatar"
                 />
             </Link>
