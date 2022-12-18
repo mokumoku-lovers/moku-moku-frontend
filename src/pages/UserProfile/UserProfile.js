@@ -5,7 +5,7 @@ import classes from './UserProfile.module.css'
 import NavBar from '../../components/NavBar/NavBar'
 import UserInfoLoading from './UserInfoSection/UserInfoLoadingSection'
 import { useSelector, useDispatch } from 'react-redux'
-import { getUser } from '../../features/user/userSlice'
+import { getProfileImage, getUser } from '../../features/user/userSlice'
 
 const UserProfile = () => {
     const user = useSelector((store) => store.user)
@@ -13,11 +13,16 @@ const UserProfile = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getUser(user_id))
-        console.log('user_id', user_id)
-    }, [user_id, dispatch])
+        const getUserData = async () => {
+            const res = await dispatch(getUser(user_id))
+            const profileHash = res?.payload?.profile_picture
+            if (profileHash) {
+                dispatch(getProfileImage(profileHash))
+            }
+        }
 
-    console.log(user)
+        getUserData()
+    }, [user_id, dispatch])
 
     const { isLoading } = user
     return (
