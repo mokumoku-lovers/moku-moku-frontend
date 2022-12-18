@@ -5,12 +5,19 @@ import NavBar from '../../components/NavBar/NavBar'
 import Sidebar from './Sidebar/Sidebar'
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm'
 import { Avatar } from '../../components/UI/Avatar/Avatar'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Icon from '../../icon.svg'
 import RemoveIcon from '../../assets/images/trash.svg'
+import { uploadProfileImage } from '../../features/user/userSlice'
 
 const ProfileEditingPage = (props) => {
+    const dispatch = useDispatch()
+    const {
+        loginData: { user_id },
+    } = useSelector((store) => store.auth)
+
     const [selectedImage, setSelectedImage] = useState(null)
+    const [selectImageUrl, setSelectImageUrl] = useState(null)
 
     const [isEditProfile, setIsEditProfile] = useState(
         props.isEditProfile || true
@@ -25,7 +32,21 @@ const ProfileEditingPage = (props) => {
     }
 
     const handleSelectProfileImage = (e) => {
+        const img = e.target.files[0] || null
+        if (!img) return
+
         setSelectedImage(e.target.files[0])
+        setSelectImageUrl(URL.createObjectURL(img))
+
+        const formData = new FormData()
+        formData.append('file', img, img.name)
+
+        dispatch(
+            uploadProfileImage({
+                id: user_id,
+                formData,
+            })
+        )
     }
 
     const { display_name } = useSelector((store) => store.user.user)
@@ -43,7 +64,9 @@ const ProfileEditingPage = (props) => {
                 <div className={classes.formSection}>
                     <div className={classes.userInfo}>
                         <div className={classes.userAvatar}>
-                            <Avatar src={Icon} />
+                            <Avatar
+                                src={selectImageUrl ? selectImageUrl : Icon}
+                            />
                         </div>
                         <div className={classes.username}>
                             <h3>
@@ -80,9 +103,10 @@ const ProfileEditingPage = (props) => {
                                                 {selectedImage.name}
                                             </p>
                                             <img
-                                                onClick={() =>
+                                                onClick={() => {
                                                     setSelectedImage(null)
-                                                }
+                                                    setSelectImageUrl(null)
+                                                }}
                                                 className={classes.removeIcon}
                                                 src={RemoveIcon}
                                                 alt="remove"
