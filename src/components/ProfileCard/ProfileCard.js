@@ -10,7 +10,7 @@ const ProfileCard = () => {
     const dispatch = useDispatch()
 
     const handleLogout = () => {
-        dispatch({type: 'logout'})
+        dispatch({ type: 'logout' })
     }
 
     return (
@@ -23,6 +23,7 @@ const ProfileCard = () => {
                     username={
                         user.display_name ? user.display_name : user.username
                     }
+                    profile_picture={user.profile_picture}
                 />
             )}
             <Link to="/edit-profile/" className={classes.settings}>

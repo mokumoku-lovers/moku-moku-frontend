@@ -1,13 +1,14 @@
 import React from 'react'
 import classes from './NavBar.module.css'
-import icon from '../../icon.svg'
 import { useState } from 'react'
 import ProfileCard from '../ProfileCard/ProfileCard'
 import { useEffect } from 'react'
 import { useCallback } from 'react'
+import { useSelector } from 'react-redux'
 
 const AuthNav = () => {
     const [showProfile, setShowProfile] = useState(false)
+    const { user } = useSelector((store) => store.user)
 
     const closeProfileHandler = useCallback((e) => {
         if (!e.target.closest('#avatar')) {
@@ -30,11 +31,16 @@ const AuthNav = () => {
         <ul className={classes['nav-menu']}>
             <div id="avatar" className={classes.avatar_container}>
                 <img
-                    src={icon}
+                    src={
+                        user?.profile_picture
+                            ? user.profile_picture
+                            : '/images/user.png'
+                    }
                     alt="Icon"
                     className={classes['user-avatar']}
                     onClick={showProfileHandler}
                 />
+
                 {showProfile && (
                     <div className={classes.profile_card}>
                         <ProfileCard />

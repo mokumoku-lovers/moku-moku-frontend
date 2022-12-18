@@ -43,9 +43,10 @@
 }
 
 .user-avatar {
+    outline: 0.3rem solid white;
     margin-left: 3rem;
-    width: 5.5rem;
-    height: 5.5rem;
+    width: 5.2rem;
+    height: 5.2rem;
     border-radius: 50%;
     cursor: pointer;
 }
