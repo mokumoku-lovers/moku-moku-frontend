@@ -13,7 +13,10 @@ export const createUser = createAsyncThunk(
     async (formData, { rejectWithValue }) => {
         console.log(formData)
         try {
-            const response = await axios('http://168.138.215.26:9000/').post('/users', formData)
+            const response = await axios('http://168.138.215.26:9000/').post(
+                '/users',
+                formData
+            )
             console.log(response)
             return response.data
         } catch (err) {
@@ -29,8 +32,9 @@ export const getUser = createAsyncThunk(
     'user/getUser',
     async (id, { rejectWithValue }) => {
         try {
-            const response = await axios('http://168.138.215.26:9000/').get(`/users/${id}`)
-            console.log(response)
+            const response = await axios('http://168.138.215.26:9000/').get(
+                `/users/${id}`
+            )
             return response.data
         } catch (err) {
             checkToken(err.response.data)
@@ -40,11 +44,47 @@ export const getUser = createAsyncThunk(
     }
 )
 
+export const uploadProfileImage = createAsyncThunk(
+    'users/uploadUserProfilePic',
+    async ({ id, formData }, { rejectWithValue }) => {
+        try {
+            const response = await axios('http://168.138.215.26:9000/').post(
+                `/users/${id}/upload_profile_pic`,
+                formData
+            )
+            return response.data
+        } catch (err) {
+            return rejectWithValue(err.response.data.message)
+        }
+    }
+)
+
+export const getProfileImage = createAsyncThunk(
+    'user/getUserProfilePic',
+    async (picHash) => {
+        try {
+            const response = await axios('http://168.138.215.26:9000/').get(
+                `/users/pics/${picHash}`,
+                {
+                    responseType: 'blob',
+                }
+            )
+            const img = response.data
+            return URL.createObjectURL(img)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+)
+
 export const updateUserProfile = createAsyncThunk(
     'users/updateUserProfile',
     async ({ userId, formData }, { rejectWithValue }) => {
         try {
-            const response = await axios('http://168.138.215.26:9000/').patch(`/users/${userId}`, formData)
+            const response = await axios('http://168.138.215.26:9000/').patch(
+                `/users/${userId}`,
+                formData
+            )
             return response.data
         } catch (err) {
             if (err.response) {
@@ -100,6 +140,9 @@ const userSlice = createSlice({
             .addCase(getUser.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.payload
+            })
+            .addCase(getProfileImage.fulfilled, (state, action) => {
+                state.user.profile_picture = action.payload
             })
             .addCase(updateUserProfile.pending, (state) => {
                 state.status = 'loading'
