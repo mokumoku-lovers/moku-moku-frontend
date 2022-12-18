@@ -59,24 +59,6 @@ export const uploadProfileImage = createAsyncThunk(
     }
 )
 
-export const getProfileImage = createAsyncThunk(
-    'user/getUserProfilePic',
-    async (picHash) => {
-        try {
-            const response = await axios('http://168.138.215.26:9000/').get(
-                `/users/pics/${picHash}`,
-                {
-                    responseType: 'blob',
-                }
-            )
-            const img = response.data
-            return URL.createObjectURL(img)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-)
-
 export const updateUserProfile = createAsyncThunk(
     'users/updateUserProfile',
     async ({ userId, formData }, { rejectWithValue }) => {
@@ -100,7 +82,6 @@ export const updateUserPassword = createAsyncThunk(
     'user/updateUserPassword',
     async ({ userId, formData }, { rejectWithValue }) => {
         try {
-            console.log(formData)
             const response = await axios('http://168.138.215.26:9000/').patch(
                 `users/${userId}/change_password`,
                 formData
@@ -140,9 +121,6 @@ const userSlice = createSlice({
             .addCase(getUser.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.payload
-            })
-            .addCase(getProfileImage.fulfilled, (state, action) => {
-                state.user.profile_picture = action.payload
             })
             .addCase(updateUserProfile.pending, (state) => {
                 state.status = 'loading'
