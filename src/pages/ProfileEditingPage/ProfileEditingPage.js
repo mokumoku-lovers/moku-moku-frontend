@@ -7,7 +7,8 @@ import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm'
 import { Avatar } from '../../components/UI/Avatar/Avatar'
 import { useDispatch, useSelector } from 'react-redux'
 import RemoveIcon from '../../assets/images/trash.svg'
-import { uploadProfileImage } from '../../features/user/userSlice'
+import { uploadProfileImage, getUser } from '../../features/user/userSlice'
+import useNotification from '../../hooks/useNotification'
 
 const ProfileEditingPage = (props) => {
     const dispatch = useDispatch()
@@ -20,9 +21,8 @@ const ProfileEditingPage = (props) => {
     const [selectedImage, setSelectedImage] = useState(null)
     const [selectImageUrl, setSelectImageUrl] = useState(null)
 
-    const [isEditProfile, setIsEditProfile] = useState(
-        props.isEditProfile || true
-    )
+    const [isEditProfile, setIsEditProfile] = useState(props.isEditProfile || true)
+    const setNoti = useNotification()
 
     const onClickEditProfile = () => {
         setIsEditProfile(true)
@@ -32,22 +32,28 @@ const ProfileEditingPage = (props) => {
         setIsEditProfile(false)
     }
 
-    const handleSelectProfileImage = (e) => {
+    const handleSelectProfileImage = async (e) => {
         const img = e.target.files[0] || null
         if (!img) return
-
-        setSelectedImage(e.target.files[0])
-        setSelectImageUrl(URL.createObjectURL(img))
 
         const formData = new FormData()
         formData.append('file', img, img.name)
 
-        dispatch(
+        const res = await dispatch(
             uploadProfileImage({
                 id: user_id,
                 formData,
             })
         )
+
+        setNoti({
+            type: 'success',
+            msg: 'Updated profile successfully.',
+        })
+
+        if (res.type === 'users/uploadUserProfilePic/fulfilled') {
+            dispatch(getUser(user_id))
+        }
     }
 
     const { display_name } = useSelector((store) => store.user.user)
@@ -76,18 +82,15 @@ const ProfileEditingPage = (props) => {
                             />
                         </div>
                         <div className={classes.username}>
-                            <h3>
-                                {display_name ? display_name : 'Display Name'}
-                            </h3>
+                            <h3>{display_name ? display_name : 'Display Name'}</h3>
                             {isEditProfile && (
                                 <div>
                                     <label
+                                        style={{ cursor: 'pointer' }}
                                         className={classes.changeProfileLabel}
                                         htmlFor="profilePhoto"
                                     >
-                                        {selectedImage
-                                            ? 'Select other image'
-                                            : 'Change profile photo'}
+                                        Change profile photo
                                     </label>
                                     <input
                                         onChange={handleSelectProfileImage}
@@ -97,18 +100,8 @@ const ProfileEditingPage = (props) => {
                                         name="profilePhoto"
                                     />
                                     {selectedImage && (
-                                        <div
-                                            className={
-                                                classes.selectedImageContainer
-                                            }
-                                        >
-                                            <p
-                                                className={
-                                                    classes.selectedImageName
-                                                }
-                                            >
-                                                {selectedImage.name}
-                                            </p>
+                                        <div className={classes.selectedImageContainer}>
+                                            <p className={classes.selectedImageName}>{selectedImage.name}</p>
                                             <img
                                                 onClick={() => {
                                                     setSelectedImage(null)
@@ -124,11 +117,7 @@ const ProfileEditingPage = (props) => {
                             )}
                         </div>
                     </div>
-                    {isEditProfile ? (
-                        <GeneralInfoForm />
-                    ) : (
-                        <ChangePasswordForm />
-                    )}
+                    {isEditProfile ? <GeneralInfoForm /> : <ChangePasswordForm />}
                 </div>
             </section>
         </>
