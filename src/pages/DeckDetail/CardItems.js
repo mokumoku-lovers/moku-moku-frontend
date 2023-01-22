@@ -7,23 +7,25 @@ import { useState } from 'react'
 import axios from '../../axios/axiosInstanceFunction'
 import TrashIcon from '../../assets/images/trash.svg'
 import EditIcon from '../../assets/images/edit.svg'
+import { useDispatch } from 'react-redux'
+import { getDeckById } from '../../features/deckTitle/deckSlice'
 
 const CardItems = ({ deckId }) => {
     const history = useHistory()
     const { cardDetails: cardList } = useSelector((store) => store.deck)
     const [selectedIds, setSelectedIds] = useState([])
+    const dispatch = useDispatch()
 
     const onClickEditHandler = (id) => {
         history.push(`/card/${id}`)
     }
 
     const onClickDeleteHandler = async (id) => {
-        console.log('deleted', id)
         try {
-            const response = await axios('http://168.138.215.26:9002/').delete(
-                `/card/${id}`
-            )
-            console.log(response)
+            const response = await axios('http://168.138.215.26:9002/').delete(`/card/${id}`)
+            if (response.status === 200) {
+                dispatch(getDeckById(deckId))
+            }
         } catch (err) {
             console.log(err)
         }
@@ -33,9 +35,7 @@ const CardItems = ({ deckId }) => {
         if (e.target.checked) {
             setSelectedIds([...selectedIds, id])
         } else {
-            setSelectedIds(
-                selectedIds.filter((current_id) => current_id !== id)
-            )
+            setSelectedIds(selectedIds.filter((current_id) => current_id !== id))
         }
         console.log(selectedIds)
     }
@@ -48,10 +48,7 @@ const CardItems = ({ deckId }) => {
     const cards = cardList.map((card, idx) => (
         <div className={classes.card_row} key={card.id}>
             <div className={classes.checkbox}>
-                <input
-                    type="checkbox"
-                    onChange={(e) => onSelectCheckbox(e, card.id)}
-                />
+                <input type="checkbox" onChange={(e) => onSelectCheckbox(e, card.id)} />
             </div>
             <p>{idx + 1}</p>
             <div>
@@ -81,10 +78,7 @@ const CardItems = ({ deckId }) => {
                     <h1>Card Back</h1>
                     <div style={{ marginLeft: 'auto' }}>
                         {selectedIds.length ? (
-                            <Button
-                                className={classes.danger}
-                                onClick={() => onClickDeleteSelected()}
-                            >
+                            <Button className={classes.danger} onClick={() => onClickDeleteSelected()}>
                                 Delete
                             </Button>
                         ) : (
