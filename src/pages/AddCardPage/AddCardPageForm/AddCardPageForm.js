@@ -18,17 +18,22 @@ const AddCardPageForm = ({ cardId }) => {
     const history = useHistory()
     const { deckId } = useParams()
     const { cards } = useSelector((store) => store.deck)
+    const [cardImg, setCardImg] = useState(null)
     const [loading, setLoading] = useState(!!cardId)
 
     useEffect(() => {
         const fetchCard = async () => {
             if (cardId) {
-                const response = await axios('http://168.138.215.26:9002/').get(
-                    `/card/${cardId}`
-                )
+                const response = await axios('http://168.138.215.26:9002/').get(`/card/${cardId}`)
 
                 setCardFront(response.data.front)
                 setCardBack(response.data.back)
+                if (response.data.image) {
+                    const res = await axios('http://168.138.215.26:9002/').get(`/card/pics/${response.data.image}`, {
+                        responseType: 'blob',
+                    })
+                    setCardImg(res.data)
+                }
                 setLoading(false)
             }
         }
@@ -60,6 +65,11 @@ const AddCardPageForm = ({ cardId }) => {
         }
 
         if (formIsValid) {
+            const formData = new FormData()
+            formData.append('front', cardFront)
+            formData.append('back', cardBack)
+            formData.append('file', cardImg)
+
             if (cardId) {
                 await axios('http://168.138.215.26:9002/').patch(
                     `/card/${cardId}`,
@@ -67,25 +77,17 @@ const AddCardPageForm = ({ cardId }) => {
                         front: cardFront,
                         back: cardBack,
                     }
+                    // formData
                 )
-                history.goBack()
-            } else {
-                const response = await axios(
-                    'http://168.138.215.26:9002/'
-                ).post('/card', {
-                    front: cardFront,
-                    back: cardBack,
-                })
-                console.log(response.data, 'create card')
-                const { id: cardId } = response.data
-                await axios('http://168.138.215.26:9002/').patch(
-                    `/deck/${deckId}`,
-                    {
-                        cards: [...cards, cardId],
-                    }
-                )
-                history.push(`/deck/${deckId}`)
+                return history.goBack()
             }
+
+            const response = await axios('http://168.138.215.26:9002/').post('/card', formData)
+            const { id: newCardId } = response.data
+            await axios('http://168.138.215.26:9002/').patch(`/deck/${deckId}`, {
+                cards: [...cards, newCardId],
+            })
+            history.push(`/deck/${deckId}`)
         }
     }
 
@@ -113,11 +115,7 @@ const AddCardPageForm = ({ cardId }) => {
                         errorborder={cardFrontErrorMessage !== '' ? 1 : 0}
                         required
                     />
-                    {cardFrontErrorMessage && (
-                        <p className={classes.errorMessage}>
-                            {cardFrontErrorMessage}
-                        </p>
-                    )}
+                    {cardFrontErrorMessage && <p className={classes.errorMessage}>{cardFrontErrorMessage}</p>}
                     <label htmlFor="card-back">
                         Card Back <span style={{ color: 'red' }}>*</span>
                     </label>
@@ -131,16 +129,11 @@ const AddCardPageForm = ({ cardId }) => {
                         errorborder={cardBackErrorMessage !== '' ? 1 : 0}
                         required
                     />
-                    {cardBackErrorMessage && (
-                        <p className={classes.errorMessage}>
-                            {cardBackErrorMessage}
-                        </p>
-                    )}
-                    <ImageField />
+                    {cardBackErrorMessage && <p className={classes.errorMessage}>{cardBackErrorMessage}</p>}
+
+                    <ImageField file={cardImg} setFile={setCardImg} />
                     <div className={classes.buttonGroup}>
-                        <ButtonSecondary onClick={formCancelHandler}>
-                            Cancel
-                        </ButtonSecondary>
+                        <ButtonSecondary onClick={formCancelHandler}>Cancel</ButtonSecondary>
                         <Button onClick={formSubmitHandler}>Save</Button>
                     </div>
                 </form>
