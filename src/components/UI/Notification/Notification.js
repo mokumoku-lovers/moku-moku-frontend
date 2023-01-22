@@ -8,7 +8,9 @@ const Notification = () => {
     return (
         <div className={classes.container}>
             {notiList.map((noti) => (
-                <div className={`${classes.noti} ${classes[noti.type]}`}>{noti.message}</div>
+                <div key={noti.id} className={`${classes.noti} ${classes[noti.type]}`}>
+                    {noti.message}
+                </div>
             ))}
         </div>
     )

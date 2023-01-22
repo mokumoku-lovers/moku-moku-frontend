@@ -1,12 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import UserProfileCard from '../../../components/UI/UserProfileCard/UserProfileCard'
-import classes from './UserCardSection.module.css'
-import axios from '../../../axios/axiosInstanceFunction'
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
 import { getUserDeck } from '../../../features/deckTitle/deckSlice'
+import classes from './UserCardSection.module.css'
 
 const UserCardSection = () => {
     const [loading, setLoading] = useState(true)

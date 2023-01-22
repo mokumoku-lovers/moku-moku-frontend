@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import classes from './ImageField.module.css'
 import Button from '../../../components/UI/Button/Button'
 import { useDropzone } from 'react-dropzone'
