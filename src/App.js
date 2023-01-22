@@ -12,10 +12,12 @@ import UserProfile from './pages/UserProfile/UserProfile'
 import Study from './pages/Study/Study'
 import DeckDetail from './pages/DeckDetail/DeckDetail'
 import CreateDeckPage from './pages/DeckDetail/CreateDeckPage'
+import Notification from './components/UI/Notification/Notification'
 
 function App() {
     return (
         <Router>
+            <Notification />
             <Switch>
                 <Route path="/login">
                     <Login />
