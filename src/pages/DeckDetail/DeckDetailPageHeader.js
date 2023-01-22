@@ -55,18 +55,16 @@ const DeckDetailPageHeader = (props) => {
                     ></i>
 
                     {showEditForm && (
-                        <DeckForm
-                            edit={true}
-                            onCancelHandler={onCancelHandler}
-                            onSaveHandler={onSaveHandler}
-                        />
+                        <DeckForm edit={true} onCancelHandler={onCancelHandler} onSaveHandler={onSaveHandler} />
                     )}
                 </div>
                 <p className={classes.card__count}>{cards.length} card</p>
             </div>
             <div className={classes.card__buttons}>
                 <Button onClick={clickAddCardButton}>Add Card</Button>
-                <Button onClick={clickStudyButton}>Study</Button>
+                <Button disabled={!cards.length} onClick={clickStudyButton}>
+                    Study
+                </Button>
             </div>
         </div>
     )
