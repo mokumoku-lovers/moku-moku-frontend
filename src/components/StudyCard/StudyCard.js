@@ -7,6 +7,9 @@ const StudyCard = ({ cardState, cardItem }) => {
             <div style={{ width: '100%' }}>
                 <div className={classes.image_question}>
                     <img
+                        style={{
+                            maxHeight: cardState ? '300px' : '500px',
+                        }}
                         className={classes.image_question_column + ' ' + classes.image}
                         src={`http://168.138.215.26:9002/card/pics/${cardItem.image}`}
                         alt="card_image"

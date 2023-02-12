@@ -1,36 +1,37 @@
 .card {
-  background-color: white;
-  border-radius: 10px;
-  width: 70vw;
-  height: 70vh;
-  display: flex;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    width: 70vw;
+    height: 70vh;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .wordFront {
-  font-size: xxx-large;
-  text-align: center;
+    font-size: xxx-large;
+    text-align: center;
 }
 
 .separator {
-  border: 1px solid black;
-  margin: 5rem 0 5rem 0;
-  width: 60vw;
+    border: 1px solid black;
+    margin: 5rem 0 5rem 0;
+    width: 60vw;
 }
 
 .image_question {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .image_question_column {
-  flex: 50%;
-  align-self: center;
+    flex: 50%;
+    align-self: center;
 }
 
 .image {
-  width: 50px;
+    width: 50px;
+    object-fit: contain;
 }
