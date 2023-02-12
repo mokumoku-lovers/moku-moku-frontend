@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import RemoveIcon from '../../assets/images/trash.svg'
 import { uploadProfileImage, getUser } from '../../features/user/userSlice'
 import useNotification from '../../hooks/useNotification'
+import DefaultAvatar from '../../avatar'
 
 const ProfileEditingPage = (props) => {
     const dispatch = useDispatch()
@@ -71,15 +72,17 @@ const ProfileEditingPage = (props) => {
                 <div className={classes.formSection}>
                     <div className={classes.userInfo}>
                         <div className={classes.userAvatar}>
-                            <Avatar
-                                src={
-                                    selectImageUrl
-                                        ? selectImageUrl
-                                        : profile_picture
-                                        ? `http://168.138.215.26:9000/users/pics/${profile_picture}`
-                                        : '/images/user.png'
-                                }
-                            />
+                            {profile_picture || selectImageUrl ? (
+                                <Avatar
+                                    src={
+                                        selectImageUrl
+                                            ? selectImageUrl
+                                            : `http://168.138.215.26:9000/users/pics/${profile_picture}`
+                                    }
+                                />
+                            ) : (
+                                <DefaultAvatar width="140" height="140" />
+                            )}
                         </div>
                         <div className={classes.username}>
                             <h3>{display_name ? display_name : 'Display Name'}</h3>

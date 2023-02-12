@@ -5,6 +5,7 @@ import ProfileCard from '../ProfileCard/ProfileCard'
 import { useEffect } from 'react'
 import { useCallback } from 'react'
 import { useSelector } from 'react-redux'
+import DefaultAvatar from '../../avatar'
 
 const AuthNav = () => {
     const [showProfile, setShowProfile] = useState(false)
@@ -30,16 +31,22 @@ const AuthNav = () => {
     return (
         <ul className={classes['nav-menu']}>
             <div id="avatar" className={classes.avatar_container}>
-                <img
-                    src={
-                        user?.profile_picture
-                            ? `http://168.138.215.26:9000/users/pics/${user?.profile_picture}`
-                            : '/images/user.png'
-                    }
-                    alt="Icon"
-                    className={classes['user-avatar']}
-                    onClick={showProfileHandler}
-                />
+                {user?.profile_picture ? (
+                    <img
+                        src={`http://168.138.215.26:9000/users/pics/${user?.profile_picture}`}
+                        alt="Icon"
+                        className={classes['user-avatar']}
+                        onClick={showProfileHandler}
+                    />
+                ) : (
+                    <DefaultAvatar
+                        color="#fff"
+                        width="52"
+                        height="52"
+                        style={{ cursor: 'pointer' }}
+                        onClick={showProfileHandler}
+                    />
+                )}
 
                 {showProfile && (
                     <div className={classes.profile_card}>
