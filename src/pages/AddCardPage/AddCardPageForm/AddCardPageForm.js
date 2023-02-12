@@ -71,14 +71,7 @@ const AddCardPageForm = ({ cardId }) => {
             formData.append('file', cardImg)
 
             if (cardId) {
-                await axios('http://168.138.215.26:9002/').patch(
-                    `/card/${cardId}`,
-                    {
-                        front: cardFront,
-                        back: cardBack,
-                    }
-                    // formData
-                )
+                await axios('http://168.138.215.26:9002/').patch(`/card/${cardId}`, formData)
                 return history.goBack()
             }
 
