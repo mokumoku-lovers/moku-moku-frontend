@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.92125ac6.chunk.css",
+    "main.js": "/static/js/main.0a43ecaf.chunk.js",
+    "main.js.map": "/static/js/main.0a43ecaf.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5169a808.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5169a808.js.map",
+    "static/js/2.82ae51d0.chunk.js": "/static/js/2.82ae51d0.chunk.js",
+    "static/js/2.82ae51d0.chunk.js.map": "/static/js/2.82ae51d0.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.92125ac6.chunk.css.map": "/static/css/main.92125ac6.chunk.css.map",
+    "static/js/2.82ae51d0.chunk.js.LICENSE.txt": "/static/js/2.82ae51d0.chunk.js.LICENSE.txt",
+    "static/media/Cards.2bcb51ec.png": "/static/media/Cards.2bcb51ec.png",
+    "static/media/card.473413a1.png": "/static/media/card.473413a1.png",
+    "static/media/cardWithAnswer.42416806.png": "/static/media/cardWithAnswer.42416806.png",
+    "static/media/cardWithImage.a15c40cf.png": "/static/media/cardWithImage.a15c40cf.png",
+    "static/media/edit.e6d96b36.svg": "/static/media/edit.e6d96b36.svg",
+    "static/media/Homepage.module.css": "/static/media/heroSection.77b180a6.png",
+    "static/media/icon.52813914.svg": "/static/media/icon.52813914.svg",
+    "static/media/leaderboard.971fbd3b.png": "/static/media/leaderboard.971fbd3b.png",
+    "static/media/logo.416235ab.svg": "/static/media/logo.416235ab.svg",
+    "static/media/trash.98bcd931.svg": "/static/media/trash.98bcd931.svg",
+    "static/media/wave1.979776ee.svg": "/static/media/wave1.979776ee.svg",
+    "static/media/wave2.e65360c0.svg": "/static/media/wave2.e65360c0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5169a808.js",
+    "static/js/2.82ae51d0.chunk.js",
+    "static/css/main.92125ac6.chunk.css",
+    "static/js/main.0a43ecaf.chunk.js"
+  ]
+}
