@@ -8,7 +8,6 @@
         "@testing-library/react": "^9.5.0",
         "@testing-library/user-event": "^7.2.1",
         "axios": "^0.21.4",
-        "gh-pages": "^5.0.0",
         "react": "^17.0.2",
         "react-content-loader": "^6.1.0",
         "react-dom": "^17.0.2",
@@ -20,8 +19,8 @@
         "uuid": "^9.0.0"
     },
     "scripts": {
-        "start": "react-scripts --openssl-legacy-provider start",
-        "build": "npm audit fix --force && react-scripts build",
+        "start": "react-scripts start",
+        "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "deploy": "gh-pages -d build"
