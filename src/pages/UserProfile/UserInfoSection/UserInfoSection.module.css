@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.avatar {
+    position: absolute;
+    top: -8rem;
+}
+
+.user_info__container {
+    margin-top: 7rem;
+    font-size: 1.7rem;
+}
+
+.user__info__name {
+    color: #3cac8d;
+}
+
+.user__info__bio {
+    margin-bottom: 1rem;
+}
+
+.user_info__actions {
+    width: 25rem;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-between;
+}

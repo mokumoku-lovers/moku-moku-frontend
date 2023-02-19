@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: max-content;
+    z-index: 100;
+}
+
+.noti {
+    padding: 2rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.success {
+    background-color: rgb(203, 255, 203);
+}
+
+.danger {
+    background-color: rgb(255, 175, 166);
+}
+
+.info {
+    background-color: rgb(201, 242, 255);
+}

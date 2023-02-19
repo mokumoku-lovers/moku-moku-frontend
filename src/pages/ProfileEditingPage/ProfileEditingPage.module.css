@@ -1,0 +1,65 @@
+.container {
+    padding: 5rem 2rem;
+    padding-bottom: 0rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.separator {
+    width: 0.2rem;
+    height: 60rem;
+    background-color: rgb(146, 143, 143);
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.formSection {
+    flex-grow: 1;
+    padding: 2rem 4rem;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem 4rem;
+}
+
+.userAvatar {
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+    font-size: 2.5rem;
+}
+
+.username a {
+    text-decoration: none;
+}
+
+.changeProfileLabel {
+    color: #3f97ff;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.selectedImageContainer {
+    display: flex;
+    gap: 2rem;
+}
+
+.selectedImageName {
+    font-size: 1.7rem;
+    color: rgb(113, 113, 113);
+}
+
+.removeIcon {
+    width: 16px;
+    cursor: pointer;
+}

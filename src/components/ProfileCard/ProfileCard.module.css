@@ -1,0 +1,56 @@
+.container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    max-width: 35rem;
+    white-space: nowrap;
+
+    border-radius: 2rem;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.container > *:not(:last-child) {
+    border-bottom: 1px solid #cdcdcd;
+    padding: 0.7rem 1.2rem;
+}
+
+.info__container {
+    display: grid;
+    grid-template-rows: max-content max-content;
+    grid-template-columns: 6.5rem 1fr;
+    column-gap: 0.7rem;
+    font-size: 1.7rem;
+}
+
+.avatar {
+    grid-row: 1 / span 2;
+}
+
+.avatar img {
+    border-radius: 100%;
+    object-fit: cover;
+    width: 55px;
+    height: 55px;
+}
+
+.username,
+.email {
+    font-size: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.settings {
+    color: #535353;
+    font-size: 2.3rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logout {
+    color: #bd0808;
+    font-size: 2.3rem;
+    font-weight: bold;
+    padding: 0.7rem 1.2rem;
+}

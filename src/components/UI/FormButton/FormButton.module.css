@@ -1,0 +1,17 @@
+.btn {
+    background-image: linear-gradient(to left, #56b89a, #a4de8c);
+    padding: 1.5rem 2rem;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.forgetPassword {
+    margin: auto;
+}
+
+.invalid {
+    background-image: linear-gradient(to left, #dadada, #cfc2c2);
+    cursor: not-allowed;
+}
