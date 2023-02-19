@@ -1,29 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import classes from './CardButtons.module.css'
-import { setCurrentCardIdx } from '../../../features/study/studySlice'
+import { setStudyCards } from '../../../features/study/studySlice'
+import { updateUserPoint } from '../../../features/user/userSlice'
+import { insertItemIntoArray } from '../../../utils/insertItemIntoArray'
 
 const buttonConfig = {
-    front: [{ name: 'Previous' }, { name: 'Show Answer' }, { name: 'Edit' }],
+    front: [
+        // { name: 'Previous' },
+        { name: 'Show Answer' },
+        { name: 'Edit' },
+    ],
+
     back: [
-        { name: 'Previous', time: '' },
-        { name: 'Again', time: '<1m' },
-        { name: 'Hard', time: '1d' },
-        { name: 'Good', time: '4d' },
-        { name: 'Easy', time: '10d' },
-        { name: 'Edit', time: '' },
+        // { name: 'Previous' },
+        { name: 'Again' },
+        { name: 'Hard' },
+        // { name: 'Good' },
+        { name: 'Easy' },
+        { name: 'Edit' },
     ],
 }
 
-const CardButtons = ({ cardItem, cardState, parentCallback, isFinal }) => {
-    const { currentCardIdx } = useSelector((store) => store.study)
+const CardButtons = ({ cardItem, cardState, parentCallback }) => {
+    const { studyCards } = useSelector((store) => store.study)
+    const { cards } = useSelector((store) => store.deck)
+    const { id: userId, points } = useSelector((store) => store.user.user)
     const deckId = useSelector((store) => store.deck.id)
     let history = useHistory()
     const dispatch = useDispatch()
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         const name = e.currentTarget.value
+        const currentId = studyCards[0]
+        const copiedCards = studyCards.slice()
+
+        const pushCardToEndOfDeck = () => {
+            copiedCards.shift()
+            copiedCards.push(currentId)
+            dispatch(setStudyCards(copiedCards))
+        }
+
         switch (name) {
             case 'Show Answer':
                 parentCallback()
@@ -31,29 +49,47 @@ const CardButtons = ({ cardItem, cardState, parentCallback, isFinal }) => {
             case 'Edit':
                 history.push(`/card/${cardItem.id}`)
                 break
+            case 'Again':
+                if (copiedCards.length > 2) {
+                    copiedCards.shift()
+                    const temp = insertItemIntoArray(currentId, copiedCards, 2)
+                    dispatch(setStudyCards(temp))
+                } else {
+                    pushCardToEndOfDeck(copiedCards, currentId)
+                }
+                break
+            case 'Hard':
+                pushCardToEndOfDeck(copiedCards, currentId)
+                // setPoint((prev) => prev + 1)
+                break
             case 'Easy':
-                if (isFinal) {
+                // setPoint((prev) => prev + 3)
+                if (copiedCards.length === 1) {
+                    dispatch(setStudyCards([]))
+                    dispatch(
+                        updateUserPoint({
+                            userId,
+                            points: points + cards.length,
+                        })
+                    )
                     return history.replace(`/deck/${deckId}`)
                 }
-                dispatch(setCurrentCardIdx(currentCardIdx + 1))
+                copiedCards.shift()
+                dispatch(setStudyCards(copiedCards))
                 break
-            case 'Previous':
-                dispatch(setCurrentCardIdx(currentCardIdx - 1))
-                break
+            // case 'Previous':
+            //     dispatch(setCurrentCardIdx(currentCardIdx - 1))
+            //     break
             default:
-            // code block
+                break
         }
     }
 
     const MakeButtons = (side) => {
         return buttonConfig[side].map((buttonItem) => (
             <div key={buttonItem.name} className={buttonItem.name}>
-                <h1 className={classes.buttonHeading}>{buttonItem.time}</h1>
-
                 <button
-                    disabled={
-                        buttonItem.name === 'Previous' && currentCardIdx === 0
-                    }
+                    disabled={buttonItem.name === 'Previous'}
                     className={classes.button}
                     value={buttonItem.name}
                     onClick={handleClick}
