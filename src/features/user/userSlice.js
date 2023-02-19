@@ -79,6 +79,21 @@ export const updateUserPoint = createAsyncThunk(
     }
 )
 
+export const uploadProfileImage = createAsyncThunk(
+    'users/uploadUserProfilePic',
+    async ({ id, formData }, { rejectWithValue }) => {
+        try {
+            const response = await axios('http://168.138.215.26:9000/').post(
+                `/users/${id}/upload_profile_pic`,
+                formData
+            )
+            return response.data
+        } catch (err) {
+            return rejectWithValue(err.response.data.message)
+        }
+    }
+)
+
 const userSlice = createSlice({
     name: 'user',
     initialState,
