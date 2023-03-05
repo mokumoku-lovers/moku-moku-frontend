@@ -11,7 +11,7 @@ const StudyCard = ({ cardState, cardItem }) => {
                             maxHeight: cardState ? '300px' : '500px',
                         }}
                         className={classes.image_question_column + ' ' + classes.image}
-                        src={`http://168.138.215.26:9002/card/pics/${cardItem.image}`}
+                        src={`https://168.138.215.26:9002/card/pics/${cardItem.image}`}
                         alt="card_image"
                     />
                     <h1 className={classes.wordFront + ' ' + classes.image_question_column}>{cardItem.front}</h1>
