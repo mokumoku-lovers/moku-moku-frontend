@@ -22,7 +22,7 @@ const CardItems = ({ deckId }) => {
 
     const onClickDeleteHandler = async (id) => {
         try {
-            const response = await axios('http://168.138.215.26:9002/').delete(`/card/${id}`)
+            const response = await axios('https://168.138.215.26:9002/').delete(`/card/${id}`)
             if (response.status === 200) {
                 dispatch(getDeckById(deckId))
             }

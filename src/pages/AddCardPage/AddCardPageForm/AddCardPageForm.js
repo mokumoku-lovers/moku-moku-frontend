@@ -24,12 +24,12 @@ const AddCardPageForm = ({ cardId }) => {
     useEffect(() => {
         const fetchCard = async () => {
             if (cardId) {
-                const response = await axios('http://168.138.215.26:9002/').get(`/card/${cardId}`)
+                const response = await axios('https://168.138.215.26:9002/').get(`/card/${cardId}`)
 
                 setCardFront(response.data.front)
                 setCardBack(response.data.back)
                 if (response.data.image) {
-                    const res = await axios('http://168.138.215.26:9002/').get(`/card/pics/${response.data.image}`, {
+                    const res = await axios('https://168.138.215.26:9002/').get(`/card/pics/${response.data.image}`, {
                         responseType: 'blob',
                     })
                     setCardImg(res.data)
@@ -71,13 +71,13 @@ const AddCardPageForm = ({ cardId }) => {
             formData.append('file', cardImg)
 
             if (cardId) {
-                await axios('http://168.138.215.26:9002/').patch(`/card/${cardId}`, formData)
+                await axios('https://168.138.215.26:9002/').patch(`/card/${cardId}`, formData)
                 return history.goBack()
             }
 
-            const response = await axios('http://168.138.215.26:9002/').post('/card', formData)
+            const response = await axios('https://168.138.215.26:9002/').post('/card', formData)
             const { id: newCardId } = response.data
-            await axios('http://168.138.215.26:9002/').patch(`/deck/${deckId}`, {
+            await axios('https://168.138.215.26:9002/').patch(`/deck/${deckId}`, {
                 cards: [...cards, newCardId],
             })
             history.push(`/deck/${deckId}`)

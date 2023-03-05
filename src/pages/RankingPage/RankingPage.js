@@ -20,7 +20,7 @@ const RankingPage = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios('http://168.138.215.26:9000').get(
+                const response = await axios('https://168.138.215.26:9000').get(
                     '/users'
                 )
                 setUsers(response.data)

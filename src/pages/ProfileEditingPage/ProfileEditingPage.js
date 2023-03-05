@@ -77,7 +77,7 @@ const ProfileEditingPage = (props) => {
                                     src={
                                         selectImageUrl
                                             ? selectImageUrl
-                                            : `http://168.138.215.26:9000/users/pics/${profile_picture}`
+                                            : `https://168.138.215.26:9000/users/pics/${profile_picture}`
                                     }
                                 />
                             ) : (

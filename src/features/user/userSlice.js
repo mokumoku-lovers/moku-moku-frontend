@@ -11,7 +11,7 @@ const initialState = {
 export const createUser = createAsyncThunk('user/createUser', async (formData, { rejectWithValue }) => {
     console.log(formData)
     try {
-        const response = await axios('http://168.138.215.26:9000/').post('/users', formData)
+        const response = await axios('https://168.138.215.26:9000/').post('/users', formData)
 
         return response.data
     } catch (err) {
@@ -24,7 +24,7 @@ export const createUser = createAsyncThunk('user/createUser', async (formData, {
 
 export const getUser = createAsyncThunk('user/getUser', async (id, { rejectWithValue }) => {
     try {
-        const response = await axios('http://168.138.215.26:9000/').get(`/users/${id}`)
+        const response = await axios('https://168.138.215.26:9000/').get(`/users/${id}`)
         return response.data
     } catch (err) {
         checkToken(err.response.data)
@@ -37,7 +37,7 @@ export const updateUserProfile = createAsyncThunk(
     'users/updateUserProfile',
     async ({ userId, formData }, { rejectWithValue }) => {
         try {
-            const response = await axios('http://168.138.215.26:9000/').patch(`/users/${userId}`, formData)
+            const response = await axios('https://168.138.215.26:9000/').patch(`/users/${userId}`, formData)
             return response.data
         } catch (err) {
             if (err.response) {
@@ -53,7 +53,7 @@ export const updateUserPassword = createAsyncThunk(
     'user/updateUserPassword',
     async ({ userId, formData }, { rejectWithValue }) => {
         try {
-            const response = await axios('http://168.138.215.26:9000/').patch(
+            const response = await axios('https://168.138.215.26:9000/').patch(
                 `users/${userId}/change_password`,
                 formData
             )
@@ -70,7 +70,7 @@ export const updateUserPoint = createAsyncThunk(
     'user/updateUserPoint',
     async ({ userId, points }, { rejectWithValue }) => {
         try {
-            const response = await axios('http://168.138.215.26:9000/').patch(`/users/${userId}`, { points })
+            const response = await axios('https://168.138.215.26:9000/').patch(`/users/${userId}`, { points })
             return response.data
         } catch (err) {
             console.dir(err)
@@ -83,7 +83,7 @@ export const uploadProfileImage = createAsyncThunk(
     'users/uploadUserProfilePic',
     async ({ id, formData }, { rejectWithValue }) => {
         try {
-            const response = await axios('http://168.138.215.26:9000/').post(
+            const response = await axios('https://168.138.215.26:9000/').post(
                 `/users/${id}/upload_profile_pic`,
                 formData
             )
