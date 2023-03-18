@@ -33,7 +33,7 @@ const AuthNav = () => {
             <div id="avatar" className={classes.avatar_container}>
                 {user?.profile_picture ? (
                     <img
-                        src={`https://168.138.215.26:9000/users/pics/${user?.profile_picture}`}
+                        src={`https://mokumoku.zsh.jp:9000/users/pics/${user?.profile_picture}`}
                         alt="Icon"
                         className={classes['user-avatar']}
                         onClick={showProfileHandler}

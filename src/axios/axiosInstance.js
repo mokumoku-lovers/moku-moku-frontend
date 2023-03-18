@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://168.138.215.26:9000/',
+    baseURL: 'https://mokumoku.zsh.jp:9000/',
     timeout: 5000,
 })
 

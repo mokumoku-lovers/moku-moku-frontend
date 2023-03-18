@@ -14,7 +14,7 @@ export const createDeck = createAsyncThunk(
     'deck/createDeck',
     async (formData, { rejectWithValue }) => {
         try {
-            const response = await axios('https://168.138.215.26:9002/').post(
+            const response = await axios('https://mokumoku.zsh.jp:9002/').post(
                 '/deck',
                 formData
             )
@@ -35,7 +35,7 @@ export const getUserDeck = createAsyncThunk(
         try {
             const stateValues = getState()
             const { user_id } = stateValues.auth.loginData
-            const response = await axios('https://168.138.215.26:9002/').get(
+            const response = await axios('https://mokumoku.zsh.jp:9002/').get(
                 `/decks/${user_id}`
             )
             return response.data
@@ -52,14 +52,14 @@ export const getDeckById = createAsyncThunk(
     'deck/getDeckById',
     async (deckId, { rejectWithValue }) => {
         try {
-            const response = await axios('https://168.138.215.26:9002/').get(
+            const response = await axios('https://mokumoku.zsh.jp:9002/').get(
                 `/deck/${deckId}`
             )
 
             if (response.data.cards) {
                 const fetchCardsResponse = await Promise.all(
                     response.data.cards.map((cardId) =>
-                        axios('https://168.138.215.26:9002/').get(
+                        axios('https://mokumoku.zsh.jp:9002/').get(
                             `card/${cardId}`
                         )
                     )
@@ -82,7 +82,7 @@ export const updateDeckById = createAsyncThunk(
     'deck/updateDeckById',
     async ({ deckId, formData }, { rejectWithValue }) => {
         try {
-            await axios('https://168.138.215.26:9002/').patch(
+            await axios('https://mokumoku.zsh.jp:9002/').patch(
                 `/deck/${deckId}`,
                 formData
             )
@@ -101,7 +101,7 @@ export const deleteDeckById = createAsyncThunk(
     'deck/deleteDeckById',
     async ({ deckId }) => {
         try {
-            await axios('https://168.138.215.26:9002/').delete(`/deck/${deckId}`)
+            await axios('https://mokumoku.zsh.jp:9002/').delete(`/deck/${deckId}`)
             return { deckId }
         } catch (err) {
             if (err.response) {

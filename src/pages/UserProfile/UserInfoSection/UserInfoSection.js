@@ -22,7 +22,7 @@ const UserInfoSection = () => {
     return (
         <div className={classes.container}>
             {profile_picture ? (
-                <Avatar className={classes.avatar} src={`https://168.138.215.26:9000/users/pics/${profile_picture}`} />
+                <Avatar className={classes.avatar} src={`https://mokumoku.zsh.jp:9000/users/pics/${profile_picture}`} />
             ) : (
                 <div className={classes.avatar}>
                     <DefaultAvatar width="140" height="140" />
